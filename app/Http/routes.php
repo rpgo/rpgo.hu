@@ -19,3 +19,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get(trans('routes.world.create'), [
+    'uses'  => 'WorldController@create',
+    'as'    => 'world.create',
+]);
