@@ -1,4 +1,4 @@
-<?php namespace Rpgo;
+<?php namespace Rpgo\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
