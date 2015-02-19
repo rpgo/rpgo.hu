@@ -21,6 +21,7 @@ Route::controllers([
 ]);
 
 Route::get(trans('routes.world.create'), [
-    'uses'  => 'WorldController@create',
-    'as'    => 'world.create',
+    'uses'          => 'WorldController@create',
+    'as'            => 'world.create',
+    'middleware'    => 'auth',
 ]);
