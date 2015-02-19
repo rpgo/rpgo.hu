@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Rpgo\Commands;
 
 abstract class Command {
 

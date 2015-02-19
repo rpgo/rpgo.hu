@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace Rpgo\Services;
 
-use App\User;
+use Rpgo\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
