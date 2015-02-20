@@ -36,4 +36,9 @@ class WorldController extends Controller {
         return redirect()->route('world.show', compact('world'));
     }
 
+    public function main($world)
+    {
+        return view('world.main');
+    }
+
 }
