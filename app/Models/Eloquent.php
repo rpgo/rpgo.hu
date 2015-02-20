@@ -5,27 +5,22 @@ use Rhumsaa\Uuid\Uuid;
 
 class Eloquent extends Model {
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
+    public function __construct(array $attributes = [])
     {
-        parent::boot();
+        parent::__construct($attributes);
 
-        /**
-         * Use UUID if not incrementing id.
-         */
-        static::creating(function (Eloquent $model) {
-            if ($model->incrementing)
-                return;
+        $this->useUuidIfNotIncrementing();
+    }
 
-            $key = $model->getKeyName();
+    private function useUuidIfNotIncrementing()
+    {
+        if ($this->incrementing)
+            return;
 
-            if (empty($model->$key))
-                $model->$key = (string) Uuid::uuid4();
-        });
+        $key = $this->getKeyName();
+
+        if (empty($this->$key))
+            $this->$key = (string) Uuid::uuid4();
     }
 
 }
