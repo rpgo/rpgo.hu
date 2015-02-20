@@ -6,6 +6,9 @@ return [
         'submit' => 'Send',
         'link' => 'New World',
     ],
+    'index' => [
+        'link' => 'Worlds',
+    ],
     'name' => [
         'title' => 'Name'
     ],

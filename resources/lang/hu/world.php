@@ -6,6 +6,9 @@ return [
         'submit' => 'Küldés',
         'link' => 'Új Világ',
     ],
+    'index' => [
+        'link' => 'Világok',
+    ],
     'name' => [
         'title' => 'Név'
     ],
