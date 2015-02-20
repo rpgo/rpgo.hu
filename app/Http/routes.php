@@ -31,3 +31,7 @@ Route::get(trans('routes.world.index'), [
     'as'            => 'world.index',
 ]);
 
+Route::get(trans('routes.world.show', ['parameter' => '{world}']), [
+    'uses'          => 'WorldController@show',
+    'as'            => 'world.show',
+]);
