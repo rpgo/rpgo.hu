@@ -30,3 +30,4 @@ Route::get(trans('routes.world.index'), [
     'uses'          => 'WorldController@index',
     'as'            => 'world.index',
 ]);
+
