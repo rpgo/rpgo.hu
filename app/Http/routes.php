@@ -35,3 +35,9 @@ Route::get(trans('routes.world.show', ['parameter' => '{world}']), [
     'uses'          => 'WorldController@show',
     'as'            => 'world.show',
 ]);
+
+Route::post(trans('routes.world.store'), [
+    'uses'          => 'WorldController@store',
+    'as'            => 'world.store',
+    'middleware'    => 'auth',
+]);
