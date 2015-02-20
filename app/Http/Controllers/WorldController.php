@@ -15,7 +15,9 @@ class WorldController extends Controller {
 
     public function index()
     {
-        return view('world.index');
+        $worlds = World::all();
+
+        return view('world.index')->with(compact('worlds'));
     }
 
     public function show($world)

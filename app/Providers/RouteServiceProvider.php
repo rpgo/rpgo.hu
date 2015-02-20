@@ -25,8 +25,8 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-        $router->bind('world', function($id){
-            return World::findOrFail($id);
+        $router->bind('world', function($slug){
+            return World::where('slug', $slug)->firstOrFail();
         });
 	}
 

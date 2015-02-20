@@ -1,5 +1,9 @@
 @extends('app')
 
 @section('content')
-    The world index...
+    <ul>
+        @foreach($worlds as $world)
+            <li>{{$world->name}}</li>
+        @endforeach
+    </ul>
 @endsection

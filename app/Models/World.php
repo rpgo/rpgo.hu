@@ -6,4 +6,9 @@ class World extends Eloquent {
 
     protected $fillable = ['name', 'brand', 'slug'];
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
 }
