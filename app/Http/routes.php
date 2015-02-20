@@ -11,6 +11,15 @@
 |
 */
 
+Route::group(['domain' => '{world}.' . env('APP_DOMAIN')], function(){
+
+    Route::get('/', [
+        'uses'      => 'WorldController@main',
+        'as'        => 'world.main',
+    ]);
+
+});
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
