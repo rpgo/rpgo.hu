@@ -4,6 +4,7 @@ use Rpgo\Http\Requests;
 use Rpgo\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Rpgo\Models\World;
 
 class WorldController extends Controller {
 
@@ -24,7 +25,9 @@ class WorldController extends Controller {
 
     public function store(Request $request)
     {
-        dd($request);
+        $world = World::create($request->only('name', 'brand', 'slug'));
+
+        return redirect()->route('world.show', compact('world'));
     }
 
 }
