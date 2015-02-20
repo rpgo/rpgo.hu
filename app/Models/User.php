@@ -30,4 +30,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public $incrementing = false;
+
 }
