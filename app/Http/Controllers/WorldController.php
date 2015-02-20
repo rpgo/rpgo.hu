@@ -22,4 +22,9 @@ class WorldController extends Controller {
         return view('world.show');
     }
 
+    public function store(Request $request)
+    {
+        dd($request);
+    }
+
 }
