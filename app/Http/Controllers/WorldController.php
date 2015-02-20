@@ -17,4 +17,9 @@ class WorldController extends Controller {
         return view('world.index');
     }
 
+    public function show($world)
+    {
+        return view('world.show');
+    }
+
 }
