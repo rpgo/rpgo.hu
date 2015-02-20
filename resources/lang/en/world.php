@@ -10,12 +10,15 @@ return [
         'link' => 'Worlds',
     ],
     'name' => [
-        'title' => 'Name'
+        'title' => 'Name',
     ],
     'brand' => [
-        'title' => 'Brand'
+        'title' => 'Brand',
     ],
     'slug' => [
-        'title' => 'Url'
-    ]
+        'title' => 'Url',
+    ],
+    'creator' => [
+        'title' => 'Creator',
+    ],
 ];

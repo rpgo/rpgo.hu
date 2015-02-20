@@ -10,12 +10,15 @@ return [
         'link' => 'Világok',
     ],
     'name' => [
-        'title' => 'Név'
+        'title' => 'Név',
     ],
     'brand' => [
-        'title' => 'Rövid név'
+        'title' => 'Rövid név',
     ],
     'slug' => [
-        'title' => 'Url'
-    ]
+        'title' => 'Url',
+    ],
+    'creator' => [
+        'title' => 'Alkotó',
+    ],
 ];
