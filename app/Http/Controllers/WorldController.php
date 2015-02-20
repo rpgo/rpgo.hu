@@ -47,7 +47,7 @@ class WorldController extends Controller {
 
     public function main($world)
     {
-        return view('world.main');
+        return view('world.main')->with(compact('world'));
     }
 
 }
