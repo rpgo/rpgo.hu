@@ -25,9 +25,7 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-        $router->bind('world', function($slug){
-            return World::where('slug', $slug)->firstOrFail();
-        });
+        $router->bind('world', 'Rpgo\Http\Parameters\World');
 	}
 
 	/**
