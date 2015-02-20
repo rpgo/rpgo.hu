@@ -8,14 +8,17 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">RPGO</a>
+            @if($world)
+                <a class="navbar-brand" href="{{route('world.main', $world)}}">{{ $world->brand }}</a>
+            @endif
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                @if($world)
-                    @include('common.nav.world')
-                @else
+                @if(! $world)
                     @include('common.nav.rpgo')
+                @else
+                    @include('common.nav.world')
                 @endif
             </ul>
 

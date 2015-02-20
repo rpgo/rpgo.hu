@@ -1,1 +1,0 @@
-<li><a href="{{route('world.main', compact('world'))}}">Home</a></li>
