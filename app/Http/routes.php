@@ -25,3 +25,8 @@ Route::get(trans('routes.world.create'), [
     'as'            => 'world.create',
     'middleware'    => 'auth',
 ]);
+
+Route::get(trans('routes.world.index'), [
+    'uses'          => 'WorldController@index',
+    'as'            => 'world.index',
+]);
