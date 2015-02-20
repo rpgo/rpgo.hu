@@ -1,0 +1,1 @@
+<li><a href="{{route('member.create', $world)}}">{{trans('member.create.menu')}}</a></li>
