@@ -20,33 +20,37 @@ Route::group(['domain' => '{world}.' . env('APP_DOMAIN')], function(){
 
 });
 
-Route::get('/', 'WelcomeController@index');
+Route::group(['domain' => env('APP_DOMAIN')], function(){
 
-Route::get('home', 'HomeController@index');
+    Route::get('/', 'WelcomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+    Route::get('home', 'HomeController@index');
 
-Route::get(trans('routes.world.create'), [
-    'uses'          => 'WorldController@create',
-    'as'            => 'world.create',
-    'middleware'    => 'auth',
-]);
+    Route::controllers([
+        'auth' => 'Auth\AuthController',
+        'password' => 'Auth\PasswordController',
+    ]);
 
-Route::get(trans('routes.world.index'), [
-    'uses'          => 'WorldController@index',
-    'as'            => 'world.index',
-]);
+    Route::get(trans('routes.world.create'), [
+        'uses'          => 'WorldController@create',
+        'as'            => 'world.create',
+        'middleware'    => 'auth',
+    ]);
 
-Route::get(trans('routes.world.show', ['parameter' => '{world}']), [
-    'uses'          => 'WorldController@show',
-    'as'            => 'world.show',
-]);
+    Route::get(trans('routes.world.index'), [
+        'uses'          => 'WorldController@index',
+        'as'            => 'world.index',
+    ]);
 
-Route::post(trans('routes.world.store'), [
-    'uses'          => 'WorldController@store',
-    'as'            => 'world.store',
-    'middleware'    => 'auth',
-]);
+    Route::get(trans('routes.world.show', ['parameter' => '{world}']), [
+        'uses'          => 'WorldController@show',
+        'as'            => 'world.show',
+    ]);
+
+    Route::post(trans('routes.world.store'), [
+        'uses'          => 'WorldController@store',
+        'as'            => 'world.store',
+        'middleware'    => 'auth',
+    ]);
+
+});
