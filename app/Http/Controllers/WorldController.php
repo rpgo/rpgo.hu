@@ -20,7 +20,7 @@ class WorldController extends Controller {
 
     public function show($world)
     {
-        return view('world.show');
+        return view('world.show')->with(compact('world'));
     }
 
     public function store(Requests\CreateWorld $request)
