@@ -25,11 +25,14 @@ class NavBar {
     {
         $user = $this->guard->user();
 
-        $world = $this->request->route()->getParameter('world');
+        $route = $this->request->route();
 
-        $view->with(compact('user'));
+        $world = $route->getParameter('world');
 
-        $view->with(compact('world'));
+        $rpgo = ! $world || $route->getName() == 'world.show';
+
+        $view->with(compact('user', 'world,', 'rpgo'));
+
     }
 
 }
