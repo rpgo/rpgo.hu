@@ -32,4 +32,9 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
     public $incrementing = false;
 
+    public function createdWorlds()
+    {
+        return $this->hasMany(World::class);
+    }
+
 }

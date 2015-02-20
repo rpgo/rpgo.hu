@@ -11,4 +11,9 @@ class World extends Eloquent {
         return $this->slug;
     }
 
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
