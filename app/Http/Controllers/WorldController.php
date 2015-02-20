@@ -19,7 +19,7 @@ class WorldController extends Controller {
         return view('world.index')->with(compact('worlds'));
     }
 
-    public function show($world)
+    public function show(World $world)
     {
         return view('world.show')->with(compact('world'));
     }
@@ -45,7 +45,7 @@ class WorldController extends Controller {
         return redirect()->route('world.main', compact('world'));
     }
 
-    public function main($world)
+    public function main(World $world)
     {
         return view('world.main')->with(compact('world'));
     }
