@@ -1,10 +1,7 @@
 <?php namespace Rpgo\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
-use Rpgo\Http\Requests;
-use Rpgo\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use Rpgo\Http\Requests\CreateWorld;
 use Rpgo\Models\World;
 
 class WorldController extends Controller {
@@ -26,7 +23,7 @@ class WorldController extends Controller {
         return view('world.show')->with(compact('world'));
     }
 
-    public function store(Requests\CreateWorld $request, Guard $guard)
+    public function store(CreateWorld $request, Guard $guard)
     {
         $user = $guard->user();
 
