@@ -16,4 +16,11 @@ class Member extends Eloquent {
         return $this->belongsTo(World::class);
     }
 
+    public function setNameAttribute($name)
+    {
+        $this->name = $name;
+
+        $this->slug = str_slug($name);
+    }
+
 }
