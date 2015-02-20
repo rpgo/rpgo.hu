@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration {
 			$table->string('id', 36)->primary();
 			$table->timestamps();
             $table->string('name', 30);
+            $table->string('slug', 30);
             $table->string('world_id', 36);
             $table->string('user_id', 36);
 
