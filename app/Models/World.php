@@ -16,4 +16,9 @@ class World extends Eloquent {
         return $this->belongsTo(User::class, 'creator_id');
     }
 
+    public function members()
+    {
+        return $this->hasMany(Member::class);
+    }
+
 }
