@@ -2,6 +2,6 @@
 
 class World extends Eloquent {
 
-	//
+	public $incrementing = false;
 
 }

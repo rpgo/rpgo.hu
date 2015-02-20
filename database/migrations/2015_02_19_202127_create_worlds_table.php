@@ -14,7 +14,7 @@ class CreateWorldsTable extends Migration {
 	{
 		Schema::create('worlds', function(Blueprint $table)
 		{
-			$table->increments('id');
+            $table->string('id', 36)->index();
 			$table->timestamps();
             $table->string('name', 40);
             $table->string('slug', 20);
