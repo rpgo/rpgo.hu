@@ -4,6 +4,7 @@ return [
     'create' => [
         'title' => 'Készíts egy új világot!',
         'submit' => 'Küldés',
+        'link' => 'Új Világ',
     ],
     'name' => [
         'title' => 'Név'

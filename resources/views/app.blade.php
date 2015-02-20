@@ -33,7 +33,8 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/">Home</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{route('world.create')}}">{{trans('world.create.link')}}</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
