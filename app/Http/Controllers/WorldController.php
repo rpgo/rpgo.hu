@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Auth\Guard;
 use Rpgo\Http\Requests\CreateWorld;
+use Rpgo\Models\Member;
 use Rpgo\Models\World;
 
 class WorldController extends Controller {
@@ -31,7 +32,15 @@ class WorldController extends Controller {
 
         $world->creator()->associate($user);
 
+        $member = new Member(['name' => $request['admin']]);
+
+        $member->user()->associate($user);
+
+        $member->world()->associate($world);
+
         $world->save();
+
+        $member->save();
 
         return redirect()->route('world.main', compact('world'));
     }

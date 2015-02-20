@@ -25,6 +25,7 @@ class CreateWorld extends Request {
             'name' => ['required', 'string', 'max:40', 'unique:worlds,name'],
             'slug' => ['required', 'string', 'max:20', 'regex:/^[-a-z0-9]+$/', 'unique:worlds,slug'],
             'brand' => ['required', 'string', 'max:10', 'unique:worlds,brand'],
+            'admin' => ['required', 'string', 'max:30'],
 		];
 	}
 

@@ -6,6 +6,8 @@ class Member extends Model {
 
     public $incrementing = false;
 
+    protected $fillable = ['name'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
