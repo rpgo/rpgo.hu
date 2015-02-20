@@ -23,7 +23,7 @@ class WorldController extends Controller {
         return view('world.show');
     }
 
-    public function store(Request $request)
+    public function store(Requests\CreateWorld $request)
     {
         $world = World::create($request->only('name', 'brand', 'slug'));
 
