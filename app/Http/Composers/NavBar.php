@@ -21,7 +21,7 @@ class NavBar {
         $this->request = $request;
     }
 
-    public function create(View $view)
+    public function compose(View $view)
     {
         $user = $this->guard->user();
 
@@ -29,9 +29,10 @@ class NavBar {
 
         $world = $route->getParameter('world');
 
-        $rpgo = ! $world || $route->getName() == 'world.show';
+        if($route->getName() == 'world.show')
+            $world = null;
 
-        $view->with(compact('user', 'world,', 'rpgo'));
+        $view->with(compact('user', 'world'));
 
     }
 
