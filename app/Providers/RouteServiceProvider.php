@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Rpgo\Models\World;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -24,7 +25,9 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+        $router->bind('world', function($id){
+            return World::findOrFail($id);
+        });
 	}
 
 	/**
