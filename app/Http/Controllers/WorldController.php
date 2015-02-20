@@ -33,7 +33,7 @@ class WorldController extends Controller {
 
         $world->save();
 
-        return redirect()->route('world.show', compact('world'));
+        return redirect()->route('world.main', compact('world'));
     }
 
     public function main($world)
