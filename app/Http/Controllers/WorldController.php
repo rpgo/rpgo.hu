@@ -12,4 +12,9 @@ class WorldController extends Controller {
         return view('world.create');
     }
 
+    public function index()
+    {
+        return view('world.index');
+    }
+
 }
