@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model {
 
+    public $incrementing = false;
+
     public function user()
     {
         return $this->belongsTo(User::class);
