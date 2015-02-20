@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Illuminate\Contracts\Auth\Guard;
 use Rpgo\Http\Requests;
 use Rpgo\Http\Controllers\Controller;
 
@@ -25,9 +26,15 @@ class WorldController extends Controller {
         return view('world.show')->with(compact('world'));
     }
 
-    public function store(Requests\CreateWorld $request)
+    public function store(Requests\CreateWorld $request, Guard $guard)
     {
-        $world = World::create($request->only('name', 'brand', 'slug'));
+        $user = $guard->user();
+
+        $world = new World($request->only('name', 'brand', 'slug'));
+
+        $world->creator()->associate($user);
+
+        $world->save();
 
         return redirect()->route('world.show', compact('world'));
     }
