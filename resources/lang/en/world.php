@@ -8,6 +8,13 @@ return [
     ],
     'index' => [
         'link' => 'Worlds',
+        'title' => 'Worlds',
+    ],
+    'show' => [
+        'title' => 'Details',
+    ],
+    'main' => [
+        'title' => 'Home',
     ],
     'name' => [
         'title' => 'Name',

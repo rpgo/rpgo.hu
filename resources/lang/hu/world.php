@@ -8,6 +8,13 @@ return [
     ],
     'index' => [
         'link' => 'Világok',
+        'title' => 'Világok',
+    ],
+    'show' => [
+        'title' => 'Részletek',
+    ],
+    'main' => [
+        'title' => 'Főoldal',
     ],
     'name' => [
         'title' => 'Név',

@@ -7,4 +7,10 @@ return [
         'name'      => 'Hogyan hívhatunk téged játékon kívül?',
         'submit'    => 'Csatlakozás'
     ],
+    'index' => [
+        'title' => 'Tagok',
+    ],
+    'show' => [
+        'title' => 'Profil',
+    ],
 ];
