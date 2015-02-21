@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title') @lang('world.main.title') - {{$world->brand}} @endsection
+@section('title') @lang('world.main.title') - @include('world.title') @endsection
 
 @section('content')
     <div class="container-fluid">
