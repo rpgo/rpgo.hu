@@ -31,7 +31,10 @@ class LocationController extends Controller {
 
         $location->supralocations()->attach($location, ['depth' => 0]);
 
-        $location->supralocations()->attach($parent, ['depth' => 1]);
+        foreach($parent->supralocations as $ancestor)
+        {
+            $location->supralocations()->attach($ancestor, ['depth' => $ancestor->pivot->depth + 1]);
+        }
 
         return redirect()->route('location.show', [$world, $location]);
     }

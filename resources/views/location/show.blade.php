@@ -11,7 +11,7 @@
                 <a href="{{route('location.edit', [$world, $location])}}" class="btn btn-default">@lang('location.show.edit')</a>
             </div>
             <ul class="breadcrumb">
-                @foreach($location->supralocations as $breadcrumb)
+                @foreach($location->supralocations->sortBy('pivot.depth')->reverse() as $breadcrumb)
                     <li><a href="{{route('location.show', [$world, $breadcrumb])}}">{{$breadcrumb->name}}</a></li>
                 @endforeach
             </ul>
