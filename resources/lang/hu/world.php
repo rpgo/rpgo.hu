@@ -3,7 +3,7 @@
 return [
     'create' => [
         'title' => 'Készíts egy új világot!',
-        'submit' => 'Küldés',
+        'submit' => 'Mehet',
         'link' => 'Új Világ',
     ],
     'index' => [
@@ -17,13 +17,13 @@ return [
         'title' => 'Főoldal',
     ],
     'name' => [
-        'title' => 'Név',
+        'title' => 'Teljes megnevezés',
     ],
     'brand' => [
-        'title' => 'Rövid név',
+        'title' => 'Rövidebb becenév',
     ],
     'slug' => [
-        'title' => 'Url',
+        'title' => 'Kívánt elérhetőség',
     ],
     'creator' => [
         'title' => 'Alkotó',

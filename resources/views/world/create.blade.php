@@ -16,28 +16,29 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{trans('world.name.title')}}</label>
+                                <label class="col-md-4 control-label">@lang('world.name.title')</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{trans('world.brand.title')}}</label>
+                                <label class="col-md-4 control-label">@lang('world.brand.title')</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="brand" value="{{ old('brand') }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{trans('world.slug.title')}}</label>
-                                <div class="col-md-6">
+                                <label class="col-md-4 control-label">@lang('world.slug.title')</label>
+                                <div class="col-md-6 input-group">
                                     <input type="text" class="form-control" name="slug" value="{{ old('slug') }}">
+                                    <div class="input-group-addon">.{{env('APP_DOMAIN')}}</div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">{{trans('member.admin.title')}}</label>
+                                <label class="col-md-4 control-label">@lang('member.admin.title')</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="admin" value="{{ old('admin') }}">
                                 </div>

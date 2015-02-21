@@ -14,4 +14,7 @@ return [
     'show' => [
         'title' => 'Profil',
     ],
+    'admin' => [
+        'title' => 'Saját OOC neved'
+    ],
 ];
