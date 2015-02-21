@@ -1,5 +1,7 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Rpgo\Http\Requests\JoinWorld;
+
 class MemberController extends Controller {
 
 	public function index()
@@ -12,9 +14,9 @@ class MemberController extends Controller {
 		return view('member.create');
 	}
 
-	public function store()
+	public function store(JoinWorld $request)
 	{
-		//
+        dd($request);
 	}
 
 	public function show($member)
