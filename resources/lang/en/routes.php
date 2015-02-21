@@ -31,4 +31,13 @@ return [
         'create'    => 'join',
         'show'      => 'members/:parameter',
     ],
+    'location' => [
+        'show'      => ':parameter',
+        'edit'      => ':parameter/edit',
+        'create'    => ':parameter/new/location',
+        'store'     => ':parameter',
+        'update'    => ':parameter',
+        'editing'   => 'edit',
+        'creating'  => 'new/location',
+    ],
 ];

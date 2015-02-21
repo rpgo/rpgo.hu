@@ -52,6 +52,35 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'middleware'    => 'warden',
     ]);
 
+    $router->get(trans('routes.location.show', ['parameter' => '{location_path}']), [
+        'as' => 'location.show',
+        'uses' => 'LocationController@show',
+    ]);
+
+    $router->get(trans('routes.location.edit', ['parameter' => '{location_path}']), [
+        'as' => 'location.edit',
+        'uses' => 'LocationController@edit',
+        'middleware' => 'warden',
+    ]);
+
+    $router->get(trans('routes.location.create', ['parameter' => '{location_path}']), [
+        'as' => 'location.create',
+        'uses' => 'LocationController@create',
+        'middleware' => 'warden',
+    ]);
+
+    $router->post(trans('routes.location.store', ['parameter' => '{location_path}']), [
+        'as' => 'location.store',
+        'uses' => 'LocationController@store',
+        'middleware' => 'warden',
+    ]);
+
+    $router->put(trans('routes.location.update', ['parameter' => '{location_path}']), [
+        'as' => 'location.update',
+        'uses' => 'LocationController@update',
+        'middleware' => 'warden',
+    ]);
+
 });
 
 $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){

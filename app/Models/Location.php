@@ -1,5 +1,7 @@
 <?php namespace Rpgo\Models;
 
+use Illuminate\Database\Query\Builder;
+
 class Location extends Eloquent {
 
 	public $incrementing = false;
@@ -27,6 +29,37 @@ class Location extends Eloquent {
     {
         $this->attributes['name'] = $name;
         $this->attributes['slug'] = str_slug($name);
+    }
+
+    /**
+     * @param Builder $query
+     * @param $world
+     * @param $slug
+     * @return mixed
+     */
+    public function scopeOfWorldAndWithSlug($query, $world, $slug)
+    {
+        return $query->whereHas('worlds', function($query) use ($world) {
+            return $query->where('id', $world->id);
+        })->where('slug', $slug);
+    }
+
+    public function parent()
+    {
+        return $this->supralocations()->wherePivot('depth', 1)->first();
+    }
+
+    public function path()
+    {
+        if( ! $this->parent())
+            return [$this->slug];
+
+        return array_merge($this->parent()->path(), [$this->slug]);
+    }
+
+    public function getRouteKey()
+    {
+        return join('/',$this->path());
     }
 
 }

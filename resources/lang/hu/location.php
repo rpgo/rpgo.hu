@@ -2,4 +2,9 @@
 
 return [
     'root' => 'Helyszínek',
+    'show' => [
+        'title' => 'Helyszín',
+        'new' => 'Új helyszín',
+        'edit' => 'Helyszín szerkesztése'
+    ],
 ];

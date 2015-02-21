@@ -31,4 +31,13 @@ return [
         'create'    => 'csatlakozas',
         'show'      => 'tagok/:parameter',
     ],
+    'location' => [
+        'show'      => ':parameter',
+        'edit'      => ':parameter/szerkesztes',
+        'create'    => ':parameter/uj/helyszin',
+        'store'     => ':parameter',
+        'update'    => ':parameter',
+        'editing'   => 'szerkesztes',
+        'creating'  => 'uj/helyszin',
+    ],
 ];
