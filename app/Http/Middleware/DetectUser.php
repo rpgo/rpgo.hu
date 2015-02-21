@@ -1,25 +1,32 @@
 <?php namespace Rpgo\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Rpgo\Rpgo;
 
-class DetectWorld {
+class DetectUser {
 
     /**
-     * @var Rpgo
+     * @var Guard
      */
-    private $rpgo;
+    private $guard;
+
     /**
      * @var View
      */
     private $view;
+    /**
+     * @var Rpgo
+     */
+    private $rpgo;
 
-    function __construct(Rpgo $rpgo, Application $app)
+    function __construct(Guard $guard, Application $app, Rpgo $rpgo)
     {
-        $this->rpgo = $rpgo;
+        $this->guard = $guard;
         $this->view = $app->make('view');
+        $this->rpgo = $rpgo;
     }
 
     /**
@@ -31,13 +38,11 @@ class DetectWorld {
 	 */
 	public function handle($request, Closure $next)
 	{
-        $route = $request->route();
+        $user = $this->guard->user();
 
-        $world = $route ? $route->getParameter('world') : null;
+        $this->rpgo->user($user);
 
-        $this->rpgo->world($world);
-
-        $this->view->share(compact('world'));
+        $this->view->share(compact('user'));
 
 		return $next($request);
 	}

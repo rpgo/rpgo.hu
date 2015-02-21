@@ -32,7 +32,7 @@ class NavBar {
         if($route->getName() == 'world.show')
             $world = null;
 
-        $view->with(compact('user', 'world'));
+        $view->with(compact('user', 'world');
 
     }
 

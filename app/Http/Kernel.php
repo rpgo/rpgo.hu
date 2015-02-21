@@ -16,6 +16,8 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'Rpgo\Http\Middleware\VerifyCsrfToken',
+        'Rpgo\Http\Middleware\DetectUser',
+        'Rpgo\Http\Middleware\DetectWorld',
 	];
 
 	/**
@@ -27,7 +29,6 @@ class Kernel extends HttpKernel {
 		'auth' => 'Rpgo\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Rpgo\Http\Middleware\RedirectIfAuthenticated',
-        'guide' => 'Rpgo\Http\Middleware\DetectWorld',
 	];
 
 }

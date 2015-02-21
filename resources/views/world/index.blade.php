@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <?php unset($world); // It would become a global variable otherwise... ?>
         @empty
             {{trans('worlds.none')}}
         @endforelse
