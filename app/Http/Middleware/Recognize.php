@@ -1,10 +1,9 @@
 <?php namespace Rpgo\Http\Middleware;
 
 use Closure;
-use Rpgo\Models\Member;
 use Rpgo\Rpgo;
 
-class DetectMember {
+class Recognize {
 
     /**
      * @var Rpgo
@@ -27,11 +26,8 @@ class DetectMember {
 	{
         $world = $this->rpgo->world();
 
-        $user = $this->rpgo->user();
-
-        $member = $user ? Member::ofWorldAndUser($world, $user)->first() : null;
-
-        $this->rpgo->member($member);
+        if(! $this->rpgo->member())
+            return redirect()->guest(route('world.main', $world));
 
 		return $next($request);
 	}

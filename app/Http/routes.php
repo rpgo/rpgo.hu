@@ -33,13 +33,13 @@ Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guid
     Route::get(trans('routes.member.index'), [
         'uses'          => 'MemberController@index',
         'as'            => 'member.index',
-        'middleware'    => 'auth',
+        'middleware'    => 'warden',
     ]);
 
     Route::get(trans('routes.member.show', ['parameter' => '{member}']), [
         'uses'          => 'MemberController@show',
         'as'            => 'member.show',
-        'middleware'    => 'auth',
+        'middleware'    => 'warden',
     ]);
 
 });
