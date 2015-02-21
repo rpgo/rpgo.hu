@@ -11,32 +11,36 @@
 |
 */
 
-Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guide', 'usher'] ], function(){
+use Illuminate\Routing\Router;
 
-    Route::get('/', [
+/** @var Router $router */
+
+$router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guide', 'usher'] ], function(Router $router){
+
+    $router->get('/', [
         'uses'          => 'WorldController@main',
         'as'            => 'world.main',
     ]);
 
-    Route::get(trans('routes.member.create'), [
+    $router->get(trans('routes.member.create'), [
         'uses'          => 'MemberController@create',
         'as'            => 'member.create',
         'middleware'    => ['auth', 'stranger'],
     ]);
 
-    Route::post(trans('routes.member.store'), [
+    $router->post(trans('routes.member.store'), [
         'uses'          => 'MemberController@store',
         'as'            => 'member.store',
         'middleware'    => ['auth', 'stranger'],
     ]);
 
-    Route::get(trans('routes.member.index'), [
+    $router->get(trans('routes.member.index'), [
         'uses'          => 'MemberController@index',
         'as'            => 'member.index',
         'middleware'    => 'warden',
     ]);
 
-    Route::get(trans('routes.member.show', ['parameter' => '{member}']), [
+    $router->get(trans('routes.member.show', ['parameter' => '{member}']), [
         'uses'          => 'MemberController@show',
         'as'            => 'member.show',
         'middleware'    => 'warden',
@@ -44,32 +48,32 @@ Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guid
 
 });
 
-Route::group(['domain' => env('APP_DOMAIN')], function(){
+$router->group(['domain' => env('APP_DOMAIN')], function(Router $router){
 
-    Route::get('/', 'HomeController@index');
+    $router->get('/', 'HomeController@index');
 
-    Route::controllers([
+    $router->controllers([
         'auth'          => 'Auth\AuthController',
         'password'      => 'Auth\PasswordController',
     ]);
 
-    Route::get(trans('routes.world.create'), [
+    $router->get(trans('routes.world.create'), [
         'uses'          => 'WorldController@create',
         'as'            => 'world.create',
         'middleware'    => 'auth',
     ]);
 
-    Route::get(trans('routes.world.index'), [
+    $router->get(trans('routes.world.index'), [
         'uses'          => 'WorldController@index',
         'as'            => 'world.index',
     ]);
 
-    Route::get(trans('routes.world.show', ['parameter' => '{world}']), [
+    $router->get(trans('routes.world.show', ['parameter' => '{world}']), [
         'uses'          => 'WorldController@show',
         'as'            => 'world.show',
     ]);
 
-    Route::post(trans('routes.world.store'), [
+    $router->post(trans('routes.world.store'), [
         'uses'          => 'WorldController@store',
         'as'            => 'world.store',
         'middleware'    => 'auth',
