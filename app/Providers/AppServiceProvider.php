@@ -29,6 +29,8 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'Rpgo\Services\Registrar'
 		);
+
+        $this->app->singleton('Rpgo\Rpgo');
 	}
 
 }
