@@ -7,9 +7,11 @@ use Rpgo\Rpgo;
 
 class MemberController extends Controller {
 
-	public function index()
+	public function index(World $world)
 	{
-		return view('member.index');
+        $members = Member::ofWorld($world)->get();
+
+		return view('member.index')->with(compact('members'));
 	}
 
 	public function create()

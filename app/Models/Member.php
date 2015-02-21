@@ -22,4 +22,9 @@ class Member extends Eloquent {
         $this->attributes['slug'] = str_slug($name);
     }
 
+    public function scopeOfWorld($query, World $world)
+    {
+        return $query->where('world_id', $world->id);
+    }
+
 }
