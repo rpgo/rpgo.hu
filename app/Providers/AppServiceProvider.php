@@ -11,7 +11,8 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//view()->composer('common.nav', 'Rpgo\Http\Composers\NavBar');
+		view()->composer('common.*', 'Rpgo\Http\Composers\Rpgo');
+        view()->creator('*', 'Rpgo\Http\Composers\Rpgo');
 	}
 
 	/**

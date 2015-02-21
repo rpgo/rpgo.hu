@@ -2,11 +2,9 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\View;
 use Rpgo\Rpgo;
 
-class ShareUser {
+class DetectUser {
 
     /**
      * @var Guard
@@ -14,18 +12,13 @@ class ShareUser {
     private $guard;
 
     /**
-     * @var View
-     */
-    private $view;
-    /**
      * @var Rpgo
      */
     private $rpgo;
 
-    function __construct(Guard $guard, Application $app, Rpgo $rpgo)
+    function __construct(Guard $guard, Rpgo $rpgo)
     {
         $this->guard = $guard;
-        $this->view = $app->make('view');
         $this->rpgo = $rpgo;
     }
 
@@ -41,8 +34,6 @@ class ShareUser {
         $user = $this->guard->user();
 
         $this->rpgo->user($user);
-
-        $this->view->share(compact('user'));
 
 		return $next($request);
 	}

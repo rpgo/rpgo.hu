@@ -1,8 +1,6 @@
 <?php namespace Rpgo\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\View;
 use Rpgo\Rpgo;
 
 class DetectWorld {
@@ -11,15 +9,10 @@ class DetectWorld {
      * @var Rpgo
      */
     private $rpgo;
-    /**
-     * @var View
-     */
-    private $view;
 
-    function __construct(Rpgo $rpgo, Application $app)
+    function __construct(Rpgo $rpgo)
     {
         $this->rpgo = $rpgo;
-        $this->view = $app->make('view');
     }
 
     /**
@@ -36,8 +29,6 @@ class DetectWorld {
         $world = $route->getParameter('world');
 
         $this->rpgo->world($world);
-
-        $this->view->share(compact('world'));
 
 		return $next($request);
 	}
