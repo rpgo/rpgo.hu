@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title') @lang('world.main.title') - {{$world->brand}} @endsection
+
 @section('content')
     <div class="container-fluid">
         <ul>

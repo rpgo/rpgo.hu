@@ -1,5 +1,8 @@
 @extends('app')
 
+@section('title') @lang('world.create.title') @endsection
+
+
 @section('content')
     <div class="container-fluid">
         <div class="row">

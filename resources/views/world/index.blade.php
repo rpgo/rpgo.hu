@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title') @lang('world.index.title') @endsection
+
 @section('content')
     <div class="container-fluid">
         @forelse($worlds as $world)
