@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">RPGO</a>
+            <a class="navbar-brand" href="{{route('rpgo.home')}}">RPGO</a>
             @if($world)
                 <a class="navbar-brand" href="{{route('world.main', $world)}}">{{ $world->brand }}</a>
             @endif
