@@ -23,4 +23,10 @@ class Location extends Eloquent {
             ->withPivot('depth');
     }
 
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = $name;
+        $this->attributes['slug'] = str_slug($name);
+    }
+
 }

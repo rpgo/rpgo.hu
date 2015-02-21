@@ -29,4 +29,9 @@ class World extends Eloquent {
         return $this->belongsToMany(Location::class, 'locations_worlds', 'world_id', 'location_id');
     }
 
+    public function rootlocation()
+    {
+        return $this->locations()->has('supralocations', '=', 1)->first();
+    }
+
 }

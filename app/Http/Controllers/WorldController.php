@@ -40,7 +40,7 @@ class WorldController extends Controller {
 
         $member->world()->associate($world);
 
-        $location = new Location(['name' => 'Helyszínek', 'slug' => 'helyszinek']);
+        $location = new Location(['name' => 'Helyszínek']);
 
         $world->save();
 
