@@ -28,9 +28,4 @@ class Eloquent extends Model {
         return $this->slug;
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
 }

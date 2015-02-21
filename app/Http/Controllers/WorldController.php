@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Rpgo\Http\Requests\CreateWorld;
+use Rpgo\Models\Location;
 use Rpgo\Models\Member;
 use Rpgo\Models\World;
 
@@ -39,9 +40,17 @@ class WorldController extends Controller {
 
         $member->world()->associate($world);
 
+        $location = new Location(['name' => 'Helyszínek', 'slug' => 'helyszinek']);
+
         $world->save();
 
         $member->save();
+
+        $location->save();
+
+        $location->worlds()->attach($world);
+
+        $location->sublocations()->attach($location, ['depth' => 0]);
 
         return redirect()->route('world.main', compact('world'));
     }

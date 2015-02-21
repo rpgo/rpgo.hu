@@ -24,4 +24,9 @@ class World extends Eloquent {
         return $query->where('published_at', '<=', Carbon::now());
     }
 
+    public function locations()
+    {
+        return $this->belongsToMany(Location::class, 'locations_worlds', 'world_id', 'location_id');
+    }
+
 }
