@@ -2,6 +2,7 @@
 
 use Rpgo\Http\Requests\JoinWorld;
 use Rpgo\Models\Member;
+use Rpgo\Models\World;
 use Rpgo\Rpgo;
 
 class MemberController extends Controller {
@@ -33,7 +34,7 @@ class MemberController extends Controller {
         return redirect()->route('member.show', compact('world', 'member'));
 	}
 
-	public function show($member)
+	public function show(World $world, Member $member)
 	{
 		return view('member.show')->with(compact('member'));
 	}

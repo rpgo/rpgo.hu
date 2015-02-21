@@ -1,7 +1,9 @@
 @extends('app')
 
-@section('title') ... - @lang('member.show.title') @endsection
+@section('title') {{$member->name}} - @lang('member.show.title') @endsection
 
 @section('content')
-    Show members here...
+    <div class="container-fluid">
+        {{$member->name}}'s profile goes here soon...
+    </div>
 @endsection

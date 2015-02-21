@@ -18,9 +18,8 @@ class Member extends Eloquent {
 
     public function setNameAttribute($name)
     {
-        $this->name = $name;
-
-        $this->slug = str_slug($name);
+        $this->attributes['name'] = $name;
+        $this->attributes['slug'] = str_slug($name);
     }
 
 }
