@@ -1,5 +1,7 @@
 <?php namespace Rpgo\Http\Requests;
 
+use Rpgo\Rpgo;
+
 class JoinWorld extends Request {
 
     public function sanitize()
@@ -24,10 +26,11 @@ class JoinWorld extends Request {
 	 *
 	 * @return array
 	 */
-	public function rules()
+	public function rules(Rpgo $rpgo)
 	{
 		return [
-			//
+            'name' => ['required', 'string', 'max:30', 'unique:members,name,NULL,id,world_id,' . $rpgo->world()->id],
+            'slug' => ['required', 'string', 'max:30', 'unique:members,slug,NULL,id,world_id,' . $rpgo->world()->id],
 		];
 	}
 

@@ -42,7 +42,7 @@ class WorldController extends Controller {
 
         $member->save();
 
-        return redirect()->route('world.main', compact('world'));
+        return redirect()->route('world.main', compact('world', 'member'));
     }
 
     public function main(World $world)
