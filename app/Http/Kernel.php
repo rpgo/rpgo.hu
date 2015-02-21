@@ -29,6 +29,7 @@ class Kernel extends HttpKernel {
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Rpgo\Http\Middleware\RedirectIfAuthenticated',
         'guide' => 'Rpgo\Http\Middleware\DetectWorld',
+        'usher' => 'Rpgo\Http\Middleware\DetectMember',
 	];
 
 }

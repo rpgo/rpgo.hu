@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => 'guide'], function(){
+Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guide', 'usher'] ], function(){
 
     Route::get('/', [
         'uses'          => 'WorldController@main',

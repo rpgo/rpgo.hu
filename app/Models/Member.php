@@ -1,5 +1,7 @@
 <?php namespace Rpgo\Models;
 
+use Illuminate\Database\Eloquent\Builder as Query;
+
 class Member extends Eloquent {
 
     public $incrementing = false;
@@ -22,9 +24,14 @@ class Member extends Eloquent {
         $this->attributes['slug'] = str_slug($name);
     }
 
-    public function scopeOfWorld($query, World $world)
+    public function scopeOfWorld(Query $query, World $world)
     {
         return $query->where('world_id', $world->id);
+    }
+
+    public function scopeOfWorldAndUser(Query $query, World $world, User $user)
+    {
+        return $query->where(['world_id' => $world->id,'user_id' => $user->id]);
     }
 
 }
