@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title') {{ $world->name }} - @lang('world.show.title') @endsection
+
 @section('content')
     <ul>
         <li>{{trans('world.name.title')}}: {{$world->name}}</li>
