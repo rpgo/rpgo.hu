@@ -21,13 +21,13 @@ Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guid
     Route::get(trans('routes.member.create'), [
         'uses'          => 'MemberController@create',
         'as'            => 'member.create',
-        'middleware'    => 'auth',
+        'middleware'    => ['auth', 'stranger'],
     ]);
 
     Route::post(trans('routes.member.store'), [
         'uses'          => 'MemberController@store',
         'as'            => 'member.store',
-        'middleware'    => 'auth',
+        'middleware'    => ['auth', 'stranger'],
     ]);
 
     Route::get(trans('routes.member.index'), [

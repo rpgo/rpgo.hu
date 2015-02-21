@@ -30,6 +30,7 @@ class Kernel extends HttpKernel {
 		'guest' => 'Rpgo\Http\Middleware\RedirectIfAuthenticated',
         'guide' => 'Rpgo\Http\Middleware\DetectWorld',
         'usher' => 'Rpgo\Http\Middleware\DetectMember',
+        'stranger' => 'Rpgo\Http\Middleware\RedirectIfMember',
 	];
 
 }
