@@ -5,6 +5,7 @@ return [
     'show' => [
         'title' => 'Helyszín',
         'new' => 'Új helyszín',
-        'edit' => 'Helyszín szerkesztése'
+        'edit' => 'Helyszín szerkesztése',
+        'sublocations' => 'Alhelyszínek',
     ],
 ];

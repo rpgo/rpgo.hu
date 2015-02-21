@@ -49,6 +49,11 @@ class Location extends Eloquent {
         return $this->supralocations()->wherePivot('depth', 1)->first();
     }
 
+    public function children()
+    {
+        return $this->sublocations()->wherePivot('depth', 1)->get();
+    }
+
     public function path()
     {
         if( ! $this->parent())

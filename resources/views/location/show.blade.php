@@ -16,5 +16,15 @@
                 @endforeach
             </ul>
         </div>
+        <div class="row">
+            @if(count($location->children()))
+                <div class="sub-header">
+                    <h3>@lang('location.show.sublocations')</h3>
+                </div>
+                @foreach($location->children() as $sublocation)
+                    <div class="well"><a href="{{route('location.show', [$world, $sublocation])}}">{{$sublocation->name}}</a></div>
+                @endforeach
+            @endif
+        </div>
     </div>
 @endsection

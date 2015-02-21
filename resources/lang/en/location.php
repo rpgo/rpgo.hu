@@ -5,6 +5,7 @@ return [
     'show' => [
         'title' => 'Location',
         'new' => 'New location',
-        'edit' => 'Edit location'
+        'edit' => 'Edit location',
+        'sublocations' => 'Sublocations',
     ],
 ];
