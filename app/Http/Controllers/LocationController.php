@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Rpgo\Http\Requests\AddLocation;
 use Rpgo\Models\Location;
 use Rpgo\Models\World;
@@ -35,6 +36,15 @@ class LocationController extends Controller {
         {
             $location->supralocations()->attach($ancestor, ['depth' => $ancestor->pivot->depth + 1]);
         }
+
+        return redirect()->route('location.show', [$world, $location]);
+    }
+
+    public function update(World $world, Location $location, Request $request)
+    {
+        $location->name = $request->get('name');
+
+        $location->save();
 
         return redirect()->route('location.show', [$world, $location]);
     }

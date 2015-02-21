@@ -16,7 +16,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="row">
+        <div class="well">
             @if(count($location->children()))
                 <div class="sub-header">
                     <h3>@lang('location.show.sublocations')</h3>
