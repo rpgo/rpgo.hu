@@ -11,6 +11,6 @@ return [
         'index'     => 'members',
         'store'     => 'join',
         'create'    => 'join',
-        'show'      => 'members/{parameter}',
+        'show'      => 'members/:parameter',
     ],
 ];

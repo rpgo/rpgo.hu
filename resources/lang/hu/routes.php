@@ -11,6 +11,6 @@ return [
         'index'     => 'tagok',
         'store'     => 'csatlakozas',
         'create'    => 'csatlakozas',
-        'show'      => 'tagok/{parameter}',
+        'show'      => 'tagok/:parameter',
     ],
 ];

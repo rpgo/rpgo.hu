@@ -23,4 +23,14 @@ class Eloquent extends Model {
             $this->$key = (string) Uuid::uuid4();
     }
 
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }

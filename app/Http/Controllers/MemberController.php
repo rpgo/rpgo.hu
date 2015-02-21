@@ -30,7 +30,7 @@ class MemberController extends Controller {
 
         $member->save();
 
-        return redirect()->route('member.show')->with(compact('member'));
+        return redirect()->route('member.show', compact('world', 'member'));
 	}
 
 	public function show($member)
