@@ -28,4 +28,8 @@ return [
     'creator' => [
         'title' => 'Alkotó',
     ],
+    'publish' => [
+        'question'  => 'A világod még nincs élesítve. Szeretnéd élesíteni most?',
+        'submit'    => 'Élesítés most',
+    ],
 ];

@@ -23,6 +23,7 @@ return [
         'store'     => 'worlds',
         'create'    => 'worlds/create',
         'show'      => 'worlds/:parameter',
+        'publish'   => 'publish',
     ],
     'member' => [
         'index'     => 'members',

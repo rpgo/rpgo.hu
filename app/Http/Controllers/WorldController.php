@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Rpgo\Http\Requests\CreateWorld;
 use Rpgo\Models\Member;
@@ -14,7 +15,7 @@ class WorldController extends Controller {
 
     public function index()
     {
-        $worlds = World::all();
+        $worlds = World::published()->get();
 
         return view('world.index')->with(compact('worlds'));
     }
@@ -48,6 +49,15 @@ class WorldController extends Controller {
     public function main(World $world)
     {
         return view('world.main')->with(compact('world'));
+    }
+
+    public function publish(World $world)
+    {
+        $world->published_at = Carbon::now();
+
+        $world->save();
+
+        return redirect()->route('world.main', $world);
     }
 
 }

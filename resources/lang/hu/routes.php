@@ -23,6 +23,7 @@ return [
         'store'     => 'vilagok/uj',
         'create'    => 'vilagok/uj',
         'show'      => 'vilagok/:parameter',
+        'publish'   => 'elesites',
     ],
     'member' => [
         'index'     => 'tagok',

@@ -5,7 +5,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="well">
-            @include('world.publish')
+            @if( ! $world->published_at)
+                @include('world.publish')
+            @endif
         </div>
     </div>
 @endsection
