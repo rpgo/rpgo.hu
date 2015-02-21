@@ -28,4 +28,8 @@ return [
     'creator' => [
         'title' => 'Creator',
     ],
+    'publish' => [
+        'question'  => 'Your world is not published yet. Would you like to publish it?',
+        'submit'    => 'Publish Now',
+    ],
 ];
