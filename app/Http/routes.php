@@ -46,9 +46,7 @@ Route::group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => 'guide
 
 Route::group(['domain' => env('APP_DOMAIN')], function(){
 
-    Route::get('/', 'WelcomeController@index');
-
-    Route::get('home', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
 
     Route::controllers([
         'auth'          => 'Auth\AuthController',
