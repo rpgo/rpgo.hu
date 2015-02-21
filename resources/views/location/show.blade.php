@@ -10,6 +10,11 @@
                 <a href="{{route('location.create', [$world, $location])}}" class="btn btn-default">@lang('location.show.new')</a>
                 <a href="{{route('location.edit', [$world, $location])}}" class="btn btn-default">@lang('location.show.edit')</a>
             </div>
+            <ul class="breadcrumb">
+                @foreach($location->supralocations as $breadcrumb)
+                    <li><a href="{{route('location.show', [$world, $breadcrumb])}}">{{$breadcrumb->name}}</a></li>
+                @endforeach
+            </ul>
         </div>
     </div>
 @endsection
