@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'auth' => [
+        'login'     => 'login',
+        'logout'    => 'logout',
+        'register'  => 'register',
+    ],
+    'password' => [
+        'email'     => 'password/email',
+        'reset'     => 'password/reset',
+    ],
     'world' => [
         'index'     => 'worlds',
         'store'     => 'worlds',
