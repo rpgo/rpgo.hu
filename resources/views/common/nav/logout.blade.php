@@ -1,1 +1,1 @@
-<li><a href="{{route('session.delete')}}">Logout</a></li>
+<li><a href="{{route('session.delete')}}">@lang('user.logout.menu')</a></li>

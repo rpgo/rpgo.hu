@@ -1,1 +1,1 @@
-<li><a href="{{route('user.create')}}">Register</a></li>
+<li><a href="{{route('user.create')}}">@lang('user.create.menu')</a></li>

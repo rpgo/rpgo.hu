@@ -1,1 +1,1 @@
-<li><a href="{{route('session.create')}}">Login</a></li>
+<li><a href="{{route('session.create')}}">@lang('user.login.menu')</a></li>
