@@ -10,8 +10,6 @@ class Rpgo {
 
     private $member;
 
-    private $guard;
-
     private $user;
 
     public function world(World $world = null)
