@@ -33,7 +33,7 @@ class DetectWorld {
 	{
         $route = $request->route();
 
-        $world = $route ? $route->getParameter('world') : null;
+        $world = $route->getParameter('world');
 
         $this->rpgo->world($world);
 

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Rpgo\Rpgo;
 
-class DetectUser {
+class ShareUser {
 
     /**
      * @var Guard
