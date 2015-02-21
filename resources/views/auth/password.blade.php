@@ -15,7 +15,7 @@
 
 					@include('common.feedback')
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/email">
+					<form class="form-horizontal" role="form" method="POST" action="{{route('password.store')}}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">

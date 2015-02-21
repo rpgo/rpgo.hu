@@ -1,14 +1,22 @@
 <?php
 
 return [
-    'auth' => [
-        'login'     => 'login',
-        'logout'    => 'logout',
-        'register'  => 'register',
+    'session' => [
+        'create'    => 'login',
+        'delete'    => 'logout',
+        'store'     => 'login',
+    ],
+    'user' => [
+        'create'    => 'register',
+        'store'     => 'register'
+    ],
+    'reset' => [
+        'create'    => 'reset',
+        'store'     => 'reset'
     ],
     'password' => [
-        'email'     => 'password/email',
-        'reset'     => 'password/reset',
+        'create'    => 'password/new',
+        'store'     => 'password/new/:paremeter',
     ],
     'world' => [
         'index'     => 'worlds',

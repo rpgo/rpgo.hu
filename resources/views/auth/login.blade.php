@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					@include('common.feedback')
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
+					<form class="form-horizontal" role="form" method="POST" action="{{route('session.store')}}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -42,7 +42,7 @@
 									Login
 								</button>
 
-								<a href="/password/email">Forgot Your Password?</a>
+								<a href="{{route('reset.create')}}">Forgot Your Password?</a>
 							</div>
 						</div>
 					</form>

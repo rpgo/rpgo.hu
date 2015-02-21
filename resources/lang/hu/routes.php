@@ -1,18 +1,26 @@
 <?php
 
 return [
-    'auth' => [
-        'login'     => 'bejelentkezes',
-        'logout'    => 'kijelentkezes',
-        'register'  => 'regisztracio',
+    'session' => [
+        'create'    => 'bejelentkezes',
+        'delete'    => 'kijelentkezes',
+        'store'     => 'bejelentkezes',
+    ],
+    'user' => [
+        'create'    => 'regisztracio',
+        'store'     => 'regisztracio'
+    ],
+    'reset' => [
+        'create'    => 'jelszo',
+        'store'     => 'jelszo'
     ],
     'password' => [
-        'email'     => 'jelszo/email',
-        'reset'     => 'jelszo/uj',
+        'create'     => 'jelszo/uj/:parameter',
+        'store'     => 'jelszo/uj',
     ],
     'world' => [
         'index'     => 'vilagok',
-        'store'     => 'vilagok',
+        'store'     => 'vilagok/uj',
         'create'    => 'vilagok/uj',
         'show'      => 'vilagok/:parameter',
     ],

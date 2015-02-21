@@ -1,0 +1,1 @@
+<li><a href="{{route('session.delete')}}">Logout</a></li>

@@ -1,0 +1,1 @@
+<li><a href="{{route('user.create')}}">Register</a></li>

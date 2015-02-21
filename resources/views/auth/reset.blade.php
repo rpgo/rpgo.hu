@@ -9,7 +9,7 @@
 				<div class="panel-body">
 					@include('common.feedback')
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
+					<form class="form-horizontal" role="form" method="POST" action="{{route('reset.store')}}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="token" value="{{ $token }}">
 
