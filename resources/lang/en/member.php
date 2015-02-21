@@ -9,6 +9,7 @@ return [
     ],
     'index' => [
         'title' => 'Members',
+        'menu'  => 'Members',
     ],
     'show' => [
         'title' => 'Profile',

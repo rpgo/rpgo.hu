@@ -9,6 +9,7 @@ return [
     ],
     'index' => [
         'title' => 'Tagok',
+        'menu'  => 'Tagok',
     ],
     'show' => [
         'title' => 'Profil',
