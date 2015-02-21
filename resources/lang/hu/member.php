@@ -3,9 +3,9 @@
 return [
     'create' => [
         'menu'      => 'Csatlakozás',
-        'title'     => 'Csatlakozz a világhoz!',
+        'title'     => 'Csatlakozás',
         'name'      => 'Hogyan hívhatunk téged játékon kívül?',
-        'submit'    => 'Csatlakozás'
+        'submit'    => 'Csatlakozom!'
     ],
     'index' => [
         'title' => 'Tagok',
