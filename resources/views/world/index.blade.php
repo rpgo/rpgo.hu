@@ -18,6 +18,7 @@
                             Dignissimos dolorum odio reprehenderit! <a href="{{route('world.show', $world)}}">Bővebben...</a></p>
                         <ul class="list-inline list-unstyled">
                             <li><span>{{trans('member.members') . ': ' . $world->members()->count()}} </span></li>
+                            <li><span>{{trans('location.locations') . ': ' . $world->rootlocation()->sublocations()->count()}} </span></li>
                             <li>|</li>
                             <li>Ugrás: <a href="{{route('world.main', compact('world'))}}">{{$world->slug}}</a></li>
                         </ul>
