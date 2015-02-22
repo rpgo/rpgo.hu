@@ -71,6 +71,9 @@ class LocationController extends Controller {
 
     public function move(World $world, Location $location)
     {
+        if ($world->rootlocation()->equals($location))
+            return new Response('Forbidden', 503);
+        
         return view('location.move')->with(compact('world', 'location'));
     }
 
