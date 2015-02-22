@@ -93,6 +93,18 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'middleware' => 'warden',
     ]);
 
+    $router->get(trans('routes.location.move', ['parameter' => '{location_path}']), [
+        'as' => 'location.move',
+        'uses' => 'LocationController@move',
+        'middleware' => 'warden',
+    ]);
+
+    $router->post(trans('routes.location.relocate', ['parameter' => '{location_path}']), [
+        'as' => 'location.relocate',
+        'uses' => 'LocationController@relocate',
+        'middleware' => 'warden',
+    ]);
+
 });
 
 $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){

@@ -39,6 +39,8 @@ return [
         'update'    => ':parameter',
         'remove'    => ':parameter/delete',
         'delete'    => ':parameter/delete',
-        'except'    => 'edit$|new\/location$|delete$',
+        'move'      => ':parameter/move',
+        'relocate'  => ':parameter/move',
+        'except'    => 'edit$|new\/location$|delete$|move$',
     ],
 ];

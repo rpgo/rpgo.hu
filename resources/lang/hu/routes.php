@@ -39,6 +39,8 @@ return [
         'update'    => ':parameter',
         'remove'    => ':parameter/torles',
         'delete'    => ':parameter/torles',
-        'except'    => 'szerkesztes$|uj\/helyszin$|torles$',
+        'move'      => ':parameter/athelyezes',
+        'relocate'  => ':parameter/athelyezes',
+        'except'    => 'szerkesztes$|uj\/helyszin$|athelyezes$',
     ],
 ];
