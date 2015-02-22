@@ -1,15 +1,16 @@
 <?php namespace Rpgo\Http\Composers;
 
 use Illuminate\Contracts\View\View;
+use Rpgo\Rpgo;
 
 class RpgoComposer {
 
     /**
-     * @var \Rpgo\Rpgo
+     * @var Rpgo
      */
     private $rpgo;
 
-    function __construct(\Rpgo\Rpgo $rpgo)
+    function __construct(Rpgo $rpgo)
     {
         $this->rpgo = $rpgo;
     }
