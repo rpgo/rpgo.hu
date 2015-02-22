@@ -2,7 +2,7 @@
 
 use Illuminate\Contracts\View\View;
 
-class Rpgo {
+class RpgoComposer {
 
     /**
      * @var \Rpgo\Rpgo
