@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Rpgo\Http\Requests\AddLocation;
+use Rpgo\Http\Requests\DeleteLocation;
 use Rpgo\Models\Location;
 use Rpgo\Models\World;
 
@@ -54,7 +55,7 @@ class LocationController extends Controller {
         return view('location.remove')->with(compact('location'));
     }
 
-    public function delete(World $world, Location $location)
+    public function delete(World $world, Location $location, DeleteLocation $request)
     {
         $parent = $location->parent();
 

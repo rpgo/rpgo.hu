@@ -28,4 +28,9 @@ class Eloquent extends Model {
         return $this->slug;
     }
 
+    public function equals(Eloquent $model)
+    {
+        return $this->getKey() == $model->getKey();
+    }
+
 }
