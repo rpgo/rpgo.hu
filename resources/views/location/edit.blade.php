@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         @include('common.feedback')
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{route('location.update', [$world, $location])}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('location.rename.action', [$world, $location])}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
 

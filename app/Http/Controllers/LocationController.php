@@ -15,7 +15,7 @@ class LocationController extends Controller {
         return view('location.show')->with(compact('location'));
     }
 
-    public function edit(World $world, Location $location)
+    public function renameForm(World $world, Location $location)
     {
         return view('location.edit')->with(compact('location'));
     }
@@ -43,7 +43,7 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $location]);
     }
 
-    public function update(World $world, Location $location, Request $request)
+    public function renameAction(World $world, Location $location, Request $request)
     {
         $location->name = $request->get('name');
 

@@ -58,8 +58,8 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
     ]);
 
     $router->get(trans('routes.location.edit', ['parameter' => '{location_path}']), [
-        'as' => 'location.edit',
-        'uses' => 'LocationController@edit',
+        'as' => 'location.rename.form',
+        'uses' => 'LocationController@renameForm',
         'middleware' => 'warden',
     ]);
 
@@ -76,8 +76,8 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
     ]);
 
     $router->put(trans('routes.location.update', ['parameter' => '{location_path}']), [
-        'as' => 'location.update',
-        'uses' => 'LocationController@update',
+        'as' => 'location.rename.action',
+        'uses' => 'LocationController@renameAction',
         'middleware' => 'warden',
     ]);
 
