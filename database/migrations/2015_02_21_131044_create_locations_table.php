@@ -19,6 +19,10 @@ class CreateLocationsTable extends Migration {
 
             $table->string('name', 40);
             $table->string('slug', 40);
+
+            $table->string('creator_id', 36);
+
+            $table->foreign('creator_id')->references('id')->on('members');
 		});
 	}
 

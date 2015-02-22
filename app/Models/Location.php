@@ -67,4 +67,9 @@ class Location extends Eloquent {
         return join('/',$this->path());
     }
 
+    public function creator()
+    {
+        return $this->belongsTo(Member::class, 'creator_id');
+    }
+
 }

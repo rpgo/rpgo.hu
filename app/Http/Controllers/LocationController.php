@@ -7,6 +7,7 @@ use Rpgo\Http\Requests\DeleteLocation;
 use Rpgo\Http\Requests\RelocateLocation;
 use Rpgo\Models\Location;
 use Rpgo\Models\World;
+use Rpgo\Rpgo;
 
 class LocationController extends Controller {
 
@@ -25,11 +26,15 @@ class LocationController extends Controller {
         return view('location.create')->with(compact('location'));
     }
 
-    public function store(World $world, Location $parent, AddLocation $request)
+    public function store(Rpgo $rpgo, World $world, Location $parent, AddLocation $request)
     {
+        $member = $rpgo->member();
+
+        $world = $rpgo->world();
+
         $location = new Location($request->only('name'));
 
-        $location->save();
+        $member->createdLocations()->save($location);
 
         $location->worlds()->attach($world);
 

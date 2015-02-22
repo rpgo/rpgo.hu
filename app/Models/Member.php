@@ -34,4 +34,9 @@ class Member extends Eloquent {
         return $query->where(['world_id' => $world->id,'user_id' => $user->id]);
     }
 
+    public function createdLocations()
+    {
+        return $this->hasMany(Location::class, 'creator_id');
+    }
+
 }
