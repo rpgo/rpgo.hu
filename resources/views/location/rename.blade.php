@@ -1,13 +1,13 @@
 @extends('app')
 
-@section('title') {{$location->name}} - @lang('location.edit.title') @endsection
+@section('title') {{$location->name}} - @lang('location.rename.title') @endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">@lang('location.edit.heading'): {{$location->name}}</div>
+                    <div class="panel-heading">@lang('location.rename.heading'): {{$location->name}}</div>
                     <div class="panel-body">
                         @include('common.feedback')
 
@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        @lang('location.edit.submit')
+                                        @lang('location.rename.submit')
                                     </button>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@ class LocationController extends Controller {
 
     public function renameForm(World $world, Location $location)
     {
-        return view('location.edit')->with(compact('location'));
+        return view('location.rename')->with(compact('location'));
     }
 
     public function create(World $world, Location $location)

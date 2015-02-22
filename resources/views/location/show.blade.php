@@ -19,8 +19,8 @@
             <a href="{{route('location.create', [$world, $location])}}" class="btn btn-default"><i class="fa fa-plus"></i><span class="hidden-xs"> @lang('location.show.new')</span></a>
             <a href="{{route('location.rename.form', [$world, $location])}}" class="btn btn-default"><i class="fa fa-pencil"></i><span class="hidden-xs"> @lang('location.show.edit')</span></a>
             @if( ! $world->rootlocation()->equals($location))
-            <a href="{{route('location.remove', [$world, $location])}}" class="btn btn-default"><i class="fa fa-times"></i><span class="hidden-xs"> @lang('location.show.remove')</span></a>
-                <a href="{{route('location.move', [$world, $location])}}" class="btn btn-default"><i class="fa fa-times"></i><span class="hidden-xs"> @lang('location.show.move')</span></a>
+                <a href="{{route('location.move', [$world, $location])}}" class="btn btn-default"><i class="fa fa-arrows"></i><span class="hidden-xs"> @lang('location.show.move')</span></a>
+                <a href="{{route('location.remove', [$world, $location])}}" class="btn btn-default"><i class="fa fa-times"></i><span class="hidden-xs"> @lang('location.show.remove')</span></a>
             @endif
         </div>
         @endif

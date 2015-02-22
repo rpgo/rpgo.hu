@@ -28,5 +28,11 @@ return [
         'heading' => 'Delete location',
         'submit' => 'Delete',
         'sure' => 'All of its sublocations will be deleted, too. Are you sure?'
-    ]
+    ],
+    'move' => [
+        'title' => 'Move location',
+        'heading' => 'Move location',
+        'target' => 'Target location',
+        'submit' => 'Move',
+    ],
 ];

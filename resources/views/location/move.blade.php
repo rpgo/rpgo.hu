@@ -15,7 +15,7 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
-                                <label for="target" class="col-md-4 control-label">@lang('location.move.location')</label>
+                                <label for="target" class="col-md-4 control-label">@lang('location.move.target')</label>
                                 <div class="col-md-6">
                                     <select id="target" name="target_id" class="form-control">
                                         @foreach($world->rootlocation()->sublocations as $sublocation)

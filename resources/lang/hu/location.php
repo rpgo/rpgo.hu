@@ -10,13 +10,13 @@ return [
         'move' => 'Áthelyezés',
         'remove' => 'Törlés',
     ],
-    'edit' => [
-        'title' => 'Helyszín Átnevezése',
+    'rename' => [
+        'title' => 'Átnevezése',
         'heading' => 'Helyszín átnevezése',
         'submit' => 'Mentés',
     ],
     'create' => [
-        'title' => 'Új helyszín létrehozása',
+        'title' => 'Új helyszín',
         'heading' => 'Új helyszín létrehozása itt',
         'submit' => 'Mehet',
     ],
@@ -24,9 +24,15 @@ return [
         'name' => 'Név'
     ],
     'remove' => [
-        'title' => 'Helyszín törlése',
+        'title' => 'Törlés',
         'heading' => 'Helyszín törlése',
         'submit' => 'Törlés',
         'sure' => 'Az összes alhelyszíne is törlésre kerül. Biztos vagy benne?'
-    ]
+    ],
+    'move' => [
+        'title' => 'Áthelyezés',
+        'heading' => 'Helyszín áthelyezése',
+        'target' => 'Cél helyszín',
+        'submit' => 'Áthelyezés',
+    ],
 ];
