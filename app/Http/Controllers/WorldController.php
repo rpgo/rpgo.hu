@@ -55,9 +55,9 @@ class WorldController extends Controller {
         return redirect()->route('world.main', compact('world'));
     }
 
-    public function main(World $world)
+    public function main()
     {
-        return view('world.main')->with(compact('world'));
+        return view('world.main');
     }
 
     public function publish(World $world)
