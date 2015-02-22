@@ -81,6 +81,18 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'middleware' => 'warden',
     ]);
 
+    $router->get(trans('routes.location.remove', ['parameter' => '{location_path}']), [
+        'as' => 'location.remove',
+        'uses' => 'LocationController@remove',
+        'middleware' => 'warden',
+    ]);
+
+    $router->delete(trans('routes.location.delete', ['parameter' => '{location_path}']), [
+        'as' => 'location.delete',
+        'uses' => 'LocationController@delete',
+        'middleware' => 'warden',
+    ]);
+
 });
 
 $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){

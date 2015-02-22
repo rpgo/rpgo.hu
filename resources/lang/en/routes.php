@@ -37,7 +37,8 @@ return [
         'create'    => ':parameter/new/location',
         'store'     => ':parameter',
         'update'    => ':parameter',
-        'editing'   => 'edit',
-        'creating'  => 'new/location',
+        'remove'    => ':parameter/delete',
+        'delete'    => ':parameter/delete',
+        'except'    => 'edit$|new\/location$|delete$',
     ],
 ];

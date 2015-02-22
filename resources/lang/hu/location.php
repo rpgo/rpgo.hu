@@ -8,7 +8,7 @@ return [
         'edit' => 'Szerkesztés',
         'sublocations' => 'Alhelyszínek',
         'move' => 'Áthelyezés',
-        'delete' => 'Törlés',
+        'remove' => 'Törlés',
     ],
     'edit' => [
         'title' => 'Helyszín szerkesztése',

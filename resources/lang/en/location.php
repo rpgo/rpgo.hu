@@ -8,7 +8,7 @@ return [
         'edit' => 'Edit',
         'sublocations' => 'Sublocations',
         'move' => 'Move',
-        'delete' => 'Delete',
+        'remove' => 'Delete',
     ],
     'edit' => [
         'title' => 'Edit location',

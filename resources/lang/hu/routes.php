@@ -37,7 +37,8 @@ return [
         'create'    => ':parameter/uj/helyszin',
         'store'     => ':parameter',
         'update'    => ':parameter',
-        'editing'   => 'szerkesztes',
-        'creating'  => 'uj/helyszin',
+        'remove'    => ':parameter/torles',
+        'delete'    => ':parameter/torles',
+        'except'    => 'szerkesztes$|uj\/helyszin$|torles$',
     ],
 ];

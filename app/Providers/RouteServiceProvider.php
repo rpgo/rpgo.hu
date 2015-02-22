@@ -38,7 +38,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	public function map(Router $router)
 	{
-        $router->pattern('location_path', '^(.(?!' . trans('routes.location.editing') . '$|' . trans('routes.location.creating') . '$))+');
+        $router->pattern('location_path', '^(.(?!' . trans('routes.location.except') . '))+');
 
 		$router->group(['namespace' => $this->namespace], function($router)
 		{
