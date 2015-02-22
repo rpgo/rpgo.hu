@@ -7,8 +7,11 @@
 	<title>@yield('title', 'Főoldal') @if($world) - @include('world.title') @endif - RPGO.hu</title>
 
 	<link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/font-awesome.css">
 
-	<!-- Fonts -->
+
+
+    <!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

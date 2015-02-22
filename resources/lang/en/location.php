@@ -4,9 +4,11 @@ return [
     'root' => 'Locations',
     'show' => [
         'title' => 'Location',
-        'new' => 'New location',
-        'edit' => 'Edit location',
+        'new' => 'New sublocation',
+        'edit' => 'Edit',
         'sublocations' => 'Sublocations',
+        'move' => 'Move',
+        'delete' => 'Delete',
     ],
     'edit' => [
         'title' => 'Edit location',

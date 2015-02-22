@@ -4,9 +4,11 @@ return [
     'root' => 'Helyszínek',
     'show' => [
         'title' => 'Helyszín',
-        'new' => 'Új helyszín',
-        'edit' => 'Helyszín szerkesztése',
+        'new' => 'Új alhelyszín',
+        'edit' => 'Szerkesztés',
         'sublocations' => 'Alhelyszínek',
+        'move' => 'Áthelyezés',
+        'delete' => 'Törlés',
     ],
     'edit' => [
         'title' => 'Helyszín szerkesztése',
