@@ -20,7 +20,7 @@
                                     <select id="target" name="target_id" class="form-control">
                                         @foreach($world->rootlocation()->sublocations as $sublocation)
                                             <option value="{{$sublocation->id}}"
-                                            @if($location->parent() && $sublocation->equals($location->parent())) selected="selected" @elseif($sublocation->equals($location)) disabled @endif>{{$sublocation->name}}</option>
+                                            @if($location->parent() && $sublocation->equals($location->parent())) selected="selected" @elseif($location->sublocations->contains($sublocation)) disabled @endif>{{$sublocation->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
