@@ -5,4 +5,4 @@
     <li><a href="{{route('member.create', $world)}}">@lang('member.create.menu')</a></li>
 @endif
 <li><a href="{{route('character.index', $world)}}">@lang('character.index.menu')</a></li>
-<li><a href="{{route('character.create', $world)}}">@lang('character.create.menu')</a></li>
+{{-- <li><a href="{{route('character.create', $world)}}">@lang('character.create.menu')</a></li> --}}
