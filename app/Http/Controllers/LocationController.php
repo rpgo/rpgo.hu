@@ -49,4 +49,34 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $location]);
     }
 
+    public function remove(World $world, Location $location)
+    {
+        return view('location.remove')->with(compact('location'));
+    }
+
+    public function delete(World $world, Location $location)
+    {
+        $parent = $location->parent();
+
+        $this->deleteLocation($location);
+
+        return redirect()->route('location.show', [$world, $parent]);
+    }
+
+    private function deleteLocation(Location $location)
+    {
+        $sublocations = $location->sublocations;
+
+        $location->sublocations()->sync([]);
+
+        $location->supralocations()->sync([]);
+
+        $location->worlds()->sync([]);
+
+        $location->delete();
+
+        foreach($sublocations as $sublocation)
+            $this->deleteLocation($sublocation);
+    }
+
 }

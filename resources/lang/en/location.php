@@ -23,4 +23,10 @@ return [
     'form' => [
         'name' => 'Name'
     ],
+    'remove' => [
+        'title' => 'Delete location',
+        'heading' => 'Delete location',
+        'submit' => 'Delete',
+        'sure' => 'All of its sublocations will be deleted, too. Are you sure?'
+    ]
 ];

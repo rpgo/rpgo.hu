@@ -23,4 +23,10 @@ return [
     'form' => [
         'name' => 'Név'
     ],
+    'remove' => [
+        'title' => 'Helyszín törlése',
+        'heading' => 'Helyszín törlése',
+        'submit' => 'Törlés',
+        'sure' => 'Az összes alhelyszíne is törlésre kerül. Biztos vagy benne?'
+    ]
 ];
