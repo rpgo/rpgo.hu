@@ -43,4 +43,9 @@ return [
         'relocate'  => ':parameter/athelyezes',
         'except'    => 'atnevezes$|uj\/helyszin$|athelyezes$|torles$',
     ],
+    'character' => [
+        'index' => 'karakterek',
+        'create' => 'karakterek/uj',
+        'show' => 'karakterek/:parameter',
+    ],
 ];

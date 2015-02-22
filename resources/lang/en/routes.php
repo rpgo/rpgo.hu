@@ -43,4 +43,9 @@ return [
         'relocate'  => ':parameter/move',
         'except'    => 'rename$|new\/location$|delete$|move$',
     ],
+    'character' => [
+        'index' => 'characters',
+        'create' => 'characters/new',
+        'show' => 'characters/:parameter',
+    ],
 ];
