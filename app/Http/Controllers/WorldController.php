@@ -1,11 +1,9 @@
 <?php namespace Rpgo\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Contracts\Auth\Guard;
+use Rpgo\Commands\CreateWorldCommand;
 use Rpgo\Http\Requests\CreateWorld;
-use Rpgo\Models\Location;
-use Rpgo\Models\Member;
 use Rpgo\Models\World;
+use Rpgo\Rpgo;
 
 class WorldController extends Controller {
 
@@ -26,33 +24,11 @@ class WorldController extends Controller {
         return view('world.show')->with(compact('world'));
     }
 
-    public function store(CreateWorld $request, Guard $guard)
+    public function store(CreateWorld $request)
     {
-        $user = $guard->user();
+        $world = $this->dispatchFrom(CreateWorldCommand::class, $request);
 
-        $world = new World($request->only('name', 'brand', 'slug'));
-
-        $world->creator()->associate($user);
-
-        $member = new Member(['name' => $request['admin']]);
-
-        $member->user()->associate($user);
-
-        $member->world()->associate($world);
-
-        $world->save();
-
-        $member->save();
-
-        $location = new Location(['name' => 'Helyszínek']);
-
-        $member->createdLocations()->save($location);
-
-        $location->worlds()->attach($world);
-
-        $location->sublocations()->attach($location, ['depth' => 0]);
-
-        return redirect()->route('world.main', compact('world'));
+        return redirect()->route('world.main', $world);
     }
 
     public function main()
@@ -60,9 +36,9 @@ class WorldController extends Controller {
         return view('world.main');
     }
 
-    public function publish(World $world)
+    public function publish(Rpgo $rpgo)
     {
-        $world->published_at = Carbon::now();
+        $world = $rpgo->world()->publish();
 
         $world->save();
 
