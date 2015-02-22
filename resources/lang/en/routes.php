@@ -33,7 +33,7 @@ return [
     ],
     'location' => [
         'show'      => ':parameter',
-        'edit'      => ':parameter/edit',
+        'edit'      => ':parameter/rename',
         'create'    => ':parameter/new/location',
         'store'     => ':parameter',
         'update'    => ':parameter',
@@ -41,6 +41,6 @@ return [
         'delete'    => ':parameter/delete',
         'move'      => ':parameter/move',
         'relocate'  => ':parameter/move',
-        'except'    => 'edit$|new\/location$|delete$|move$',
+        'except'    => 'rename|new\/location$|delete$|move$',
     ],
 ];

@@ -5,14 +5,14 @@ return [
     'show' => [
         'title' => 'Helyszín',
         'new' => 'Új alhelyszín',
-        'edit' => 'Szerkesztés',
+        'edit' => 'Átnevezés',
         'sublocations' => 'Alhelyszínek',
         'move' => 'Áthelyezés',
         'remove' => 'Törlés',
     ],
     'edit' => [
-        'title' => 'Helyszín szerkesztése',
-        'heading' => 'Helyszín szerkesztése itt',
+        'title' => 'Helyszín Átnevezése',
+        'heading' => 'Helyszín átnevezése',
         'submit' => 'Mentés',
     ],
     'create' => [

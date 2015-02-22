@@ -5,14 +5,14 @@ return [
     'show' => [
         'title' => 'Location',
         'new' => 'New sublocation',
-        'edit' => 'Edit',
+        'edit' => 'Rename',
         'sublocations' => 'Sublocations',
         'move' => 'Move',
         'remove' => 'Delete',
     ],
     'edit' => [
-        'title' => 'Edit location',
-        'heading' => 'Edit location here',
+        'title' => 'Rename location',
+        'heading' => 'Rename location',
         'submit' => 'Save',
     ],
     'create' => [

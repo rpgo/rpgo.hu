@@ -33,7 +33,7 @@ return [
     ],
     'location' => [
         'show'      => ':parameter',
-        'edit'      => ':parameter/szerkesztes',
+        'edit'      => ':parameter/atnevezes',
         'create'    => ':parameter/uj/helyszin',
         'store'     => ':parameter',
         'update'    => ':parameter',
@@ -41,6 +41,6 @@ return [
         'delete'    => ':parameter/torles',
         'move'      => ':parameter/athelyezes',
         'relocate'  => ':parameter/athelyezes',
-        'except'    => 'szerkesztes$|uj\/helyszin$|athelyezes$',
+        'except'    => 'atnevezes|uj\/helyszin$|athelyezes$',
     ],
 ];
