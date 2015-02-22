@@ -28,98 +28,11 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'middleware'    => 'warden',
     ]);
 
-    $router->get(trans('routes.member.create'), [
-        'uses'          => 'MemberController@create',
-        'as'            => 'member.create',
-        'middleware'    => ['auth', 'stranger'],
-    ]);
+    require __DIR__ . '/routes/member.php';
 
-    $router->post(trans('routes.member.store'), [
-        'uses'          => 'MemberController@store',
-        'as'            => 'member.store',
-        'middleware'    => ['auth', 'stranger'],
-    ]);
+    require __DIR__ . '/routes/character.php';
 
-    $router->get(trans('routes.member.index'), [
-        'uses'          => 'MemberController@index',
-        'as'            => 'member.index',
-        'middleware'    => 'warden',
-    ]);
-
-    $router->get(trans('routes.member.show', ['parameter' => '{member}']), [
-        'uses'          => 'MemberController@show',
-        'as'            => 'member.show',
-        'middleware'    => 'warden',
-    ]);
-
-    $router->get(trans('routes.character.index'), [
-        'as' => 'character.index',
-        'uses' => 'CharacterController@index',
-    ]);
-
-    $router->get(trans('routes.character.create'), [
-        'as' => 'character.create',
-        'uses' => 'CharacterController@create',
-        'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.character.show', ['parameter' => '{character}']), [
-        'as' => 'character.show',
-        'uses' => 'CharacterController@show',
-    ]);
-
-    $router->get(trans('routes.location.show', ['parameter' => '{location}']), [
-        'as' => 'location.show',
-        'uses' => 'LocationController@show',
-    ]);
-
-    $router->get(trans('routes.location.edit', ['parameter' => '{location}']), [
-        'as' => 'location.rename.form',
-        'uses' => 'LocationController@renameForm',
-        'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.location.create', ['parameter' => '{location}']), [
-        'as' => 'location.create',
-        'uses' => 'LocationController@create',
-        'middleware' => 'warden',
-    ]);
-
-    $router->post(trans('routes.location.store', ['parameter' => '{location}']), [
-        'as' => 'location.store',
-        'uses' => 'LocationController@store',
-        'middleware' => 'warden',
-    ]);
-
-    $router->put(trans('routes.location.update', ['parameter' => '{location}']), [
-        'as' => 'location.rename.action',
-        'uses' => 'LocationController@renameAction',
-        'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.location.remove', ['parameter' => '{location}']), [
-        'as' => 'location.remove',
-        'uses' => 'LocationController@remove',
-        'middleware' => 'warden',
-    ]);
-
-    $router->delete(trans('routes.location.delete', ['parameter' => '{location}']), [
-        'as' => 'location.delete',
-        'uses' => 'LocationController@delete',
-        'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.location.move', ['parameter' => '{location}']), [
-        'as' => 'location.move',
-        'uses' => 'LocationController@move',
-        'middleware' => 'warden',
-    ]);
-
-    $router->post(trans('routes.location.relocate', ['parameter' => '{location}']), [
-        'as' => 'location.relocate',
-        'uses' => 'LocationController@relocate',
-        'middleware' => 'warden',
-    ]);
+    require __DIR__ . '/routes/location.php';
 
 });
 
@@ -152,58 +65,6 @@ $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){
         'uses' => 'HomeController@index'
     ]);
 
-    $router->get(trans('routes.session.create'), [
-        'as' => 'session.create',
-        'uses' => 'Auth\AuthController@getLogin',
-        'middleware' => 'guest',
-    ]);
-
-    $router->get(trans('routes.session.delete'), [
-        'as' => 'session.delete',
-        'uses' => 'Auth\AuthController@getLogout',
-        'middleware' => 'auth',
-    ]);
-
-    $router->post(trans('routes.session.store'), [
-        'as' => 'session.store',
-        'uses' => 'Auth\AuthController@postLogin',
-        'middleware' => 'guest',
-    ]);
-
-    $router->get(trans('routes.user.create'), [
-        'as' => 'user.create',
-        'uses' => 'Auth\AuthController@getRegister',
-        'middleware' => 'guest',
-    ]);
-
-    $router->post(trans('routes.user.store'), [
-        'as' => 'user.store',
-        'uses' => 'Auth\AuthController@postRegister',
-        'middleware' => 'guest',
-    ]);
-
-    $router->get(trans('routes.reset.create'), [
-        'as' => 'reset.create',
-        'uses' => 'Auth\PasswordController@getEmail',
-        'middleware' => 'guest',
-    ]);
-
-    $router->post(trans('routes.reset.store'), [
-        'as' => 'reset.store',
-        'uses' => 'Auth\PasswordController@postEmail',
-        'middleware' => 'guest',
-    ]);
-
-    $router->get(trans('routes.password.create', ['parameter' => '{token}']), [
-        'as' => 'password.create',
-        'uses' => 'Auth\PasswordController@getReset',
-        'middleware' => 'guest',
-    ]);
-
-    $router->post(trans('routes.password.store'), [
-        'as' => 'password.store',
-        'uses' => 'Auth\PasswordController@postReset',
-        'middleware' => 'guest',
-    ]);
+    require __DIR__ . '/routes/user.php';
 
 });
