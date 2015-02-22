@@ -4,6 +4,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
+use Rpgo\Models\User;
 use Rpgo\Models\World;
 
 class CreateWorldCommand extends Command implements SelfHandling {
@@ -49,6 +50,21 @@ class CreateWorldCommand extends Command implements SelfHandling {
 	{
         $user = $guard->user();
 
+        $world = $this->createWorld($user);
+
+        $admin = $this->createAdmin($user, $world);
+
+        $this->createRootLocation($admin, $world);
+
+        return $world;
+	}
+
+    /**
+     * @param $user
+     * @return World
+     */
+    private function createWorld(User $user)
+    {
         $world = new World([
             'name' => $this->name,
             'brand' => $this->brand,
@@ -57,25 +73,41 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $world->creator()->associate($user);
 
-        $member = new Member(['name' => $this->admin]);
-
-        $member->user()->associate($user);
-
-        $member->world()->associate($world);
-
         $world->save();
+        return $world;
+    }
 
-        $member->save();
+    /**
+     * @param User $user
+     * @param World $world
+     * @return Member
+     */
+    private function createAdmin(User $user, World $world)
+    {
+        $admin = new Member(['name' => $this->admin]);
 
+        $admin->user()->associate($user);
+
+        $admin->world()->associate($world);
+
+        $admin->save();
+
+        return $admin;
+    }
+
+    /**
+     * @param Member $admin
+     * @param World $world
+     */
+    private function createRootLocation(Member $admin, World $world)
+    {
         $location = new Location(['name' => trans('location.root')]);
 
-        $member->createdLocations()->save($location);
+        $admin->createdLocations()->save($location);
 
         $location->worlds()->attach($world);
 
         $location->sublocations()->attach($location, ['depth' => 0]);
-
-        return $world;
-	}
+    }
 
 }
