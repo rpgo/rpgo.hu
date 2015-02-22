@@ -22,6 +22,12 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'as'            => 'world.main',
     ]);
 
+    $router->post(trans('routes.world.publish'), [
+        'uses'          => 'WorldController@publish',
+        'as'            => 'world.publish',
+        'middleware'    => 'warden',
+    ]);
+
     $router->get(trans('routes.member.create'), [
         'uses'          => 'MemberController@create',
         'as'            => 'member.create',
@@ -46,10 +52,20 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'middleware'    => 'warden',
     ]);
 
-    $router->post(trans('routes.world.publish'), [
-        'uses'          => 'WorldController@publish',
-        'as'            => 'world.publish',
-        'middleware'    => 'warden',
+    $router->get(trans('routes.character.index'), [
+        'as' => 'character.index',
+        'uses' => 'CharacterController@index',
+    ]);
+
+    $router->get(trans('routes.character.create'), [
+        'as' => 'character.create',
+        'uses' => 'CharacterController@create',
+        'middleware' => 'warden',
+    ]);
+
+    $router->get(trans('routes.character.show', ['parameter' => '{character}']), [
+        'as' => 'character.show',
+        'uses' => 'CharacterController@show',
     ]);
 
     $router->get(trans('routes.location.show', ['parameter' => '{location_path}']), [
@@ -103,22 +119,6 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'as' => 'location.relocate',
         'uses' => 'LocationController@relocate',
         'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.character.index'), [
-        'as' => 'character.index',
-        'uses' => 'CharacterController@index',
-    ]);
-
-    $router->get(trans('routes.character.create'), [
-        'as' => 'character.create',
-        'uses' => 'CharacterController@create',
-        'middleware' => 'warden',
-    ]);
-
-    $router->get(trans('routes.character.show', ['parameter' => '{character}']), [
-        'as' => 'character.show',
-        'uses' => 'CharacterController@show',
     ]);
 
 });
