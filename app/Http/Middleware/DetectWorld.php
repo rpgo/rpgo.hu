@@ -30,6 +30,8 @@ class DetectWorld {
 
         $this->rpgo->world($world);
 
+        $route->forgetParameter('world');
+
 		return $next($request);
 	}
 

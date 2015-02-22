@@ -1,5 +1,7 @@
 <?php namespace Rpgo\Http\Requests;
 
+use Rpgo\Rpgo;
+
 class DeleteLocation extends Request {
 
 	/**
@@ -7,11 +9,11 @@ class DeleteLocation extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
+	public function authorize(Rpgo $rpgo)
 	{
 		$location = $this->route()->getParameter('location_path');
 
-        $world = $this->route()->getParameter('world');
+        $world = $rpgo->world();
 
         return ! $world->rootlocation()->equals($location);
 	}

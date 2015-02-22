@@ -11,22 +11,22 @@ use Rpgo\Rpgo;
 
 class LocationController extends Controller {
 
-	public function show(World $world, Location $location)
+	public function show(Location $location)
     {
         return view('location.show')->with(compact('location'));
     }
 
-    public function renameForm(World $world, Location $location)
+    public function renameForm(Location $location)
     {
         return view('location.rename')->with(compact('location'));
     }
 
-    public function create(World $world, Location $location)
+    public function create(Location $location)
     {
         return view('location.create')->with(compact('location'));
     }
 
-    public function store(Rpgo $rpgo, World $world, Location $parent, AddLocation $request)
+    public function store(Rpgo $rpgo, Location $parent, AddLocation $request)
     {
         $member = $rpgo->member();
 
@@ -48,8 +48,10 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $location]);
     }
 
-    public function renameAction(World $world, Location $location, Request $request)
+    public function renameAction(Rpgo $rpgo, Location $location, Request $request)
     {
+        $world = $rpgo->world();
+
         $location->name = $request->get('name');
 
         $location->save();
@@ -57,16 +59,20 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $location]);
     }
 
-    public function remove(World $world, Location $location)
+    public function remove(Rpgo $rpgo, Location $location)
     {
+        $world = $rpgo->world();
+
         if ($world->rootlocation()->equals($location))
             return new Response('Forbidden', 503);
 
         return view('location.remove')->with(compact('location'));
     }
 
-    public function delete(World $world, Location $location, DeleteLocation $request)
+    public function delete(Rpgo $rpgo, Location $location, DeleteLocation $request)
     {
+        $world = $rpgo->world();
+
         $parent = $location->parent();
 
         $this->deleteLocation($location);
@@ -74,16 +80,20 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $parent]);
     }
 
-    public function move(World $world, Location $location)
+    public function move(Rpgo $rpgo, Location $location)
     {
+        $world = $rpgo->world();
+
         if ($world->rootlocation()->equals($location))
             return new Response('Forbidden', 503);
 
         return view('location.move')->with(compact('world', 'location'));
     }
 
-    public function relocate(World $world, Location $location, RelocateLocation $request)
+    public function relocate(Rpgo $rpgo, Location $location, RelocateLocation $request)
     {
+        $world = $rpgo->world();
+
         $target_id = $request->get('target_id');
 
         /** @var Location $target */

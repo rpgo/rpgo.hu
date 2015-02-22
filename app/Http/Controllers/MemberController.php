@@ -7,8 +7,10 @@ use Rpgo\Rpgo;
 
 class MemberController extends Controller {
 
-	public function index(World $world)
+	public function index(Rpgo $rpgo)
 	{
+        $world = $rpgo->world();
+
         $members = Member::ofWorld($world)->get();
 
 		return view('member.index')->with(compact('members'));
@@ -33,10 +35,10 @@ class MemberController extends Controller {
 
         $member->save();
 
-        return redirect()->route('member.show', compact('world', 'member'));
+        return redirect()->route('member.show', [$world, $member]);
 	}
 
-	public function show(World $world, Member $member)
+	public function show(Member $member)
 	{
 		return view('member.show')->with(compact('member'));
 	}
