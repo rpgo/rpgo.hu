@@ -1,6 +1,6 @@
 <?php namespace Rpgo\Http\Parameters;
 
-class World {
+class WorldParameter {
 
     public function bind($slug)
     {

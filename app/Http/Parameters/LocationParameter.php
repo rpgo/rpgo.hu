@@ -12,11 +12,11 @@ class LocationParameter {
      */
     private $request;
     /**
-     * @var World
+     * @var WorldParameter
      */
     private $world;
 
-    public function __construct(Request $request, World $world)
+    public function __construct(Request $request, WorldParameter $world)
     {
         $this->request = $request;
         $this->world = $world;

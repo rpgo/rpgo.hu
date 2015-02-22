@@ -1,6 +1,6 @@
 <?php namespace Rpgo\Http\Parameters;
 
-class Member {
+class MemberParameter {
 
     public function bind($slug)
     {
