@@ -13,5 +13,6 @@ return [
     ],
     'show' => [
         'title' => 'Profile',
+        'menu' => 'Profile',
     ],
 ];

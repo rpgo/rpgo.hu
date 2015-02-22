@@ -13,6 +13,7 @@ return [
     ],
     'show' => [
         'title' => 'Profil',
+        'menu'  => 'Profil'
     ],
     'admin' => [
         'title' => 'Saját OOC neved'
