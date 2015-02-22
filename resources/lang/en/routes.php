@@ -41,6 +41,6 @@ return [
         'delete'    => ':parameter/delete',
         'move'      => ':parameter/move',
         'relocate'  => ':parameter/move',
-        'except'    => 'rename|new\/location$|delete$|move$',
+        'except'    => 'rename$|new\/location$|delete$|move$',
     ],
 ];

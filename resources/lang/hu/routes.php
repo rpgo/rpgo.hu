@@ -41,6 +41,6 @@ return [
         'delete'    => ':parameter/torles',
         'move'      => ':parameter/athelyezes',
         'relocate'  => ':parameter/athelyezes',
-        'except'    => 'atnevezes|uj\/helyszin$|athelyezes$',
+        'except'    => 'atnevezes$|uj\/helyszin$|athelyezes$|torles$',
     ],
 ];
