@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Rpgo\Models\Location;
 
-class LocationPath {
+class LocationParameter {
 
     /**
      * @var Request
@@ -22,11 +22,11 @@ class LocationPath {
         $this->world = $world;
     }
 
-    public function bind($location_path)
+    public function bind($location)
     {
         $world = $this->getCurrentWorld();
 
-        $path = explode('/', $location_path);
+        $path = explode('/', $location);
 
         $slug = last($path);
 

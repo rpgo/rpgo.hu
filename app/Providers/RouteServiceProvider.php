@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider {
 
         $router->bind('world', 'Rpgo\Http\Parameters\World');
         $router->bind('member', 'Rpgo\Http\Parameters\Member');
-        $router->bind('location_path', 'Rpgo\Http\Parameters\LocationPath');
+        $router->bind('location', 'Rpgo\Http\Parameters\LocationParameter');
 	}
 
 	/**
@@ -38,7 +38,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	public function map(Router $router)
 	{
-        $router->pattern('location_path', '^(.(?!' . trans('routes.location.except') . '))+');
+        $router->pattern('location', '^(.(?!' . trans('routes.location.except') . '))+');
 
 		$router->group(['namespace' => $this->namespace], function($router)
 		{

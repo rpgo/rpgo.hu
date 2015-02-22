@@ -12,7 +12,7 @@ class RelocateLocation extends Request {
 	 */
 	public function authorize(Rpgo $rpgo)
 	{
-        $location = $this->route()->getParameter('location_path');
+        $location = $this->route()->getParameter('location');
 
         $world = $rpgo->world();
 
