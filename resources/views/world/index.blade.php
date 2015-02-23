@@ -20,7 +20,7 @@
                             <li><span>{{trans('world.item.members') . ': ' . $world->members()->count()}} </span></li>
                             <li><span>{{trans('world.item.locations') . ': ' . $world->rootlocation()->sublocations()->count()}} </span></li>
                             <li>|</li>
-                            <li>Ugrás: <a href="{{route('world.main', compact('world'))}}">{{$world->slug}}</a></li>
+                            <li>Ugrás: <a href="{{route('world.main', compact('world'))}}">{{$world->slug . '.' . env('APP_DOMAIN')}}</a></li>
                         </ul>
                     </div>
                 </div>
