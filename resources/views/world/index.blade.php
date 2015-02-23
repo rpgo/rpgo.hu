@@ -8,7 +8,7 @@
             <div class="well">
                 <div class="media">
                     <a class="pull-left hidden-xs" href="{{route('world.main', compact('world'))}}">
-                        <img class="media-object" src="http://placehold.it/130x130">
+                        <img class="media-object" src="{{asset('images/previews/' . $world->slug . '.jpg')}}">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><a href="{{route('world.main', compact('world'))}}">{{$world->name}} ({{$world->brand}})</a></h4>
