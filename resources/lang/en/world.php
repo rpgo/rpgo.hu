@@ -10,6 +10,10 @@ return [
         'link' => 'Worlds',
         'title' => 'Worlds',
     ],
+    'item' => [
+        'members' => 'Members',
+        'locations' => 'Locations',
+    ],
     'show' => [
         'title' => 'Details',
     ],

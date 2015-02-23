@@ -10,6 +10,10 @@ return [
         'link' => 'Világok',
         'title' => 'Világok',
     ],
+    'item' => [
+        'members' => 'Tagok',
+        'locations' => 'Helyszínek',
+    ],
     'show' => [
         'title' => 'Részletek',
     ],
