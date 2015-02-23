@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Rpgo\Commands\CreateWorldCommand;
+use Rpgo\Commands\PublishWorldCommand;
 use Rpgo\Http\Requests\CreateWorld;
 use Rpgo\Models\World;
 use Rpgo\Rpgo;
@@ -39,22 +40,11 @@ class WorldController extends Controller {
         return view('world.main');
     }
 
-    public function publish(Rpgo $rpgo, ImageManager $img, Browsershot $shot)
+    public function publish(Rpgo $rpgo)
     {
-        $world = $rpgo->world()->publish();
+        $world = $rpgo->world();
 
-        $world->save();
-
-        $shot->setUrl('http://'. $world->slug . '.' . env('APP_DOMAIN'))
-            ->setWidth(1024)
-            ->setHeight(786)
-            ->save(storage_path('app/previews/tmp.jpg'));
-
-        $img = $img->make(storage_path('app/previews/tmp.jpg'));
-
-        $img->resize(130,130);
-
-        $img->save(public_path('images/previews/' . $world->slug . '.jpg'));
+        $this->dispatchFromArray(PublishWorldCommand::class,compact('world'));
 
         return redirect()->route('world.main', $world);
     }
