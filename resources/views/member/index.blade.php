@@ -5,7 +5,7 @@
 @section('content')
     <ul>
         @foreach($members as $member)
-            <li>{{$member->name}}</li>
+            <li>{{$member->name}} ({{join(', ', $member->roles->lists('name_solo'))}})</li>
         @endforeach
     </ul>
 @endsection
