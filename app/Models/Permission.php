@@ -9,9 +9,4 @@ class Permission extends Eloquent {
         $this->belongsToMany(Role::class,'roles_permissions');
     }
 
-    public function types()
-    {
-        $this->belongsToMany(Type::class,'types_permissions');
-    }
-
 }
