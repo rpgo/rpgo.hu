@@ -16,6 +16,12 @@ class CreateTypesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+            $table->string('name', 30);
+            $table->string('slug', 30);
+            $table->string('tag', 30);
+
+            $table->text('description')->nullable();
 		});
 	}
 

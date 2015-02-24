@@ -16,6 +16,12 @@ class CreateMembersRolesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+
+            $table->string('member_id', 36);
+            $table->string('role_id', 36);
+
+            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('role_id')->references('id')->on('roles');
 		});
 	}
 

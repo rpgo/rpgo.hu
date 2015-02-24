@@ -16,6 +16,14 @@ class CreateTypesPermissionsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+
+            $table->string('type_id', 36);
+            $table->string('permission_id', 36);
+
+            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('permission_id')->references('id')->on('permissions');
+
+            $table->integer('grant');
 		});
 	}
 

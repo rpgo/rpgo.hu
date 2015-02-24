@@ -16,6 +16,14 @@ class CreateRolesPermissionsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+
+            $table->string('role_id', 36);
+            $table->string('permission_id', 36);
+
+            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('permission_id')->references('id')->on('permissions');
+
+            $table->integer('grant');
 		});
 	}
 

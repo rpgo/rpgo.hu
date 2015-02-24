@@ -16,6 +16,14 @@ class CreateRolesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+            $table->string('name', 30);
+            $table->string('slug', 30);
+            $table->string('tag', 30);
+            $table->boolean('custom');
+
+            $table->text('description')->nullable();
+
 		});
 	}
 
