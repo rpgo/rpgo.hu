@@ -2,8 +2,10 @@
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Database\Eloquent\Collection;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
+use Rpgo\Models\Role;
 use Rpgo\Models\User;
 use Rpgo\Models\World;
 
@@ -55,6 +57,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $admin = $this->createAdmin($user, $world);
 
         $this->createRootLocation($admin, $world);
+
+        $this->createRoles($world);
 
         $support = User::support();
 
@@ -123,6 +127,23 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $member->save();
 
         return $member;
+    }
+
+    private function createRoles(World $world)
+    {
+        $roles = new Collection();
+
+        foreach(config('roles.common') as $key)
+        {
+            $roles[] = new Role(array_merge(
+                trans('role.common.' . $key),
+                ['custom' => false])
+            );
+        }
+
+        $world->roles()->saveMany($roles);
+
+        return $roles;
     }
 
 }

@@ -2,6 +2,11 @@
 
 return [
     'common' => [
+        'support' => [
+            'name_plural' => 'Support',
+            'name_singular' => 'Support',
+            'description' => 'Technical support from rpgo.hu.',
+        ],
         'admin' => [
             'name_plural' => 'Administrators',
             'name_singular' => 'Administrator',

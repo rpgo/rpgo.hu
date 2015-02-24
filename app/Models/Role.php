@@ -19,4 +19,10 @@ class Role extends Eloquent {
         $this->belongsTo(World::class);
     }
 
+    public function setNamePluralAttribute($name)
+    {
+        $this->attributes['name_plural'] = $name;
+        $this->attributes['slug'] = str_slug($name);
+    }
+
 }

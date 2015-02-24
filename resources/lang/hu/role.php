@@ -2,6 +2,11 @@
 
 return [
     'common' => [
+        'support' => [
+            'name_plural' => 'Karbantartók',
+            'name_singular' => 'Karbantartó',
+            'description' => 'Technikai segítségnyújtók az rpgo.hu-tól.',
+        ],
         'admin' => [
             'name_plural' => 'Adminisztrátorok',
             'name_singular' => 'Adminisztrátor',
