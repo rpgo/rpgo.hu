@@ -14,4 +14,9 @@ class Role extends Eloquent {
         $this->belongsToMany(Permission::class,'roles_permissions');
     }
 
+    public function world()
+    {
+        $this->belongsTo(World::class);
+    }
+
 }

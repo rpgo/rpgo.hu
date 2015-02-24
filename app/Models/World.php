@@ -34,6 +34,11 @@ class World extends Eloquent {
         return $this->locations()->has('supralocations', '=', 1)->first();
     }
 
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
+
     public function publish()
     {
         $this->published_at = Carbon::now();
