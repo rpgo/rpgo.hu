@@ -56,6 +56,11 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $this->createRootLocation($admin, $world);
 
+        $support = User::support();
+
+        if(! $support->equals($user))
+            $this->createSupport($world, $support);
+
         return $world;
 	}
 
@@ -84,15 +89,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
      */
     private function createAdmin(User $user, World $world)
     {
-        $admin = new Member(['name' => $this->admin]);
-
-        $admin->user()->associate($user);
-
-        $admin->world()->associate($world);
-
-        $admin->save();
-
-        return $admin;
+        return $this->createMember($user, $world, $this->admin);
     }
 
     /**
@@ -108,6 +105,24 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $location->worlds()->attach($world);
 
         $location->sublocations()->attach($location, ['depth' => 0]);
+    }
+
+    private function createSupport($world, $support)
+    {
+        return $this->createMember($support, $world, $support->name);
+    }
+
+    private function createMember($user, $world, $name)
+    {
+        $member = new Member(['name' => $name]);
+
+        $member->user()->associate($user);
+
+        $member->world()->associate($world);
+
+        $member->save();
+
+        return $member;
     }
 
 }

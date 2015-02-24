@@ -37,6 +37,14 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
         return $this->hasMany(World::class, 'creator_id');
     }
 
+    /**
+     * @return static
+     */
+    public static function support()
+    {
+        return static::orderBy('created_at','asc')->first();
+    }
+
     public function memberships()
     {
         return $this->hasMany(Member::class);
