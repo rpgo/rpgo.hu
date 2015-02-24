@@ -42,4 +42,9 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
         return $this->hasMany(Member::class);
     }
 
+    public function types()
+    {
+        $this->belongsToMany(Type::class,'users_types');
+    }
+
 }

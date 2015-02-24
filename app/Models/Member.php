@@ -39,4 +39,9 @@ class Member extends Eloquent {
         return $this->hasMany(Location::class, 'creator_id');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'members_roles');
+    }
+
 }

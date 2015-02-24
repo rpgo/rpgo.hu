@@ -4,4 +4,14 @@ class Permission extends Eloquent {
 
     public $incrementing = false;
 
+    public function roles()
+    {
+        $this->belongsToMany(Role::class,'roles_permissions');
+    }
+
+    public function types()
+    {
+        $this->belongsToMany(Type::class,'types_permissions');
+    }
+
 }
