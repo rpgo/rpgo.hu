@@ -55,11 +55,11 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $world = $this->createWorld($user);
 
+        $this->createRoles($world);
+
         $admin = $this->createAdmin($user, $world);
 
         $this->createRootLocation($admin, $world);
-
-        $this->createRoles($world);
 
         $support = User::support();
 
@@ -94,7 +94,12 @@ class CreateWorldCommand extends Command implements SelfHandling {
      */
     private function createAdmin(User $user, World $world)
     {
-        return $this->createMember($user, $world, $this->admin);
+        $admin = $this->createMember($user, $world, $this->admin);
+
+        $this->addRole($world, $admin, 'admin');
+        $this->addRole($world, $admin, 'staff');
+
+        return $admin;
     }
 
     /**
@@ -114,7 +119,11 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
     private function createSupport($world, $support)
     {
-        return $this->createMember($support, $world, $support->name);
+        $member = $this->createMember($support, $world, $support->name);
+
+        $this->addRole($world, $member, 'support');
+
+        return $member;
     }
 
     private function createMember($user, $world, $name)
@@ -138,17 +147,34 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         foreach($types as $type)
         {
-            $roles[] = new Role([
+            $role = new Role([
                 'name_group' => $type['name_group'],
                 'name_solo' => $type['name_solo'],
                 'description' => $type['description'],
                 'secret' => false,
             ]);
+
+            $role->type()->associate($type);
+
+            $roles[] = $role;
         }
 
         $world->roles()->saveMany($roles);
 
         return $roles;
+    }
+
+    /**
+     * @param $world
+     * @param $member
+     */
+    private function addRole($world, $member, $type)
+    {
+        $type = Type::where('label', $type)->first();
+
+        $role = Role::ofWorld($world)->ofType($type)->first();
+
+        $member->roles()->attach($role);
     }
 
 }
