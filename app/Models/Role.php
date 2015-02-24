@@ -4,6 +4,8 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
+    protected $fillable = ['name_plural', 'name_singular', 'description'];
+
     public function members()
     {
         $this->belongsToMany(Member::class,'members_roles');

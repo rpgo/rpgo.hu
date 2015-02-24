@@ -131,7 +131,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
     private function createRoles(World $world)
     {
-        $roles = new Collection();
+        $roles = [];
 
         foreach(config('roles.common') as $key)
         {
