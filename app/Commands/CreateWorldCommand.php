@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
 use Rpgo\Models\Role;
+use Rpgo\Models\Type;
 use Rpgo\Models\User;
 use Rpgo\Models\World;
 
@@ -131,14 +132,18 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
     private function createRoles(World $world)
     {
+        $types = Type::all();
+
         $roles = [];
 
-        foreach(config('roles.common') as $key)
+        foreach($types as $type)
         {
-            $roles[] = new Role(array_merge(
-                trans('role.common.' . $key),
-                ['custom' => false])
-            );
+            $roles[] = new Role([
+                'name_group' => $type['name_group'],
+                'name_solo' => $type['name_solo'],
+                'description' => $type['description'],
+                'secret' => false,
+            ]);
         }
 
         $world->roles()->saveMany($roles);

@@ -4,7 +4,7 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
-    protected $fillable = ['name_plural', 'name_singular', 'description'];
+    protected $fillable = ['name_group', 'name_solo', 'description', 'secret'];
 
     public function members()
     {
@@ -21,7 +21,7 @@ class Role extends Eloquent {
         $this->belongsTo(World::class);
     }
 
-    public function setNamePluralAttribute($name)
+    public function setNameGroupAttribute($name)
     {
         $this->attributes['name_plural'] = $name;
         $this->attributes['slug'] = str_slug($name);

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration {
+class CreateTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,24 +12,16 @@ class CreateRolesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('roles', function(Blueprint $table)
+		Schema::create('types', function(Blueprint $table)
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
 
+            $table->string('label', 20);
             $table->string('name_group', 30);
             $table->string('name_solo', 30);
+            $table->text('description');
             $table->string('slug', 30);
-            $table->boolean('secret');
-
-            $table->text('description')->nullable();
-
-            $table->string('world_id', 36);
-            $table->foreign('world_id')->references('id')->on('worlds');
-
-            $table->string('type_id', 36)->nullable();
-            $table->foreign('type_id')->references('id')->on('types');
-
 		});
 	}
 
@@ -40,7 +32,7 @@ class CreateRolesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('roles');
+		Schema::drop('types');
 	}
 
 }
