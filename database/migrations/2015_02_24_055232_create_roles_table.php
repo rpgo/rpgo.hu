@@ -24,6 +24,9 @@ class CreateRolesTable extends Migration {
 
             $table->text('description')->nullable();
 
+            $table->string('world_id', 36);
+            $table->foreign('world_id')->references('id')->on('worlds');
+
 		});
 	}
 
