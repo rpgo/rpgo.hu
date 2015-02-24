@@ -2,6 +2,6 @@
 
 class Permission extends Eloquent {
 
-	//
+    public $incrementing = false;
 
 }

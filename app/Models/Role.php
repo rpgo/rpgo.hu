@@ -2,6 +2,6 @@
 
 class Role extends Eloquent {
 
-	//
+	public $incrementing = false;
 
 }
