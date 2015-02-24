@@ -7,6 +7,11 @@ return [
             'name_singular' => 'Karbantartó',
             'description' => 'Technikai segítségnyújtók az rpgo.hu-tól.',
         ],
+        'staff' => [
+            'name_plural' => 'Staff',
+            'name_singular' => 'Staff',
+            'description' => 'A világ staffjának aktiv tagjai.',
+        ],
         'admin' => [
             'name_plural' => 'Adminisztrátorok',
             'name_singular' => 'Adminisztrátor',

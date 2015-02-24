@@ -7,6 +7,11 @@ return [
             'name_singular' => 'Support',
             'description' => 'Technical support from rpgo.hu.',
         ],
+        'staff' => [
+            'name_plural' => 'Staff',
+            'name_singular' => 'Staff',
+            'description' => 'Active members of the staff of the world.',
+        ],
         'admin' => [
             'name_plural' => 'Administrators',
             'name_singular' => 'Administrator',

@@ -6,6 +6,7 @@ return [
      */
     'common' => [
         'support',
+        'staff',
         'admin',
         'player',
         'storyteller',
