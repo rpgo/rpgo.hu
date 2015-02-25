@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'Rpgo\Http\Middleware\VerifyCsrfToken',
+		//'Rpgo\Http\Middleware\VerifyCsrfToken', //If enabled, push queues fail... //TODO: figure out a way to use it before production!
         'Rpgo\Http\Middleware\DetectUser',
 	];
 

@@ -3,11 +3,16 @@
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
 use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Intervention\Image\ImageManager;
 use Rpgo\Models\World;
 use Spatie\Browsershot\Browsershot;
 
 class PublishWorldCommand extends Command implements SelfHandling, ShouldBeQueued {
+
+    use SerializesModels;
+
     /**
      * @var World
      */

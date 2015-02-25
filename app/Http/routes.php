@@ -38,7 +38,7 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
 
 $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){
 
-    $router->post('queue/iron', function(\Illuminate\Queue\Queue $queue){ $queue->marshal(); });
+    $router->post('queue/iron', function(){ return \Queue::marshal(); });
 
     $router->get(trans('routes.world.create'), [
         'uses'          => 'WorldController@create',
