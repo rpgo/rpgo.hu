@@ -60,9 +60,9 @@ return [
 		'iron' => [
 			'driver'  => 'iron',
 			'host'    => 'mq-aws-us-east-1.iron.io',
-			'token'   => env('IRON_TOKEN'),
-			'project' => env('IRON_PROJECT'),
-			'queue'   => env('IRON_QUEUE'),
+			'token'   => env('IRON_TOKEN', ''),
+			'project' => env('IRON_PROJECT', ''),
+			'queue'   => env('IRON_QUEUE', ''),
 			'encrypt' => true,
 		],
 
