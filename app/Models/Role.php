@@ -8,17 +8,17 @@ class Role extends Eloquent {
 
     public function members()
     {
-        $this->belongsToMany(Member::class,'members_roles');
+        return $this->belongsToMany(Member::class,'members_roles');
     }
 
     public function permissions()
     {
-        $this->belongsToMany(Permission::class,'roles_permissions');
+        return $this->belongsToMany(Permission::class,'roles_permissions');
     }
 
     public function world()
     {
-        $this->belongsTo(World::class);
+        return $this->belongsTo(World::class);
     }
 
     public function setNameGroupAttribute($name)

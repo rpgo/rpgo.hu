@@ -6,7 +6,12 @@ class Permission extends Eloquent {
 
     public function roles()
     {
-        $this->belongsToMany(Role::class,'roles_permissions');
+        return $this->belongsToMany(Role::class,'roles_permissions');
+    }
+
+    public function types()
+    {
+        return $this->belongsToMany(Type::class, 'types_permissions');
     }
 
 }

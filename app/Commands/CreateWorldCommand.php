@@ -161,6 +161,14 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $world->roles()->saveMany($roles);
 
+        /** @var Role $role */
+        foreach($roles as $role)
+        {
+            $role->permissions()->sync($role->type->permissions->lists('id'));
+            foreach($role->permissions as $permission)
+                $role->permissions()->updateExistingPivot($permission->id, ['grant' => 1]);
+        }
+
         return $roles;
     }
 

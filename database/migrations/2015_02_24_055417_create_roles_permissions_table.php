@@ -14,7 +14,6 @@ class CreateRolesPermissionsTable extends Migration {
 	{
 		Schema::create('roles_permissions', function(Blueprint $table)
 		{
-			$table->increments('id');
 			$table->timestamps();
 
             $table->string('role_id', 36);
@@ -22,6 +21,8 @@ class CreateRolesPermissionsTable extends Migration {
 
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('permission_id')->references('id')->on('permissions');
+
+            $table->primary(['role_id','permission_id']);
 
             $table->integer('grant');
 		});

@@ -12,12 +12,17 @@ class Type extends Eloquent {
 
     public function roles()
     {
-        $this->hasMany(Role::class);
+        return $this->hasMany(Role::class);
     }
 
     public function scopeNonSecret($query)
     {
         return $query->where('secret', 0);
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'types_permissions');
     }
 
 }
