@@ -2,6 +2,8 @@
 
 use Rpgo\Http\Requests\JoinWorld;
 use Rpgo\Models\Member;
+use Rpgo\Models\Role;
+use Rpgo\Models\Type;
 use Rpgo\Models\World;
 use Rpgo\Rpgo;
 
@@ -34,6 +36,12 @@ class MemberController extends Controller {
         $member->world()->associate($world);
 
         $member->save();
+
+        $type = Type::where('label', 'reader')->first();
+
+        $role = Role::ofWorld($world)->ofType($type)->first();
+
+        $member->roles()->attach($role);
 
         return redirect()->route('member.show', [$world, $member]);
 	}
