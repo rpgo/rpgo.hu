@@ -15,4 +15,9 @@ class Type extends Eloquent {
         $this->hasMany(Role::class);
     }
 
+    public function scopeNonSecret($query)
+    {
+        return $query->where('secret', 0);
+    }
+
 }

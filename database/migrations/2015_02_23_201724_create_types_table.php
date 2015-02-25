@@ -22,6 +22,7 @@ class CreateTypesTable extends Migration {
             $table->string('name_solo', 30);
             $table->text('description');
             $table->string('slug', 30);
+            $table->boolean('secret');
 		});
 	}
 

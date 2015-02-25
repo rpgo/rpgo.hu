@@ -44,4 +44,9 @@ class Member extends Eloquent {
         return $this->belongsToMany(Role::class,'members_roles');
     }
 
+    public function scopeOfType($query, $type)
+    {
+        return $query->whereHas('roles', function($query) use($type) {return $query->where('type_id', $type->id);});
+    }
+
 }

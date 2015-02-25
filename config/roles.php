@@ -5,13 +5,13 @@ return [
      * The common roles for every new world.
      */
     'common' => [
-        'support',
-        'staff',
-        'admin',
-        'player',
-        'storyteller',
-        'reader',
-        'stranger',
-        'anonymous',
+        'support' => true,
+        'staff' => false,
+        'admin' => false,
+        'player' => false,
+        'storyteller' => false,
+        'reader' => false,
+        'stranger' => true,
+        'anonymous' => true,
     ],
 ];
