@@ -15,7 +15,7 @@
                         <p class="text-right">{{trans('world.creator.title') . ': ' . $world->creator->name}}</p>
                         <ul class="list-unstyled list-inline">
                             <li><span>{{trans('world.item.members') . ': ' . $world->members()->count()}} </span></li>
-                            @foreach($types as $type)
+                            @foreach($world->types->where('secret',0) as $type)
                                 <li class="hidden-xs">|</li>
                                 <li class="hidden-xs">{{$type->name_group}}: {{$world->members()->ofType($type)->count()}}</li>
                             @endforeach

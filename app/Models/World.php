@@ -39,6 +39,11 @@ class World extends Eloquent {
         return $this->hasMany(Role::class);
     }
 
+    public function types()
+    {
+        return $this->belongsToMany(Type::class, 'roles', 'world_id', 'type_id');
+    }
+
     public function publish()
     {
         $this->published_at = Carbon::now();
