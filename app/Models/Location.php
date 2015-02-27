@@ -6,6 +6,8 @@ class Location extends Eloquent {
 
 	public $incrementing = false;
 
+    protected $appends = ['children'];
+
     protected $fillable = ['name', 'slug'];
 
     public function worlds()
@@ -16,7 +18,7 @@ class Location extends Eloquent {
     public function supralocations()
     {
         return $this->belongsToMany(self::class, 'location_hierarchy', 'descendant_id', 'ancestor_id')
-            ->withPivot('depth');
+            ->withPivot('depth')->orderBy('depth', 'desc');
     }
 
     public function sublocations()
@@ -49,7 +51,7 @@ class Location extends Eloquent {
         return $this->supralocations()->wherePivot('depth', 1)->first();
     }
 
-    public function children()
+    public function getChildrenAttribute()
     {
         return $this->sublocations()->wherePivot('depth', 1)->get();
     }
