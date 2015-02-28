@@ -18,7 +18,7 @@
                 <li>|</li>
                 <li>Link: <a href="{{route('world.main', compact('world'))}}">{{$item['slug'] . '.' . env('APP_DOMAIN')}}</a></li>
             </ul>
-            <p><a href="{{route('world.show', $item)}}">Bővebben...</a></p>
+            <p>{{$item['motto']}} <a href="{{route('world.show', $item)}}">Bővebben...</a></p>
         </div>
     </div>
 </div>

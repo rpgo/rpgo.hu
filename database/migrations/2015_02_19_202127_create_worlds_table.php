@@ -21,6 +21,7 @@ class CreateWorldsTable extends Migration {
             $table->string('brand', 10);
             $table->string('creator_id', 36);
 
+			$table->string('motto')->nullable();
             $table->timestamp('published_at')->nullable();
 
             $table->foreign('creator_id')->references('id')->on('users');
