@@ -42,4 +42,16 @@ class Role extends Eloquent {
         return $query->where('world_id', $world->id);
     }
 
+    public function scopeOfWorldAndType($query, $world, $type)
+    {
+        return $query->ofWorld($world)->ofType($type);
+    }
+
+    public function can($permission)
+    {
+        $permission = $this->permissions()->wherePivot('grant', 1)->where('id', $permission->id)->first();
+
+        return (bool) $permission;
+    }
+
 }

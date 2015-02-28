@@ -25,7 +25,7 @@ class PermissionsTableSeeder extends Seeder {
 
         $permissions = \Rpgo\Models\Permission::all();
 
-        $types = Type::nonSecret()->get();
+        $types = Type::all();
 
         foreach($types as $type)
         {

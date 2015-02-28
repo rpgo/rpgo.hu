@@ -15,7 +15,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guide', 'usher'] ], function(Router $router){
+$router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['guide', 'usher', 'permission'] ], function(Router $router){
 
     $router->get('/', [
         'uses'          => 'WorldController@main',

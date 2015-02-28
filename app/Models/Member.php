@@ -49,4 +49,20 @@ class Member extends Eloquent {
         return $query->whereHas('roles', function($query) use($type) {return $query->where('type_id', $type->id);});
     }
 
+    public function can(Permission $permission)
+    {
+        $veto = $this->roles()->whereHas('permissions', function($query) use ($permission)
+        {
+            return $query->where('grant', -1)->where('id', $permission->id);
+        })->count();
+
+        if($veto)
+            return false;
+
+        return (bool) $this->roles()->whereHas('permissions', function($query) use ($permission)
+        {
+            return $query->where('grant', 1)->where('id', $permission->id);
+        })->count();
+    }
+
 }
