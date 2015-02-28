@@ -7,7 +7,7 @@ return [
     'common' => [
         'support' => true,
         'staff' => false,
-        'admin' => false,
+        'admin' => true,
         'player' => false,
         'storyteller' => false,
         'reader' => false,
