@@ -5,7 +5,7 @@
         </a>
         <div class="media-body">
             <h4 class="media-heading"><a href="{{route('world.main', $item)}}">{{$item->name}} ({{$item->brand}})</a></h4>
-            <p class="text-right">{{trans('world.creator.title') . ': ' . $item->creator->name}}</p>
+            {{--<p class="text-right">{{trans('world.creator.title') . ': ' . $item->creator->name}}</p>--}}
             <ul class="list-unstyled list-inline">
                 <li><span>{{trans('world.item.members') . ': ' . $item->members()->count()}} </span></li>
                 @foreach($item->types->where('secret',0) as $type)
