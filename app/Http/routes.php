@@ -20,6 +20,7 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
     $router->get('/', [
         'uses'          => 'WorldController@main',
         'as'            => 'world.main',
+        'permission'    => 'see.world',
     ]);
 
     $router->post(trans('routes.world.publish'), [

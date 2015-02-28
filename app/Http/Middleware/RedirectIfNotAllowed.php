@@ -24,9 +24,11 @@ class RedirectIfNotAllowed {
 	 */
 	public function handle($request, Closure $next)
 	{
-		$route = $request->route()->getName();
+		$route = $request->route();
 
-		if( ! $this->rpgo->can('view.' . $route))
+		$permission = array_get($route->getAction(),'permission', null);
+
+		if( $permission && ! $this->rpgo->can($permission))
 			return Response('Forbidden', 503);
 
 		return $next($request);
