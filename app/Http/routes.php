@@ -25,7 +25,6 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
     $router->post(trans('routes.world.publish'), [
         'uses'          => 'WorldController@publish',
         'as'            => 'world.publish',
-        'middleware'    => 'warden',
     ]);
 
     require __DIR__ . '/routes/member.php';

@@ -9,5 +9,8 @@
                 @include('world.publish')
             @endif
         </div>
+        <div>
+            {{can('access.control')}}
+        </div>
     </div>
 @endsection

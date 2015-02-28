@@ -12,7 +12,6 @@ $router->get(trans('routes.character.index'), [
 $router->get(trans('routes.character.create'), [
     'as' => 'character.create',
     'uses' => 'CharacterController@create',
-    'middleware' => 'warden',
 ]);
 
 $router->get(trans('routes.character.show', ['parameter' => '{character}']), [

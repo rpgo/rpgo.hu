@@ -27,7 +27,7 @@ class RedirectIfNotAllowed {
 		$route = $request->route()->getName();
 
 		if( ! $this->rpgo->can('view.' . $route))
-			return redirect()->guest(route('world.main', $this->rpgo->world()));
+			return Response('Forbidden', 503);
 
 		return $next($request);
 	}

@@ -139,6 +139,7 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		'Rpgo\Providers\HelperServiceProvider',
 		'Rpgo\Providers\AppServiceProvider',
 		'Rpgo\Providers\BusServiceProvider',
 		'Rpgo\Providers\ConfigServiceProvider',
