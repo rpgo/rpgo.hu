@@ -48,7 +48,7 @@ return [
         'create' => 'characters/new',
         'show' => 'characters/:parameter',
     ],
-    'control' => [
+    'dashboard' => [
         'prefix' => 'control',
     ],
 ];

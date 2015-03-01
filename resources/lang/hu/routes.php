@@ -48,7 +48,7 @@ return [
         'create' => 'karakterek/uj',
         'show' => 'karakterek/:parameter',
     ],
-    'control' => [
+    'dashboard' => [
         'prefix' => 'iranyitopult',
     ],
 ];

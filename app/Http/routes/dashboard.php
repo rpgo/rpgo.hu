@@ -4,10 +4,10 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => trans('routes.control.prefix')], function($router){
+$router->group(['prefix' => trans('routes.dashboard.prefix')], function($router){
     $router->get('/', [
-        'uses'          => 'ControlController@main',
-        'as'            => 'control.main',
+        'uses'          => 'DashboardController@main',
+        'as'            => 'dashboard.main',
         'permission'    => 'use.control',
     ]);
 

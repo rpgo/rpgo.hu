@@ -22,7 +22,7 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'as'            => 'world.main',
     ]);
 
-    require __DIR__ . '/routes/control.php';
+    require __DIR__ . '/routes/dashboard.php';
 
     require __DIR__ . '/routes/member.php';
 
