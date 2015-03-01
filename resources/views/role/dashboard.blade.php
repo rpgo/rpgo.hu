@@ -31,7 +31,6 @@
                 </table>
                 <div>
                     @lang('role.form.selected'):
-                    <button type="submit" class="btn btn-default" formaction="copy">{{trans('role.form.copy')}}</button>
                     <button type="submit" class="btn btn-warning" formaction="empty">{{trans('role.form.empty')}}</button>
                     <button type="submit" class="btn btn-danger" formaction="delete">{{trans('role.form.delete')}}</button>
                 </div>
@@ -41,7 +40,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">@lang('role.create.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.store')}}" class="form-inline">
+            <form method="POST" action="{{route('role.store', [$world])}}" class="form-inline">
                 <div class="form-group">
                     <label>@lang('role.form.name_solo')</label>
                     <input type="text" class="form-control" name="name_solo" value="{{ old('name_solo') }}">
