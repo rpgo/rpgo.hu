@@ -15,5 +15,5 @@ $router->group(['prefix' => trans('routes.dashboard.prefix'), 'permission' => 'u
         'as'            => 'world.publish',
     ]);
 
-    require __DIR__ . '/roles.php';
+    require __DIR__ . '/role.php';
 });
