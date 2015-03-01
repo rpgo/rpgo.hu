@@ -6,7 +6,7 @@ class Role extends Eloquent {
 
     protected $fillable = ['name_group', 'name_solo', 'description', 'secret'];
 
-    protected $appends = ['member_count'];
+    protected $appends = ['member_count', 'custom'];
 
     public function members()
     {
@@ -59,6 +59,11 @@ class Role extends Eloquent {
     public function getMemberCountAttribute()
     {
         return $this->members()->count();
+    }
+
+    public function getCustomAttribute()
+    {
+        return ! $this->attributes['type_id'];
     }
 
 }

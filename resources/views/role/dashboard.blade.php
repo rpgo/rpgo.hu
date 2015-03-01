@@ -19,14 +19,14 @@
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}} ({{$role['name_group']}})</a></td>
                             <td>{{$role['member_count']}}</td>
                             <td>{{$role['description']}}</td>
-                            <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
+                            <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]" @if( ! $role['custom']) disabled @endif /></td>
                         </tr>
                     @endforeach
                     <tr>
                         <td>@lang('common.info.total')</td>
                         <td>{{$world['member_count']}}</td>
                         <td></td>
-                        <td><input type="checkbox" value="{{$role['id']}}" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = this.checked;}"/></td>
+                        <td><input type="checkbox" value="{{$role['id']}}" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = this.checked;}"/>{{$role['custom']}}</td>
                     </tr>
                 </table>
                 <div>
