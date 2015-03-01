@@ -28,9 +28,9 @@ class RoleController extends Controller {
         return redirect()->route('role.dashboard', [$rpgo->world()]);
     }
 
-    public function edit()
+    public function edit(Role $role)
     {
-        return 'edit';
+        return view('role.edit')->with(compact('role'));
     }
 
     public function desert(Request $request, Rpgo $rpgo)
