@@ -48,4 +48,7 @@ return [
         'create' => 'karakterek/uj',
         'show' => 'karakterek/:parameter',
     ],
+    'control' => [
+        'prefix' => 'iranyitopult',
+    ],
 ];

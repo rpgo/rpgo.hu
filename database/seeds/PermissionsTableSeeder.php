@@ -11,15 +11,9 @@ class PermissionsTableSeeder extends Seeder {
         \Rpgo\Models\Permission::insert([
             [
                 'id' => Uuid::uuid4(),
-                'key' => 'world.access',
-                'name' => 'World Access',
-                'description' => 'Can access the World',
-            ],
-            [
-                'id' => Uuid::uuid4(),
-                'key' => 'control.access',
-                'name' => 'Control Panel Access',
-                'description' => 'Can access the Control Panel',
+                'key' => 'use.control',
+                'name' => trans('permission.use.control.name'),
+                'description' => trans('permission.use.control.description'),
             ],
         ]);
 

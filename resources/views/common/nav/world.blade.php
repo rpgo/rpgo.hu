@@ -1,3 +1,6 @@
+@if(can('use.control'))
+    <li><a href="{{route('control.main', [$world])}}">@lang('control.main.menu')</a></li>
+@endif
 <li><a href="{{route('location.show', [$world, $world->rootlocation()])}}">{{$world->rootlocation()->name}}</a></li>
 <li><a href="{{route('character.index', $world)}}">@lang('character.index.menu')</a></li>
 @if($member)
