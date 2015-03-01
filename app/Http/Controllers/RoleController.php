@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Rpgo\Http\Requests\AddRole;
 use Rpgo\Models\Role;
 use Rpgo\Rpgo;
@@ -30,6 +31,29 @@ class RoleController extends Controller {
     public function edit()
     {
         return 'edit';
+    }
+
+    public function desert(Request $request, Rpgo $rpgo)
+    {
+        $deserts = $request->get('selected');
+
+        $roles = Role::find($deserts);
+
+        foreach($roles as $role)
+        {
+            $role->members()->detach();
+        }
+
+        return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
+    public function delete(Request $request, Rpgo $rpgo)
+    {
+        $deserts = $request->get('selected');
+
+        Role::destroy($deserts);
+
+        return redirect()->route('role.dashboard', [$rpgo->world()]);
     }
 
 }

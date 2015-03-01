@@ -31,8 +31,8 @@
                 </table>
                 <div>
                     @lang('role.form.selected'):
-                    <button type="submit" class="btn btn-warning" formaction="empty">{{trans('role.form.empty')}}</button>
-                    <button type="submit" class="btn btn-danger" formaction="delete">{{trans('role.form.delete')}}</button>
+                    <button type="submit" class="btn btn-warning" formaction="{{route('role.desert', [$world])}}">{{trans('role.form.empty')}}</button>
+                    <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">{{trans('role.form.delete')}}</button>
                 </div>
             </form>
         </div>
