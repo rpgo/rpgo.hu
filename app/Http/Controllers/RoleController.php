@@ -9,7 +9,7 @@ class RoleController extends Controller {
     {
         $world = $rpgo->world();
 
-        $roles = Role::ofWorld($world)->get();
+        $roles = Role::ofWorld($world)->orderBy('name_solo')->get();
 
         return view('role.index')->with(compact('roles'));
     }
