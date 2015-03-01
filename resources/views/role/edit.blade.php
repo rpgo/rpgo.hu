@@ -82,6 +82,30 @@
         <div class="panel-heading">@lang('role.permissions.heading')</div>
         <div class="panel-body">
             <form method="POST" action="{{route('role.update', [$world])}}" class="form-horizontal">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>@lang('permission.form.name')</th>
+                        <th>@lang('permission.form.description')</th>
+                        <th>@lang('permission.form.granted')</th>
+                        <th>@lang('permission.form.denied')</th>
+                        <th>@lang('permission.form.vetoed')</th>
+                    </tr>
+                    @foreach($role['permissions'] as $permission)
+                        <tr>
+                            <td>{{$permission['name']}}</td>
+                            <td>{{$permission['description']}}</td>
+                            <td><input type="radio" name="{{$permission['id']}}" value="1" @if($permission->pivot['grant'] == 1) checked @endif /></td>
+                            <td><input type="radio" name="{{$permission['id']}}" value="0" @if($permission->pivot['grant'] == 0) checked @endif /></td>
+                            <td><input type="radio" name="{{$permission['id']}}" value="-1" @if($permission->pivot['grant'] == -1) checked @endif /></td>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan="2">@lang('common.info.total')</td>
+                        <td><input type="radio" name="{{$permission['id']}}" value="1"/></td>
+                        <td><input type="radio" name="{{$permission['id']}}" value="0"/></td>
+                        <td><input type="radio" name="{{$permission['id']}}" value="-1"/></td>
+                    </tr>
+                </table>
                 <div class="form-group">
                     <div class="col-xs-4 col-xs-offset-3">
                         <button type="submit" class="btn btn-primary">
