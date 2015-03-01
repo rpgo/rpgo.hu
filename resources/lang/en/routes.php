@@ -51,4 +51,9 @@ return [
     'dashboard' => [
         'prefix' => 'control',
     ],
+    'role' => [
+        'index' => 'roles',
+        'store' => 'roles',
+        'show' => 'roles/{:parameter}',
+    ],
 ];

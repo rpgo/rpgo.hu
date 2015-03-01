@@ -51,4 +51,9 @@ return [
     'dashboard' => [
         'prefix' => 'iranyitopult',
     ],
+    'role' => [
+        'index' => 'szerepek',
+        'store' => 'szerepek',
+        'show' => 'szerepek/{:parameter}',
+    ],
 ];
