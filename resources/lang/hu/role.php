@@ -3,8 +3,8 @@
 return [
     'common' => [
         'support' => [
-            'name_group' => 'Karbantartók',
-            'name_solo' => 'Karbantartó',
+            'name_group' => 'Rendszergazdák',
+            'name_solo' => 'Rendszergazda',
             'description' => 'Technikai segítségnyújtók az rpgo.hu-tól.',
         ],
         'staff' => [
