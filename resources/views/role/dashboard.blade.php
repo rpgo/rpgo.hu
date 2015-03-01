@@ -42,12 +42,12 @@
         <div class="panel-body">
             <form method="POST" action="{{route('role.store', [$world])}}" class="form-inline">
                 <div class="form-group">
-                    <label>@lang('role.form.name_solo')</label>
+                    <label>@lang('role.form.name_solo'): </label>
                     <input type="text" class="form-control" name="name_solo" value="{{ old('name_solo') }}">
                 </div>
 
                 <div class="form-group">
-                    <label>@lang('role.form.name_group')</label>
+                    <label>@lang('role.form.name_group'): </label>
                     <input type="text" class="form-control" name="name_group" value="{{ old('name_group') }}">
                 </div>
 
