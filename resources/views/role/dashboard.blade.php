@@ -26,7 +26,7 @@
                         <td>@lang('common.info.total')</td>
                         <td>{{$world['member_count']}}</td>
                         <td></td>
-                        <td><input type="checkbox" value="{{$role['id']}}" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = this.checked;}"/>{{$role['custom']}}</td>
+                        <td><input type="checkbox" value="{{$role['id']}}" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/>{{$role['custom']}}</td>
                     </tr>
                 </table>
                 <div>
