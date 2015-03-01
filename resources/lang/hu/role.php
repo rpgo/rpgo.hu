@@ -5,42 +5,42 @@ return [
         'support' => [
             'name_group' => 'Rendszergazdák',
             'name_solo' => 'Rendszergazda',
-            'description' => 'Technikai segítségnyújtók az rpgo.hu-tól.',
+            'description' => 'Az rpgo.hu kapcsolattartói.',
         ],
         'staff' => [
             'name_group' => 'Staff',
             'name_solo' => 'Staff',
-            'description' => 'A világ staffjának aktiv tagjai.',
+            'description' => 'A staff tagjai.',
         ],
         'admin' => [
             'name_group' => 'Adminisztrátorok',
             'name_solo' => 'Adminisztrátor',
-            'description' => 'A világ olyan aktív tagjai, akiknek minden felülethez van hozzáférésük az oldalon.',
+            'description' => 'Az összes hozzáféréssel rendelkező tagok.',
         ],
         'player' => [
             'name_group' => 'Játékosok',
             'name_solo' => 'Játékos',
-            'description' => 'A világ olyan aktív tagjai, akik már készítettek legalább egy játékos karaktert.',
+            'description' => 'Játékos karakterrel rendelkező tagok.',
         ],
         'storyteller' => [
             'name_group' => 'Mesélők',
             'name_solo' => 'Mesélő',
-            'description' => 'A világ olyan aktív tagjai, akik már készítettek legalább egy mesélő karaktert.',
+            'description' => 'Mesélő karakterrel rendelkező tagok.',
         ],
         'reader' => [
             'name_group' => 'Olvasók',
             'name_solo' => 'Olvasó',
-            'description' => 'A világ olyan aktív tagjai, akik nem vesznek részt a játékban, csak figyelemmel követik az eseményeket.',
+            'description' => 'A játékban nem résztvevő tagok.',
         ],
         'stranger' => [
             'name_group' => 'Vendégek',
             'name_solo' => 'Vendég',
-            'description' => 'Az rpgo.hu regisztrált felhasználói, akik még nem csatlakoztak a világhoz.',
+            'description' => 'Regisztrált felhasználók, akik nem csatlakoztak még.',
         ],
         'anonymous' => [
             'name_group' => 'Idegenek',
             'name_solo' => 'Idegen',
-            'description' => 'Az rpgo.hu-ra nem regisztrált felhasználók, akiknek a kiléte ismeretlen még.',
+            'description' => 'Látogatók, akik nem regisztráltak még az rpgo.hu-ra.',
         ],
     ],
     'dashboard' => [
