@@ -6,6 +6,8 @@ class Role extends Eloquent {
 
     protected $fillable = ['name_group', 'name_solo', 'description', 'secret'];
 
+    protected $appends = ['member_count'];
+
     public function members()
     {
         return $this->belongsToMany(Member::class,'members_roles');
@@ -52,6 +54,11 @@ class Role extends Eloquent {
         $permission = $this->permissions()->wherePivot('grant', 1)->where('id', $permission->id)->first();
 
         return (bool) $permission;
+    }
+
+    public function getMemberCountAttribute()
+    {
+        return $this->members()->count();
     }
 
 }

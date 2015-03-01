@@ -9,6 +9,8 @@ class World extends Eloquent {
 
     protected $fillable = ['name', 'brand', 'slug'];
 
+    protected $appends = ['member_count'];
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
@@ -49,6 +51,11 @@ class World extends Eloquent {
         $this->published_at = Carbon::now();
 
         return $this;
+    }
+
+    public function getMemberCountAttribute()
+    {
+        return $this->members()->count();
     }
 
 }
