@@ -56,5 +56,6 @@ return [
         'store' => 'roles',
         'show' => 'roles/{:parameter}',
         'update' => 'roles/{:parameter}/edit',
+        'assign' => 'roles/{:parameter}/assign',
     ],
 ];

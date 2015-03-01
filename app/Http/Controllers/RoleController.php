@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Rpgo\Http\Requests\AddRole;
+use Rpgo\Models\Member;
 use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
 use Rpgo\Rpgo;
@@ -70,6 +71,15 @@ class RoleController extends Controller {
         $role->save();
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
+    public function assign(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $member = Member::whereName($request->get('member'))->first();
+
+        $role->members()->attach($member);
+
+        return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
 }

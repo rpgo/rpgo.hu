@@ -56,5 +56,6 @@ return [
         'store' => 'szerepek',
         'show' => 'szerepek/{:parameter}',
         'update' => 'szerepek/{:parameter}/szerkesztes',
+        'assign' => 'szerepek/{:parameter}/felruhazas',
     ],
 ];

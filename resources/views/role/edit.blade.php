@@ -58,10 +58,10 @@
                 </ul>
             </form>
             @if($role['custom'])
-                <form method="POST" action="{{route('role.update', [$world, $role])}}" class="form-inline">
+                <form method="POST" action="{{route('role.assign', [$world, $role])}}" class="form-inline">
                     <div class="form-group">
-                        <label>@lang('role.members.add'): </label>
-                        <input type="text" list="members-list" class="form-control" name="secret" value="{{ old('secret') }}">
+                        <label>@lang('role.assign.member'): </label>
+                        <input type="text" list="members-list" class="form-control" name="member" value="{{ old('member') }}">
                         <datalist id="members-list">
                             @foreach($world['members'] as $member)
                                 <option>{{$member['name']}}</option>

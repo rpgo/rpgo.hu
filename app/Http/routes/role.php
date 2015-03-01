@@ -33,3 +33,8 @@ $router->post(trans('routes.role.update', ['parameter' => 'role']),[
     'uses'      => 'RoleController@update',
     'as'        => 'role.update',
 ]);
+
+$router->post(trans('routes.role.assign', ['parameter' => 'role']), [
+    'uses'      => 'RoleController@assign',
+    'as'        => 'role.assign',
+]);
