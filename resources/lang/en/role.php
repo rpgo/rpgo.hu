@@ -43,4 +43,8 @@ return [
             'description' => 'Unregistered visitors of rpgo.hu.',
         ],
     ],
+    'index' => [
+        'title' => 'Roles',
+        'menu' => 'Roles',
+    ],
 ];

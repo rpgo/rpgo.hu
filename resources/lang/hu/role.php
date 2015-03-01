@@ -43,4 +43,8 @@ return [
             'description' => 'Az rpgo.hu-ra nem regisztrált felhasználók, akiknek a kiléte ismeretlen még.',
         ],
     ],
+    'index' => [
+        'title' => 'Szerepek',
+        'menu' => 'Szerepek',
+    ],
 ];
