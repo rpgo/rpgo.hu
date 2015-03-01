@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-3 col-md-2">
                 <ul class="nav nav-stacked">
-                    <li class="active"><a href="#">@lang('dashboard.main.sidebar')</a></li>
+                    <li class="active"><a href="{{route('dashboard.main', $world)}}">@lang('dashboard.main.sidebar')</a></li>
                     <li><a href="#">@lang('roles.index.menu')</a></li>
                 </ul>
             </div>
