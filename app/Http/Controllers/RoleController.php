@@ -5,13 +5,13 @@ use Rpgo\Rpgo;
 
 class RoleController extends Controller {
 
-	public function index(Rpgo $rpgo)
+	public function dashboard(Rpgo $rpgo)
     {
         $world = $rpgo->world();
 
         $roles = Role::ofWorld($world)->orderBy('name_solo')->get();
 
-        return view('role.index')->with(compact('roles'));
+        return view('role.dashboard')->with(compact('roles'));
     }
 
     public function store()
@@ -19,9 +19,9 @@ class RoleController extends Controller {
         return 'store';
     }
 
-    public function show()
+    public function edit()
     {
-        return 'show';
+        return 'edit';
     }
 
 }

@@ -5,8 +5,8 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 
 $router->get(trans('routes.role.index'), [
-    'uses'      => 'RoleController@index',
-    'as'        => 'role.index',
+    'uses'      => 'RoleController@dashboard',
+    'as'        => 'role.dashboard',
 ]);
 
 $router->post(trans('routes.role.store'), [
@@ -15,6 +15,6 @@ $router->post(trans('routes.role.store'), [
 ]);
 
 $router->get(trans('routes.role.show', ['parameter' => 'role']), [
-    'uses'      => 'RoleController@show',
-    'as'        => 'role.show',
+    'uses'      => 'RoleController@edit',
+    'as'        => 'role.edit',
 ]);
