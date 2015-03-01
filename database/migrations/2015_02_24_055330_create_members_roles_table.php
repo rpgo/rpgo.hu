@@ -14,11 +14,12 @@ class CreateMembersRolesTable extends Migration {
 	{
 		Schema::create('members_roles', function(Blueprint $table)
 		{
-			$table->increments('id');
 			$table->timestamps();
 
             $table->string('member_id', 36);
             $table->string('role_id', 36);
+
+			$table->primary(['member_id','role_id']);
 
             $table->foreign('member_id')->references('id')->on('members');
             $table->foreign('role_id')->references('id')->on('roles');
