@@ -15,7 +15,7 @@ class Role extends Eloquent {
 
     public function permissions()
     {
-        return $this->belongsToMany(Permission::class,'roles_permissions');
+        return $this->belongsToMany(Permission::class,'roles_permissions')->withPivot('grant');
     }
 
     public function world()
