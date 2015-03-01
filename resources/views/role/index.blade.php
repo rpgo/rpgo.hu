@@ -6,11 +6,13 @@
     <table class="table table-striped table-bordered">
         <tr>
             <th>@lang('role.name.info')</th>
-            <th>Kijelölés</th>
+            <th>@lang('role.description.info')</th>
+            <th>@lang('common.select.info')</th>
         </tr>
         @foreach($roles as $role)
             <tr>
                 <td><a href="{{route('role.show', [$world, $role])}}">{{$role['name_solo']}}</a></td>
+                <td>{{$role['description']}}</td>
                 <td></td>
             </tr>
         @endforeach
