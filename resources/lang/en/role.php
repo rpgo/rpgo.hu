@@ -46,5 +46,23 @@ return [
     'dashboard' => [
         'title' => 'Roles',
         'menu' => 'Roles',
+        'heading' => 'Roles',
+    ],
+    'info' => [
+        'description' => 'Description',
+        'name' => 'Name',
+    ],
+    'create' => [
+        'heading' => 'New role',
+        'submit' => 'Done'
+    ],
+    'form' => [
+        'selected' => 'Action with the selected roles',
+        'copy' => 'Copy',
+        'empty' => 'Empty',
+        'delete' => 'Delete',
+        'name_solo' => 'Singular',
+        'name_group' => 'Plural',
+        'description' => 'Description',
     ],
 ];

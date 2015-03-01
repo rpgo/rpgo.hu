@@ -15,4 +15,7 @@ return [
         'title' => 'Profile',
         'menu' => 'Profile',
     ],
+    'info' => [
+        'count' => 'Members',
+    ],
 ];

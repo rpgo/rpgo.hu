@@ -18,4 +18,7 @@ return [
     'admin' => [
         'title' => 'Saját OOC neved'
     ],
+    'info' => [
+        'count' => 'Tagok',
+    ],
 ];

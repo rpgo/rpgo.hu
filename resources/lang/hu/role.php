@@ -46,5 +46,23 @@ return [
     'dashboard' => [
         'title' => 'Szerepek',
         'menu' => 'Szerepek',
+        'heading' => 'Szerepek',
+    ],
+    'info' => [
+        'description' => 'Leírás',
+        'name' => 'Név',
+    ],
+    'create' => [
+        'heading' => 'Új szerep',
+        'submit' => 'Mehet'
+    ],
+    'form' => [
+        'selected' => 'Művelet a kijelölt szerepekkel',
+        'copy' => 'Másolás',
+        'empty' => 'Kiürítés',
+        'delete' => 'Törlés',
+        'name_solo' => 'Egyes szám',
+        'name_group' => 'Többes szám',
+        'description' => 'Leírás',
     ],
 ];
