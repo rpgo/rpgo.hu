@@ -4,7 +4,7 @@ class RoleController extends Controller {
 
 	public function index()
     {
-        return 'index';
+        return view('role.index');
     }
 
     public function store()
