@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">@lang('role.edit.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.update', [$world])}}" class="form-horizontal">
+            <form method="POST" action="{{route('role.update', [$world, $role])}}" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-xs-3">@lang('role.form.name_solo'): </label>
                     <div class="col-xs-6">
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label class="col-xs-3">@lang('role.form.secret'): </label>
                     <div class="col-xs-6">
-                        <input type="checkbox" class="form-control" name="secret" value="{{ $role['secret'] ?:old('secret') }}">
+                        <input type="checkbox" class="form-control" name="secret" value="yes" @if($role['secret'] ?: old('secret')) checked @endif>
                     </div>
                 </div>
 
@@ -101,9 +101,9 @@
                     @endforeach
                     <tr>
                         <td colspan="2">@lang('common.info.total')</td>
-                        <td><input type="radio" name="{{$permission['id']}}" value="1"/></td>
-                        <td><input type="radio" name="{{$permission['id']}}" value="0"/></td>
-                        <td><input type="radio" name="{{$permission['id']}}" value="-1"/></td>
+                        <td><input type="radio" value="1"/></td>
+                        <td><input type="radio" value="0"/></td>
+                        <td><input type="radio" value="-1"/></td>
                     </tr>
                 </table>
                 <div class="form-group">

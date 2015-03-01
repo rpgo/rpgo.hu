@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Rpgo\Http\Requests\AddRole;
+use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
 use Rpgo\Rpgo;
 
@@ -23,7 +24,11 @@ class RoleController extends Controller {
 
         $role->world()->associate($rpgo->world());
 
+        $permissions = Permission::lists('id');
+
         $role->save();
+
+        $role->permissions()->attach($permissions, ['grant' => false]);
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
     }
@@ -52,6 +57,17 @@ class RoleController extends Controller {
         $deserts = $request->get('selected');
 
         Role::destroy($deserts);
+
+        return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
+    public function update(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $data = $request->only('name_group', 'name_solo', 'description');
+        $data['secret'] = $request->has('secret');
+
+        $role->fill($data);
+        $role->save();
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
     }

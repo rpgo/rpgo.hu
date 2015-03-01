@@ -55,5 +55,6 @@ return [
         'index' => 'roles',
         'store' => 'roles',
         'show' => 'roles/{:parameter}',
+        'update' => 'roles/{:parameter}/edit',
     ],
 ];

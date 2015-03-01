@@ -55,5 +55,6 @@ return [
         'index' => 'szerepek',
         'store' => 'szerepek',
         'show' => 'szerepek/{:parameter}',
+        'update' => 'szerepek/{:parameter}/szerkesztes',
     ],
 ];

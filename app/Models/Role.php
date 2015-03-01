@@ -8,6 +8,8 @@ class Role extends Eloquent {
 
     protected $appends = ['member_count', 'custom'];
 
+    protected $casts = ['secret' => 'boolean'];
+
     public function members()
     {
         return $this->belongsToMany(Member::class,'members_roles');
