@@ -70,4 +70,9 @@ return [
         'heading' => 'Edit role',
         'submit' => 'Save',
     ],
+    'discharge' => [
+        'heading' => 'Discharge members',
+        'submit' => 'Discharge',
+        'total' => 'Everyone',
+    ],
 ];

@@ -70,4 +70,9 @@ return [
         'heading' => 'Szerep szerkesztése',
         'submit' => 'Mentés',
     ],
+    'discharge' => [
+        'heading' => 'Tagok elbocsátása',
+        'submit' => 'Elbocsátás',
+        'total' => 'Mindenkit',
+    ],
 ];
