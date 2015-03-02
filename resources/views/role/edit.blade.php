@@ -46,17 +46,32 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">@lang('role.members.heading')</div>
+        <div class="panel-heading">@lang('role.discharge.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.update', [$world, $role])}}" class="form-horizontal col-xs-6">
-                <ul class="list-inline list-group">
-                    @forelse($role['members'] as $member)
+            @if(count($role['members']))
+            <form method="POST" action="{{route('role.discharge', [$world, $role])}}" class="form-inline">
+                <ul class="form-group list-inline list-group">
+                    @foreach($role['members'] as $member)
                         <li class="list-group-item">{{$member['name']}} <input type="checkbox" value="{{$member['id']}}" name="members[]" class="member-select"/></li>
-                    @empty
-                        <div>@lang('members.count.empty')</div>
-                    @endforelse
+                    @endforeach
                 </ul>
+                <ul class="form-group">
+                    <li class="list-group-item">@lang('members.count.total') <input type="checkbox"  onchange="checkboxes = document.getElementsByClassName('member-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}" /></li>
+                </ul>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        {{trans('role.discharge.submit')}}
+                    </button>
+                </div>
             </form>
+            @else
+                <div>@lang('members.count.empty')</div>
+            @endif
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">@lang('role.assign.heading')</div>
+        <div class="panel-body">
             @if($role['custom'])
                 <form method="POST" action="{{route('role.assign', [$world, $role])}}" class="form-inline">
                     <div class="form-group">

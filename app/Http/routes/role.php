@@ -38,3 +38,8 @@ $router->post(trans('routes.role.assign', ['parameter' => 'role']), [
     'uses'      => 'RoleController@assign',
     'as'        => 'role.assign',
 ]);
+
+$router->post(trans('routes.role.discharge', ['parameter' => 'role']), [
+    'uses'      => 'RoleController@discharge',
+    'as'        => 'role.discharge',
+]);
