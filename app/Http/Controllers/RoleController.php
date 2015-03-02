@@ -82,4 +82,13 @@ class RoleController extends Controller {
         return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
+    public function discharge(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $members = $request->get('members');
+
+        $role->members()->detach($members);
+
+        return redirect()->route('role.edit', [$rpgo->world(), $role]);
+    }
+
 }

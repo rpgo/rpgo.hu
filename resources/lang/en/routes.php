@@ -57,5 +57,6 @@ return [
         'show' => 'roles/{:parameter}',
         'update' => 'roles/{:parameter}/edit',
         'assign' => 'roles/{:parameter}/assign',
+        'discharge' => 'roles/{:parameter}/discharge',
     ],
 ];

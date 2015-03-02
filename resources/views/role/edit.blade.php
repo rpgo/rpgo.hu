@@ -56,7 +56,7 @@
                     @endforeach
                 </ul>
                 <ul class="form-group">
-                    <li class="list-group-item">@lang('members.count.total') <input type="checkbox"  onchange="checkboxes = document.getElementsByClassName('member-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}" /></li>
+                    <li class="list-group-item">@lang('members.discharge.total') <input type="checkbox"  onchange="checkboxes = document.getElementsByClassName('member-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}" /></li>
                 </ul>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
