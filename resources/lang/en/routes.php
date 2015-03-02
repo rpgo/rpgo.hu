@@ -58,5 +58,6 @@ return [
         'update' => 'roles/{:parameter}/edit',
         'assign' => 'roles/{:parameter}/assign',
         'discharge' => 'roles/{:parameter}/discharge',
+        'permit' => 'roles/{:parameter}/permit',
     ],
 ];

@@ -58,5 +58,6 @@ return [
         'update' => 'szerepek/{:parameter}/szerkesztes',
         'assign' => 'szerepek/{:parameter}/felruhazas',
         'discharge' => 'szerepek/{:parameter}/elbocsatas',
+        'permit' => 'szerepek/{:parameter}/feljogositas',
     ],
 ];

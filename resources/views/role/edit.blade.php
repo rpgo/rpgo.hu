@@ -96,7 +96,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">@lang('role.permissions.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.update', [$world])}}" class="form-horizontal">
+            <form method="POST" action="{{route('role.permit', [$world, $role])}}" class="form-horizontal">
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>@lang('permission.form.name')</th>
@@ -109,9 +109,9 @@
                         <tr>
                             <td>{{$permission['name']}}</td>
                             <td>{{$permission['description']}}</td>
-                            <td><input type="radio" name="{{$permission['id']}}" value="1" @if($permission->pivot['grant'] == 1) checked @endif /></td>
-                            <td><input type="radio" name="{{$permission['id']}}" value="0" @if($permission->pivot['grant'] == 0) checked @endif /></td>
-                            <td><input type="radio" name="{{$permission['id']}}" value="-1" @if($permission->pivot['grant'] == -1) checked @endif /></td>
+                            <td><input type="radio" name="grants[{{$permission['id']}}]" value="1" @if($permission->pivot['grant'] == 1) checked @endif /></td>
+                            <td><input type="radio" name="grants[{{$permission['id']}}]" value="0" @if($permission->pivot['grant'] == 0) checked @endif /></td>
+                            <td><input type="radio" name="grants[{{$permission['id']}}]" value="-1" @if($permission->pivot['grant'] == -1) checked @endif /></td>
                         </tr>
                     @endforeach
                     <tr>

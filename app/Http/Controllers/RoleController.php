@@ -91,4 +91,13 @@ class RoleController extends Controller {
         return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
+    public function permit(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $permissions = array_map(function($grant){return ['grant' => $grant];}, $request->get('grants'));
+
+        $role->permissions()->sync($permissions);
+
+        return redirect()->route('role.edit', [$rpgo->world(), $role]);
+    }
+
 }
