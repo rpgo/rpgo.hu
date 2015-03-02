@@ -36,4 +36,8 @@ return [
         'question'  => 'A világod még nincs élesítve. Szeretnéd élesíteni most?',
         'submit'    => 'Élesítés most',
     ],
+    'count' => [
+        'info' => 'Világok',
+        'none' => 'Nincs még élesített világ a rendszerünkben. A tiéd lesz az első?'
+    ],
 ];

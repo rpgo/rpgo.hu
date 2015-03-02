@@ -36,4 +36,8 @@ return [
         'question'  => 'Your world is not published yet. Would you like to publish it?',
         'submit'    => 'Publish Now',
     ],
+    'count' => [
+        'info' => 'Worlds',
+        'none' => 'There is no public world in our system. Will yours be the first?'
+    ],
 ];

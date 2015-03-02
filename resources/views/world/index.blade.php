@@ -7,7 +7,7 @@
         @forelse($worlds as $item)
             @include('world.item', compact('item'))
         @empty
-            {{trans('worlds.none')}}
+            {{trans('world.count.none')}}
         @endforelse
     </div>
 @endsection
