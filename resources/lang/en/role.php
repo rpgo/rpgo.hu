@@ -64,5 +64,10 @@ return [
         'name_solo' => 'Singular',
         'name_group' => 'Plural',
         'description' => 'Description',
+        'secret' => 'Secret',
+    ],
+    'edit' => [
+        'heading' => 'Edit role',
+        'submit' => 'Save',
     ],
 ];

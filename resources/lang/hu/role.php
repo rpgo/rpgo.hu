@@ -64,5 +64,10 @@ return [
         'name_solo' => 'Egyes szám',
         'name_group' => 'Többes szám',
         'description' => 'Leírás',
+        'secret' => 'Titkos',
+    ],
+    'edit' => [
+        'heading' => 'Szerep szerkesztése',
+        'submit' => 'Mentés',
     ],
 ];
