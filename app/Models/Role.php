@@ -12,7 +12,7 @@ class Role extends Eloquent {
 
     public function members()
     {
-        return $this->belongsToMany(Member::class,'members_roles');
+        return $this->belongsToMany(Member::class,'members_roles')->orderBy('name');
     }
 
     public function permissions()
