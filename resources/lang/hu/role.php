@@ -75,4 +75,9 @@ return [
         'submit' => 'Elbocsátás',
         'total' => 'Mindenkit',
     ],
+    'assign' => [
+        'heading' => 'Tagok hozzárendelése',
+        'member' => 'Tag',
+        'submit' => 'Hozzárendelés',
+    ],
 ];

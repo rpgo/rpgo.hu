@@ -75,4 +75,9 @@ return [
         'submit' => 'Discharge',
         'total' => 'Everyone',
     ],
+    'assign' => [
+        'heading' => 'Assign member',
+        'member' => 'Member',
+        'submit' => 'Assign',
+    ],
 ];
