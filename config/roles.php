@@ -8,10 +8,11 @@ return [
         'support' => true,
         'staff' => false,
         'admin' => true,
-        'player' => false,
-        'storyteller' => false,
-        'reader' => false,
-        'stranger' => true,
-        'anonymous' => true,
+        'player' => false, //can automate members
+        'master' => false, //can automate members
+        'reader' => false, //can automate members
+        'guest' => true, //no member
+        'stranger' => true, //no member
+        'bot' => true, //no member
     ],
 ];

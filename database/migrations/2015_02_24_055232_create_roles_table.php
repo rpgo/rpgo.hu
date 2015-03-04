@@ -20,11 +20,12 @@ class CreateRolesTable extends Migration {
             $table->string('name_group', 30);
             $table->string('name_solo', 30);
             $table->string('slug', 30);
-            $table->boolean('secret');
+            $table->boolean('secret_role'); //role hidden in profile and statistics
+			$table->boolean('automatic_members'); //members are assigned according to the type
 
             $table->text('description')->nullable();
 
-            $table->string('world_id', 36);
+            $table->string('world_id', 36)->nullable();
             $table->foreign('world_id')->references('id')->on('worlds');
 
             $table->string('type_id', 36)->nullable();

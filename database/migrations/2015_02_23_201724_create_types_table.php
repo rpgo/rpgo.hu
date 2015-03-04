@@ -17,12 +17,18 @@ class CreateTypesTable extends Migration {
 			$table->string('id', 36)->primary();
 			$table->timestamps();
 
-            $table->string('label', 20);
-            $table->string('name_group', 30);
-            $table->string('name_solo', 30);
-            $table->text('description');
-            $table->string('slug', 30);
-            $table->boolean('secret');
+            $table->string('pointer', 20);
+			$table->boolean('automates_members');
+			$table->boolean('no_members');
+			$table->string('explanation');
+
+			$table->string('template_id', 36)->nullable();
+
+            //$table->string('name_group', 30);
+            //$table->string('name_solo', 30);
+            //$table->text('description');
+            //$table->string('slug', 30);
+            //$table->boolean('secret');
 		});
 	}
 
