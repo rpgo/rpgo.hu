@@ -20,11 +20,6 @@ class Type extends Eloquent {
         return $query->where('secret', 0);
     }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'types_permissions');
-    }
-
     public static function point($pointer)
     {
         if(is_array($pointer))

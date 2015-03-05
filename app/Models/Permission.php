@@ -9,11 +9,6 @@ class Permission extends Eloquent {
         return $this->belongsToMany(Role::class,'roles_permissions');
     }
 
-    public function types()
-    {
-        return $this->belongsToMany(Type::class, 'types_permissions');
-    }
-
     public static function point($pointer)
     {
         if(is_array($pointer))
