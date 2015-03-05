@@ -4,9 +4,9 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
-    protected $fillable = ['name_group', 'name_solo', 'description', 'secret'];
+    protected $fillable = ['name_group', 'name_solo', 'description', 'secret_role'];
 
-    protected $appends = ['member_count', 'custom'];
+    protected $appends = ['member_count'];
 
     protected $casts = ['secret' => 'boolean'];
 
@@ -38,12 +38,12 @@ class Role extends Eloquent {
 
     public function scopeOfType($query, $type)
     {
-        return $query->where('type_id', $type->id);
+        return $query->where('type_id', $type['id']);
     }
 
     public function scopeOfWorld($query, $world)
     {
-        return $query->where('world_id', $world->id);
+        return $query->where('world_id', $world['id']);
     }
 
     public function scopeOfWorldAndType($query, $world, $type)
@@ -53,7 +53,7 @@ class Role extends Eloquent {
 
     public function can($permission)
     {
-        $permission = $this->permissions()->wherePivot('grant', 1)->where('id', $permission->id)->first();
+        $permission = $this->permissions()->wherePivot('grant', 1)->where('id', $permission['id'])->first();
 
         return (bool) $permission;
     }
@@ -61,11 +61,6 @@ class Role extends Eloquent {
     public function getMemberCountAttribute()
     {
         return $this->members()->count();
-    }
-
-    public function getCustomAttribute()
-    {
-        return ! $this->attributes['type_id'];
     }
 
 }
