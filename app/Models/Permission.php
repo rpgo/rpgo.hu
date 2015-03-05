@@ -14,4 +14,11 @@ class Permission extends Eloquent {
         return $this->belongsToMany(Type::class, 'types_permissions');
     }
 
+    public static function point($pointer)
+    {
+        if(is_array($pointer))
+            return self::whereIn('pointer', $pointer)->get();
+        return self::where('pointer', $pointer)->first();
+    }
+
 }

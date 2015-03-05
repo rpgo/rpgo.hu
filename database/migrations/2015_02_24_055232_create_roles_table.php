@@ -21,7 +21,7 @@ class CreateRolesTable extends Migration {
             $table->string('name_solo', 30);
             $table->string('slug', 30);
             $table->boolean('secret_role'); //role hidden in profile and statistics
-			$table->boolean('automatic_members'); //members are assigned according to the type
+			$table->boolean('automates_members'); //members are assigned according to the type
 
             $table->text('description')->nullable();
 

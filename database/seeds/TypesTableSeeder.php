@@ -7,13 +7,20 @@ class TypesTableSeeder extends Seeder {
 
     public function run()
     {
-        foreach(config('roles.common') as $key => $secret)
+        foreach(config('type.seed') as $pointer => $type)
         {
-            Type::create(array_merge(
-                trans('role.common.' . $key),
-                ['label' => $key, 'secret' => $secret]
-            ));
+            Type::create($this->getType($type));
         }
+    }
+
+    private function getType($type)
+    {
+        return [
+            'pointer' => $type['pointer'],
+            'automates_members' => $type['automates_members'],
+            'no_members' => $type['no_members'],
+            'explanation' => trans($type['explanation']),
+        ];
     }
 
 }
