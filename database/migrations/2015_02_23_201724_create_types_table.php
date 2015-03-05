@@ -23,12 +23,6 @@ class CreateTypesTable extends Migration {
 			$table->string('explanation');
 
 			$table->string('template_id', 36)->nullable();
-
-            //$table->string('name_group', 30);
-            //$table->string('name_solo', 30);
-            //$table->text('description');
-            //$table->string('slug', 30);
-            //$table->boolean('secret');
 		});
 	}
 
