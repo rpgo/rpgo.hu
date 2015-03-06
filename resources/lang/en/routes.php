@@ -54,6 +54,7 @@ return [
     'role' => [
         'index' => 'roles',
         'store' => 'roles',
+        'create' => 'roles/new',
         'show' => 'roles/{:parameter}',
         'update' => 'roles/{:parameter}/edit',
         'assign' => 'roles/{:parameter}/assign',

@@ -12,7 +12,11 @@ return [
     ],
     'create' => [
         'heading' => 'Új szerep',
-        'submit' => 'Mehet'
+        'submit' => 'Mehet',
+        'template' => 'Az alábbi sablon felhasználásával',
+        'custom' => 'Egyedi',
+        'rpgo' => 'Sablonok',
+        'world' => 'Szerep másolása',
     ],
     'form' => [
         'selected' => 'Művelet a kijelölt szerepekkel',

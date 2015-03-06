@@ -54,6 +54,7 @@ return [
     'role' => [
         'index' => 'szerepek',
         'store' => 'szerepek',
+        'create' => 'szerepek/uj',
         'show' => 'szerepek/{:parameter}',
         'update' => 'szerepek/{:parameter}/szerkesztes',
         'assign' => 'szerepek/{:parameter}/felruhazas',

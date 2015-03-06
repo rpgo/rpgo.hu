@@ -12,7 +12,11 @@ return [
     ],
     'create' => [
         'heading' => 'New role',
-        'submit' => 'Done'
+        'submit' => 'Done',
+        'template' => 'Create a new role from this template',
+        'custom' => 'Custom',
+        'rpgo' => 'Templates',
+        'world' => 'Copy role',
     ],
     'form' => [
         'selected' => 'Action with the selected roles',

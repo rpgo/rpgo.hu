@@ -14,6 +14,11 @@ $router->post(trans('routes.role.store'), [
     'as'        => 'role.store',
 ]);
 
+$router->post(trans('routes.role.create'), [
+    'uses'      => 'RoleController@create',
+    'as'        => 'role.create',
+]);
+
 $router->get(trans('routes.role.show', ['parameter' => 'role']), [
     'uses'      => 'RoleController@edit',
     'as'        => 'role.edit',

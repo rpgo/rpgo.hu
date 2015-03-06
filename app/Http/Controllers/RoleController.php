@@ -5,6 +5,7 @@ use Rpgo\Http\Requests\AddRole;
 use Rpgo\Models\Member;
 use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
+use Rpgo\Models\Type;
 use Rpgo\Rpgo;
 
 class RoleController extends Controller {
@@ -15,7 +16,9 @@ class RoleController extends Controller {
 
         $roles = Role::ofWorld($world)->orderBy('name_solo')->get();
 
-        return view('role.dashboard')->with(compact('roles'));
+        $templates = Role::templates();
+
+        return view('role.dashboard')->with(compact('roles', 'templates'));
     }
 
     public function store(AddRole $request, Rpgo $rpgo)
@@ -32,6 +35,18 @@ class RoleController extends Controller {
         $role->permissions()->attach($permissions, ['grant' => false]);
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
+    public function create(Request $request, Rpgo $rpgo)
+    {
+        if(! $template = Role::find($request->get('template')))
+        {
+            $type = Type::point('custom');
+            $template = new Role();
+            $template->type()->associate($type);
+        }
+
+        return view('role.create')->with(['role' => $template]);
     }
 
     public function edit(Role $role)

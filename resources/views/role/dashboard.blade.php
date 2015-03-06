@@ -40,15 +40,20 @@
     <div class="panel panel-default">
         <div class="panel-heading">@lang('role.create.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.store', [$world])}}" class="form-inline">
+            <form method="POST" action="{{route('role.create', [$world])}}" class="form-inline">
                 <div class="form-group">
-                    <label>@lang('role.form.name_solo'): </label>
-                    <input type="text" class="form-control" name="name_solo" value="{{ old('name_solo') }}">
-                </div>
-
-                <div class="form-group">
-                    <label>@lang('role.form.name_group'): </label>
-                    <input type="text" class="form-control" name="name_group" value="{{ old('name_group') }}">
+                    <label for="new_role_template">@lang('role.create.template'): </label>
+                    <select name="template" id="new_role_template">
+                        <option selected>@lang('role.create.custom')</option>
+                        <option disabled>@lang('role.create.rpgo'):</option>
+                        @foreach($templates as $template)
+                            <option value="{{$template['id']}}">{{$template['name_solo']}}</option>
+                        @endforeach
+                        <option disabled>@lang('role.create.world'):</option>
+                        @foreach($roles as $template)
+                            <option value="{{$template['id']}}">{{$template['name_solo']}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
