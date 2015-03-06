@@ -45,7 +45,7 @@ class Rpgo {
      */
     public function can($permission)
     {
-        $permission = Permission::where('key', $permission)->first();
+        $permission = Permission::point($permission);
 
         if(! $permission)
             return true;
@@ -55,14 +55,14 @@ class Rpgo {
 
         if(! $this->user)
         {
-            $type = Type::where('label', 'anonymous')->first();
+            $type = Type::point('stranger');
             $role = Role::ofWorldAndType($this->world, $type)->first();
             return $role->can($permission);
         }
 
         if(! $this->member)
         {
-            $type = Type::where('label', 'stranger')->first();
+            $type = Type::point('guest');
             $role = Role::ofWorldAndType($this->world, $type)->first();
             return $role->can($permission);
         }

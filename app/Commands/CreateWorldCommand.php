@@ -5,6 +5,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
+use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
 use Rpgo\Models\Type;
 use Rpgo\Models\User;
@@ -96,7 +97,6 @@ class CreateWorldCommand extends Command implements SelfHandling {
     {
         $admin = $this->createMember($user, $world, $this->admin);
 
-        $this->addRole($world, $admin, 'admin');
         $this->addRole($world, $admin, 'staff');
 
         return $admin;
@@ -141,32 +141,32 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
     private function createRoles(World $world)
     {
-        $types = Type::all();
+        $templates = Role::templates();
 
-        $roles = [];
+        $roles = new Collection();
 
-        foreach($types as $type)
+        foreach($templates as $template)
         {
             $role = new Role([
-                'name_group' => $type['name_group'],
-                'name_solo' => $type['name_solo'],
-                'description' => $type['description'],
-                'secret' => false,
+                'name_group' => $template['name_group'],
+                'name_solo' => $template['name_solo'],
+                'description' => $template['description'],
+                'secret_role' => $template['secret_role'],
+                'automates_members' => $template['automates_members'],
             ]);
 
-            $role->type()->associate($type);
+            $role->type()->associate($template['type']);
+
+            $role->world()->associate($world);
+
+            $role->save();
+
+            foreach($template['permissions'] as $permission)
+            {
+                $role->permissions()->attach([$permission['id'] => ['grant' => $permission['pivot']['grant']]]);
+            }
 
             $roles[] = $role;
-        }
-
-        $world->roles()->saveMany($roles);
-
-        /** @var Role $role */
-        foreach($roles as $role)
-        {
-            $role->permissions()->sync($role->type->permissions->lists('id'));
-            foreach($role->permissions as $permission)
-                $role->permissions()->updateExistingPivot($permission->id, ['grant' => 1]);
         }
 
         return $roles;
@@ -178,9 +178,9 @@ class CreateWorldCommand extends Command implements SelfHandling {
      */
     private function addRole($world, $member, $type)
     {
-        $type = Type::where('label', $type)->first();
+        $type = Type::point($type);
 
-        $role = Role::ofWorld($world)->ofType($type)->first();
+        $role = Role::ofWorld($world)->ofType($type)->latest()->first();
 
         $member->roles()->attach($role);
     }

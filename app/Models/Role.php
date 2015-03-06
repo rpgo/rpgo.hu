@@ -4,7 +4,7 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
-    protected $fillable = ['name_group', 'name_solo', 'description', 'secret_role'];
+    protected $fillable = ['name_group', 'name_solo', 'description', 'secret_role', 'automates_members'];
 
     protected $appends = ['member_count'];
 
@@ -61,6 +61,11 @@ class Role extends Eloquent {
     public function getMemberCountAttribute()
     {
         return $this->members()->count();
+    }
+
+    public static function templates()
+    {
+        return self::with('type','permissions')->has('world', 0)->latest()->get();
     }
 
 }
