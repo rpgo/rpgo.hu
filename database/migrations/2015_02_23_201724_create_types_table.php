@@ -21,8 +21,6 @@ class CreateTypesTable extends Migration {
 			$table->boolean('automates_members');
 			$table->boolean('no_members');
 			$table->string('explanation');
-
-			$table->string('template_id', 36)->nullable();
 		});
 	}
 

@@ -9,11 +9,6 @@ class Type extends Eloquent {
         return $this->hasMany(Role::class);
     }
 
-    public function template()
-    {
-        return $this->belongsTo(Role::class, 'template_id');
-    }
-
     public static function point($pointer)
     {
         if(is_array($pointer))

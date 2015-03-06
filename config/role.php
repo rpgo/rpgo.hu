@@ -13,17 +13,6 @@ return [
                 'use.control' => 1,
             ],
         ],
-        'staff' => [
-            'name_group' => 'role.staff.name_group',
-            'name_solo' => 'role.staff.name_solo',
-            'description' => 'role.staff.description',
-            'secret_role' => false,
-            'automates_members' => false,
-            'type' => 'staff',
-            'permissions' => [
-                'use.control' => 0,
-            ],
-        ],
         'admin' => [
             'name_group' => 'role.admin.name_group',
             'name_solo' => 'role.admin.name_solo',
