@@ -21,6 +21,10 @@ return [
         'name' => 'Support',
         'explanation' => 'If the members of the group are not here to play but for something else.'
     ],
+    'member' => [
+        'name' => 'Member',
+        'explanation' => 'Ha a csoportba minden tag beletartozik.'
+    ],
     'reader' => [
         'name' => 'Reader',
         'explanation' => 'If none of the members of the group started the game, but they intend to. Possible to automate membership to all members not owning a character.',

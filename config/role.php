@@ -35,6 +35,17 @@ return [
                 'use.control' => 0,
             ],
         ],
+        'member' => [
+            'name_group' => 'role.member.name_group',
+            'name_solo' => 'role.member.name_solo',
+            'description' => 'role.member.description',
+            'secret_role' => false,
+            'automates_members' => true,
+            'type' => 'member',
+            'permissions' => [
+                'use.control' => 0,
+            ],
+        ],
         'player' => [
             'name_group' => 'role.player.name_group',
             'name_solo' => 'role.player.name_solo',

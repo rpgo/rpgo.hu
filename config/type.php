@@ -16,6 +16,13 @@ return [
             'no_members' => false,
             'explanation' => 'type.staff.explanation',
         ],
+        'member' => [
+            'name' => 'type.member.name',
+            'pointer' => 'member',
+            'automates_members' => true,
+            'no_members' => false,
+            'explanation' => 'type.member.explanation',
+        ],
         'player' => [
             'name' => 'type.player.name',
             'pointer' => 'player',

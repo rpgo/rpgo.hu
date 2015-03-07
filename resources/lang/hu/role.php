@@ -67,6 +67,11 @@ return [
         'name_solo' => 'Moderátor',
         'description' => 'A játék és a közösség vezetői.',
     ],
+    'member' => [
+        'name_group' => 'Tagok',
+        'name_solo' => 'Tag',
+        'description' => 'A világ minden tagja.',
+    ],
     'player' => [
         'name_group' => 'Játékosok',
         'name_solo' => 'Játékos',

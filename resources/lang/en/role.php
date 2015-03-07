@@ -67,6 +67,11 @@ return [
         'name_solo' => 'Moderator',
         'description' => 'The leaders of the game and community.',
     ],
+    'member' => [
+        'name_group' => 'Members',
+        'name_solo' => 'Member',
+        'description' => 'All members of the world.',
+    ],
     'player' => [
         'name_group' => 'Players',
         'name_solo' => 'Player',
