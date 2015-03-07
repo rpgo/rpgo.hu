@@ -8,7 +8,8 @@ return [
     ],
     'info' => [
         'description' => 'Description',
-        'name' => 'Name',
+        'name_group' => 'Group title',
+        'name_solo' => 'Solo title',
         'type' => 'Type',
     ],
     'create' => [

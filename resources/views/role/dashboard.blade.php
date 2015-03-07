@@ -9,7 +9,8 @@
             <form role="form" method="POST">
                 <table class="table table-striped table-bordered">
                     <tr>
-                        <th>@lang('role.info.name')</th>
+                        <th>@lang('role.info.name_group')</th>
+                        <th>@lang('role.info.name_solo')</th>
                         <th>@lang('member.info.count')</th>
                         <th>@lang('role.info.type')</th>
                         <th>@lang('role.info.description')</th>
@@ -17,7 +18,8 @@
                     </tr>
                     @foreach($roles as $role)
                         <tr>
-                            <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}} ({{$role['name_group']}})</a></td>
+                            <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_group']}}</a></td>
+                            <td>{{$role['name_solo']}}</td>
                             <td>{{$role['member_count']}}</td>
                             <td>{{$role['type']['name']}}</td>
                             <td>{{$role['description']}}</td>

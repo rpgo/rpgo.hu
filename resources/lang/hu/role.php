@@ -8,7 +8,8 @@ return [
     ],
     'info' => [
         'description' => 'Leírás',
-        'name' => 'Név',
+        'name_group' => 'Csoport cím',
+        'name_solo' => 'Egyéni cím',
         'type' => 'Típus',
     ],
     'create' => [
