@@ -10,21 +10,21 @@
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th>@lang('role.info.name_solo')</th>
-                        <th>@lang('role.info.name_group')</th>
-                        <th>@lang('role.info.type')</th>
-                        <th>@lang('role.info.secret')</th>
-                        <th>@lang('member.info.count')</th>
-                        <th>@lang('role.info.description')</th>
+                        <th class="hidden-xs">@lang('role.info.name_group')</th>
+                        <th class="hidden-xs">@lang('role.info.type')</th>
+                        <th class="hidden-xs">@lang('role.info.secret')</th>
+                        <th class="hidden-xs">@lang('member.info.count')</th>
+                        <th class="hidden-xs">@lang('role.info.description')</th>
                         <th><input type="checkbox" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/></th>
                     </tr>
                     @foreach($roles as $role)
                         <tr>
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}}</a></td>
-                            <td>{{$role['name_group']}}</td>
-                            <td>{{$role['type']['name']}}</td>
-                            <td>{{$role['secret_role'] ? trans('common.yes') : trans('common.no') }}</td>
-                            <td>{{$role['member_count']}}</td>
-                            <td>{{$role['description']}}</td>
+                            <td class="hidden-xs">{{$role['name_group']}}</td>
+                            <td class="hidden-xs">{{$role['type']['name']}}</td>
+                            <td class="hidden-xs">{{$role['secret_role'] ? trans('common.yes') : trans('common.no') }}</td>
+                            <td class="hidden-xs">{{$role['member_count']}}</td>
+                            <td class="hidden-xs">{{$role['description']}}</td>
                             <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
                         </tr>
                     @endforeach
