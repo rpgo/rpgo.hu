@@ -19,7 +19,7 @@
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}} ({{$role['name_group']}})</a></td>
                             <td>{{$role['member_count']}}</td>
                             <td>{{$role['description']}}</td>
-                            <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]" @if( ! $role['custom']) disabled @endif /></td>
+                            <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
                         </tr>
                     @endforeach
                     <tr>

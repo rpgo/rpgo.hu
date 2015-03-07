@@ -21,8 +21,8 @@ class CreateMembersRolesTable extends Migration {
 
 			$table->primary(['member_id','role_id']);
 
-            $table->foreign('member_id')->references('id')->on('members');
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 		});
 	}
 
