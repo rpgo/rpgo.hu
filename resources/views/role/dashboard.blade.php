@@ -40,11 +40,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">@lang('role.create.heading')</div>
         <div class="panel-body">
-            <form method="POST" action="{{route('role.create', [$world])}}" class="form-inline">
+            <form method="GET" action="{{route('role.create', [$world])}}" class="form-inline">
                 <div class="form-group">
                     <label for="new_role_template">@lang('role.create.template'): </label>
-                    <select name="template" id="new_role_template">
-                        <option selected>@lang('role.create.custom')</option>
+                    <select name="@lang('role.template.variable')" id="new_role_template">
+                        <option value="@lang('role.template.none')" selected>@lang('role.create.custom')</option>
                         <option disabled>@lang('role.create.rpgo'):</option>
                         @foreach($templates as $template)
                             <option value="{{$template['id']}}">{{$template['name_solo']}}</option>

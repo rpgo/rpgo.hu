@@ -87,4 +87,8 @@ return [
         'name_solo' => 'Bot',
         'description' => 'Az oldalt feltérképező robotok.',
     ],
+    'template' => [
+        'variable' => 'sablon',
+        'none' => 'nincs',
+    ],
 ];

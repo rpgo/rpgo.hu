@@ -87,4 +87,8 @@ return [
         'name_solo' => 'Bot',
         'description' => 'Robots crawling the site.',
     ],
+    'template' => [
+        'variable' => 'template',
+        'none' => 'none',
+    ],
 ];

@@ -1,21 +1,22 @@
+@include('common.feedback')
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.name_solo'): </label>
     <div class="col-xs-6">
-        <input type="text" class="form-control" name="name_solo" value="{{ $role['name_solo'] ?: old('name_solo') }}">
+        <input type="text" class="form-control" name="name_solo" value="{{ old('name_solo') ?: $role['name_solo'] }}">
     </div>
 </div>
 
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.name_group'): </label>
     <div class="col-xs-6">
-        <input type="text" class="form-control" name="name_group" value="{{ $role['name_group'] ?: old('name_group') }}">
+        <input type="text" class="form-control" name="name_group" value="{{ old('name_group') ?: $role['name_group'] }}">
     </div>
 </div>
 
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.description'): </label>
     <div class="col-xs-6">
-        <textarea class="form-control" name="description" cols="30" rows="5" maxlength="255">{{ $role['description'] ?: old('description') }}</textarea>
+        <textarea class="form-control" name="description" cols="30" rows="5" maxlength="255">{{ old('description') ?: $role['description'] }}</textarea>
     </div>
 </div>
 
@@ -48,6 +49,6 @@
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.secret'): </label>
     <div class="col-xs-6">
-        <input type="checkbox" class="form-control" name="secret_role" value="yes" @if($role['secret_role'] ?: old('secret_role')) checked @endif>
+        <input type="checkbox" class="form-control" name="secret_role" value="yes" @if( old('secret_role') ?: $role['secret_role']) checked @endif>
     </div>
 </div>

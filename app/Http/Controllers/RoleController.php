@@ -23,6 +23,7 @@ class RoleController extends Controller {
 
     public function store(AddRole $request, Rpgo $rpgo)
     {
+        dd($request->all());
         $role = new Role($request->only('name_group', 'name_solo'));
         $role->fill(['secret' => false]);
 
@@ -39,14 +40,21 @@ class RoleController extends Controller {
 
     public function create(Request $request, Rpgo $rpgo)
     {
-        if(! $template = Role::find($request->get('template')))
+        $template = Role::find($request->get(trans('role.template.variable')));
+
+        if(! $template)
         {
             $type = Type::point('custom');
-            $template = new Role();
-            $template->type()->associate($type);
+            $role = new Role();
+        }else
+        {
+            $type = $template['type'];
+            $role = new Role($template->toArray());
         }
 
-        return view('role.create')->with(['role' => $template]);
+        $role->type()->associate($type);
+
+        return view('role.create')->with(compact('role'));
     }
 
     public function edit(Role $role)
