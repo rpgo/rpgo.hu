@@ -12,7 +12,7 @@
                         <th>@lang('role.info.name')</th>
                         <th>@lang('member.info.count')</th>
                         <th>@lang('role.info.description')</th>
-                        <th>@lang('common.info.select')</th>
+                        <th><input type="checkbox" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/></th>
                     </tr>
                     @foreach($roles as $role)
                         <tr>
@@ -22,12 +22,6 @@
                             <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
                         </tr>
                     @endforeach
-                    <tr>
-                        <td>@lang('common.info.total')</td>
-                        <td>{{$world['member_count']}}</td>
-                        <td></td>
-                        <td><input type="checkbox" value="{{$role['id']}}" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/>{{$role['custom']}}</td>
-                    </tr>
                 </table>
                 <div>
                     @lang('role.form.selected'):
