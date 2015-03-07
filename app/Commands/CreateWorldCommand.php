@@ -101,6 +101,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $admin->roles()->attach($role);
 
+        $this->addRole($world, $admin, 'member');
+
         return $admin;
     }
 
@@ -124,6 +126,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $member = $this->createMember($support, $world, $support->name);
 
         $this->addRole($world, $member, 'support');
+
+        $this->addRole($world, $member, 'member');
 
         return $member;
     }
