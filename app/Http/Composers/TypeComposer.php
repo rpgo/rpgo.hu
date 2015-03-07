@@ -8,7 +8,7 @@ class TypeComposer {
 
     public function compose(View $view)
     {
-        $types = Type::all();
+        $types = Type::orderBy('name')->get();
 
         $view->with(compact('types'));
     }

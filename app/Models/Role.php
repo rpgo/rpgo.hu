@@ -65,7 +65,7 @@ class Role extends Eloquent {
 
     public static function templates()
     {
-        return self::with('type','permissions')->has('world', 0)->latest()->get();
+        return self::with('type','permissions')->has('world', 0)->orderBy('name_solo', 'asc')->get();
     }
 
 }

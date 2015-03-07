@@ -14,7 +14,7 @@ class RoleController extends Controller {
     {
         $world = $rpgo->world();
 
-        $roles = Role::ofWorld($world)->orderBy('name_solo')->get();
+        $roles = $world->roles()->get();
 
         $templates = Role::templates();
 

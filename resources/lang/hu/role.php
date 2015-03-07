@@ -16,7 +16,7 @@ return [
         'template' => 'Az alábbi sablon felhasználásával',
         'custom' => 'Egyedi',
         'rpgo' => 'Sablonok',
-        'world' => 'Szerep másolása',
+        'world' => 'Szerepek',
     ],
     'form' => [
         'selected' => 'Művelet a kijelölt szerepekkel',
