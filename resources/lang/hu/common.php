@@ -5,4 +5,6 @@ return [
         'select' => 'Kijelölés',
         'total' => 'Összesen',
     ],
+    'yes' => 'Igen',
+    'no' => 'Nem',
 ];

@@ -11,6 +11,7 @@ return [
         'name_group' => 'Csoport cím',
         'name_solo' => 'Egyéni cím',
         'type' => 'Típus',
+        'secret' => 'Rejtett',
     ],
     'create' => [
         'title' => 'Új szerep',

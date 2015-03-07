@@ -11,6 +11,7 @@ return [
         'name_group' => 'Group title',
         'name_solo' => 'Solo title',
         'type' => 'Type',
+        'secret' => 'Hidden',
     ],
     'create' => [
         'title' => 'New role',

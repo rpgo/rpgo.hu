@@ -5,4 +5,6 @@ return [
         'select' => 'Select',
         'total' => 'Total',
     ],
+    'yes' => 'Yes',
+    'no' => 'No',
 ];
