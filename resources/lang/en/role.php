@@ -11,6 +11,8 @@ return [
         'name' => 'Name',
     ],
     'create' => [
+        'title' => 'New role',
+        'header' => 'New role',
         'heading' => 'New role',
         'submit' => 'Done',
         'template' => 'Create a new role from this template',
@@ -26,7 +28,12 @@ return [
         'name_solo' => 'Singular',
         'name_group' => 'Plural',
         'description' => 'Description',
-        'secret' => 'Secret',
+        'secret' => 'Hidden',
+        'type' => 'Type',
+        'members' => 'Member management',
+        'manual' => 'Manual',
+        'automatic' => 'Automatic',
+        'joining' => 'Via join',
     ],
     'edit' => [
         'heading' => 'Edit role',
