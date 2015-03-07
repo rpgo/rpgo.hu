@@ -9,6 +9,7 @@ return [
     'info' => [
         'description' => 'Leírás',
         'name' => 'Név',
+        'type' => 'Típus',
     ],
     'create' => [
         'title' => 'Új szerep',

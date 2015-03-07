@@ -11,6 +11,7 @@
                     <tr>
                         <th>@lang('role.info.name')</th>
                         <th>@lang('member.info.count')</th>
+                        <th>@lang('role.info.type')</th>
                         <th>@lang('role.info.description')</th>
                         <th><input type="checkbox" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/></th>
                     </tr>
@@ -18,6 +19,7 @@
                         <tr>
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}} ({{$role['name_group']}})</a></td>
                             <td>{{$role['member_count']}}</td>
+                            <td>{{$role['type']['name']}}</td>
                             <td>{{$role['description']}}</td>
                             <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
                         </tr>

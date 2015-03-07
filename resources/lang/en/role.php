@@ -9,6 +9,7 @@ return [
     'info' => [
         'description' => 'Description',
         'name' => 'Name',
+        'type' => 'Type',
     ],
     'create' => [
         'title' => 'New role',
