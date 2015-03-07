@@ -23,9 +23,9 @@
 <div class="form-group">
     <label for="type" class="col-xs-3">@lang('role.form.type'): </label>
     <div class="col-xs-6">
-        <select name="type" id="type" @if($role['exists']) disabled @endif>
+        <select name="type_id" id="type" @if($role['exists']) disabled @endif>
             @foreach($types as $type)
-                <option value="{{$type['id']}}" @if($type->equals($role['type'])) selected @endif>{{$type['name']}}</option>
+                <option value="{{$type['id']}}" @if($type['id'] == (old('type_id') ?: $role['type']['id'])) selected @endif>{{$type['name']}}</option>
             @endforeach
         </select>
     </div>
@@ -35,13 +35,13 @@
     <label class="col-xs-3">@lang('role.form.members'): </label>
     <div class="col-xs-6">
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="1" @if($role['exists'] && !$role['type']['automates_members']) disabled @endif> @lang('role.form.automatic')</label>
+            <label><input type="radio" name="members" class="radio-inline" value="0" @if((old('members') ?: $role['automates_members']) == 0) checked @endif> @lang('role.form.manual')</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="0"> @lang('role.form.manual')</label>
+            <label><input type="radio" name="members" class="radio-inline" value="1" @if($role['exists'] && !$role['type']['automates_members']) disabled @endif @if((old('members') ?: $role['automates_members']) == 1) checked @endif> @lang('role.form.automatic')</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="-1" @if($role['exists'] && $role['type']['no_member']) disabled @endif> @lang('role.form.joining')</label>
+            <label><input type="radio" name="members" class="radio-inline" value="-1" @if($role['exists'] && $role['type']['no_member']) disabled @endif @if(old('members') == -1) checked @endif> @lang('role.form.joining')</label>
         </div>
     </div>
 </div>

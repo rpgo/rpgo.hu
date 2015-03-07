@@ -23,9 +23,13 @@ class RoleController extends Controller {
 
     public function store(AddRole $request, Rpgo $rpgo)
     {
-        dd($request->all());
-        $role = new Role($request->only('name_group', 'name_solo'));
-        $role->fill(['secret' => false]);
+        $role = new Role($request->only('name_group', 'name_solo', 'description'));
+
+        $role['secret_role'] = $request->has('secret_role');
+
+        $type = Type::find($request->get('type_id')) ?: Type::point('custom');
+
+        $role->type()->associate($type);
 
         $role->world()->associate($rpgo->world());
 
