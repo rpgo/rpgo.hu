@@ -25,9 +25,9 @@ class Role extends Eloquent {
         return $this->belongsTo(World::class);
     }
 
-    public function setNameGroupAttribute($name)
+    public function setNameSoloAttribute($name)
     {
-        $this->attributes['name_group'] = $name;
+        $this->attributes['name_solo'] = $name;
         $this->attributes['slug'] = str_slug($name);
     }
 

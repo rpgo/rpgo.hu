@@ -7,7 +7,7 @@ class AddRole extends Request {
 	public function sanitize()
 	{
 		$this->merge([
-			'slug' => str_slug($this->get('name_group'))
+			'slug' => str_slug($this->get('name_solo'))
 		]);
 	}
 
