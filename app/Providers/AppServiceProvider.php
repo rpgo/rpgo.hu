@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider {
 		view()->composer('common.*', 'Rpgo\Http\Composers\RpgoComposer');
         view()->creator('*', 'Rpgo\Http\Composers\RpgoComposer');
 		view()->composer('role.form', 'Rpgo\Http\Composers\TypeComposer');
+		view()->composer('role.form', 'Rpgo\Http\Composers\PermissionComposer');
 	}
 
 	/**

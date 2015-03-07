@@ -50,10 +50,13 @@ class RoleController extends Controller {
         {
             $type = Type::point('custom');
             $role = new Role();
+            $permissions = Permission::all();
+            $role['permissions'] = $permissions;
         }else
         {
             $type = $template['type'];
             $role = new Role($template->toArray());
+            $role->permissions = $template['permissions'];
         }
 
         $role->type()->associate($type);

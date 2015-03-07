@@ -54,3 +54,28 @@
         </div>
     </div>
 </div>
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>@lang('permission.form.name')</th>
+        <th>@lang('permission.form.description')</th>
+        <th>@lang('permission.form.granted')</th>
+        <th>@lang('permission.form.denied')</th>
+        <th>@lang('permission.form.vetoed')</th>
+    </tr>
+    @foreach($role['permissions'] as $permission)
+        <tr>
+            <td>{{$permission['name']}}</td>
+            <td>{{$permission['description']}}</td>
+            <td><input type="radio" name="grants[{{$permission['id']}}]" value="1" @if($permission->pivot['grant'] == 1) checked @endif /></td>
+            <td><input type="radio" name="grants[{{$permission['id']}}]" value="0" @if($permission->pivot['grant'] == 0) checked @endif /></td>
+            <td><input type="radio" name="grants[{{$permission['id']}}]" value="-1" @if($permission->pivot['grant'] == -1) checked @endif /></td>
+        </tr>
+    @endforeach
+    <tr>
+        <td colspan="2">@lang('common.info.total')</td>
+        <td><input type="radio" value="1"/></td>
+        <td><input type="radio" value="0"/></td>
+        <td><input type="radio" value="-1"/></td>
+    </tr>
+</table>
