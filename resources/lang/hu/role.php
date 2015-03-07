@@ -83,7 +83,7 @@ return [
     'guest' => [
         'name_group' => 'Vendégek',
         'name_solo' => 'Vendég',
-        'description' => 'Regisztrált felhasználók, akik még nem csatlakoztak.',
+        'description' => 'Nem csatlakozott felhasználók.',
     ],
     'stranger' => [
         'name_group' => 'Idegenek',
