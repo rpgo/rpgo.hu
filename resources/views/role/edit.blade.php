@@ -7,33 +7,8 @@
         <div class="panel-heading">@lang('role.edit.heading')</div>
         <div class="panel-body">
             <form method="POST" action="{{route('role.update', [$world, $role])}}" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-xs-3">@lang('role.form.name_solo'): </label>
-                    <div class="col-xs-6">
-                        <input type="text" class="form-control" name="name_solo" value="{{ $role['name_solo'] ?: old('name_solo') }}">
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-xs-3">@lang('role.form.name_group'): </label>
-                    <div class="col-xs-6">
-                        <input type="text" class="form-control" name="name_group" value="{{ $role['name_group'] ?: old('name_group') }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-xs-3">@lang('role.form.description'): </label>
-                    <div class="col-xs-6">
-                        <textarea class="form-control" name="description" cols="30" rows="5" maxlength="255">{{ $role['description'] ?: old('description') }}</textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-xs-3">@lang('role.form.secret'): </label>
-                    <div class="col-xs-6">
-                        <input type="checkbox" class="form-control" name="secret" value="yes" @if($role['secret'] ?: old('secret')) checked @endif>
-                    </div>
-                </div>
+                @include('role.form')
 
                 <div class="form-group">
                     <div class="col-xs-4 col-xs-offset-3">
