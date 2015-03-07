@@ -43,9 +43,9 @@ return [
         'submit' => 'Hozzárendelés',
     ],
     'support' => [
-        'name_group' => 'Asszisztensek',
-        'name_solo' => 'Asszisztens',
-        'description' => 'A staff kisegítői.',
+        'name_group' => 'Rendszergazdák',
+        'name_solo' => 'Rendszergazda',
+        'description' => 'Az rpgo.hu kapcsolattartói.',
     ],
     'admin' => [
         'name_group' => 'Adminisztrátorok',
