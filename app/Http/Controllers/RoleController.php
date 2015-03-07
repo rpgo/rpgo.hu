@@ -6,6 +6,7 @@ use Rpgo\Models\Member;
 use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
 use Rpgo\Models\Type;
+use Rpgo\Models\World;
 use Rpgo\Rpgo;
 
 class RoleController extends Controller {
@@ -44,7 +45,18 @@ class RoleController extends Controller {
 
     public function create(Request $request, Rpgo $rpgo)
     {
-        $template = Role::find($request->get(trans('role.template.variable')));
+        $slug = $request->get(trans('role.template.variable'));
+
+        $sections = explode('.', $slug);
+
+        $world = $sections[0];
+
+        $slug = isset($sections[1]) ? $sections[1] : '';
+
+        if($world != 'rpgo')
+            $template = Role::whereSlug($slug)->whereHas('world', function($query) use($world) {return $query->whereSlug($world);})->first();
+        else
+            $template = Role::whereSlug($slug)->has('world', 0)->first();
 
         if(! $template)
         {

@@ -105,6 +105,6 @@ return [
     ],
     'template' => [
         'variable' => 'sablon',
-        'none' => 'nincs',
+        'none' => 'ures',
     ],
 ];

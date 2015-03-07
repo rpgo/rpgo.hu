@@ -45,14 +45,14 @@
                 <div class="form-group">
                     <label for="new_role_template">@lang('role.create.template'): </label>
                     <select name="@lang('role.template.variable')" id="new_role_template">
-                        <option value="@lang('role.template.none')" selected>@lang('role.create.custom')</option>
+                        <option value="rpgo.@lang('role.template.none')" selected>@lang('role.create.custom')</option>
                         <option disabled>@lang('role.create.rpgo'):</option>
                         @foreach($templates as $template)
-                            <option value="{{$template['id']}}">{{$template['name_solo']}}</option>
+                            <option value="{{'rpgo.' . $template['slug']}}">{{$template['name_solo']}}</option>
                         @endforeach
                         <option disabled>@lang('role.create.world'):</option>
                         @foreach($roles as $template)
-                            <option value="{{$template['id']}}">{{$template['name_solo']}}</option>
+                            <option value="{{$template['world']['slug'] . '.' .$template['slug']}}">{{$template['name_solo']}}</option>
                         @endforeach
                     </select>
                 </div>
