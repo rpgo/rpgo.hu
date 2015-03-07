@@ -16,6 +16,7 @@ class TypesTableSeeder extends Seeder {
     private function getType($type)
     {
         return [
+            'name' => trans($type['name']),
             'pointer' => $type['pointer'],
             'automates_members' => $type['automates_members'],
             'no_members' => $type['no_members'],

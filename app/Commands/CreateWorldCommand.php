@@ -97,7 +97,9 @@ class CreateWorldCommand extends Command implements SelfHandling {
     {
         $admin = $this->createMember($user, $world, $this->admin);
 
-        $this->addRole($world, $admin, 'staff');
+        $role = Role::ofWorld($world)->where('name_group', trans('role.admin.name_group'))->first();
+
+        $admin->roles()->attach($role);
 
         return $admin;
     }

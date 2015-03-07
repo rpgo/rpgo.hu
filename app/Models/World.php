@@ -43,7 +43,7 @@ class World extends Eloquent {
 
     public function types()
     {
-        return $this->belongsToMany(Type::class, 'roles', 'world_id', 'type_id')->where('types.secret', 0);
+        return $this->belongsToMany(Type::class, 'roles', 'world_id', 'type_id');
     }
 
     public function publish()

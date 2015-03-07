@@ -17,6 +17,7 @@ class CreateTypesTable extends Migration {
 			$table->string('id', 36)->primary();
 			$table->timestamps();
 
+			$table->string('name', 20);
             $table->string('pointer', 20);
 			$table->boolean('automates_members');
 			$table->boolean('no_members');
