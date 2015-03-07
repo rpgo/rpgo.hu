@@ -23,7 +23,7 @@
                             <td class="hidden-xs">{{$role['name_group']}}</td>
                             <td class="hidden-xs">{{$role['type']['name']}}</td>
                             <td class="hidden-xs">{{$role['secret_role'] ? trans('common.yes') : trans('common.no') }}</td>
-                            <td class="hidden-xs">{{$role['member_count']}}</td>
+                            <td class="hidden-xs">@if($role['type']['no_members']) <i class="fa fa-question"></i> @else {{$role['member_count']}} @endif</td>
                             <td class="hidden-xs">{{$role['description']}}</td>
                             <td><input class="role-select" type="checkbox" value="{{$role['id']}}" name="selected[]"/></td>
                         </tr>
