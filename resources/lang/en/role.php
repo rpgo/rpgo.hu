@@ -34,6 +34,7 @@ return [
         'manual' => 'Manual',
         'automatic' => 'Automatic',
         'joining' => 'Via join',
+        'hide' => 'Do not show in profile and statistics',
     ],
     'edit' => [
         'heading' => 'Edit role',

@@ -49,6 +49,8 @@
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.secret'): </label>
     <div class="col-xs-6">
-        <input type="checkbox" class="form-control" name="secret_role" value="yes" @if( old('secret_role') ?: $role['secret_role']) checked @endif>
+        <div class="checkbox">
+            <label><input type="checkbox" class="checkbox-inline" name="secret_role" value="yes" @if( old('secret_role') ?: $role['secret_role']) checked @endif> @lang('role.form.hide')</label>
+        </div>
     </div>
 </div>

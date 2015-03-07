@@ -34,6 +34,7 @@ return [
         'manual' => 'Manuális',
         'automatic' => 'Automatikus',
         'joining' => 'Csatlakozásos',
+        'hide' => 'Ne látszódjon a profilban, statisztikákban',
     ],
     'edit' => [
         'heading' => 'Szerep szerkesztése',
