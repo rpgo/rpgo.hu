@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'manage' => [
+        'rank' => 'Save',
+        'hide' => 'Hide',
+        'unhide' => 'Reveal',
+    ],
     'dashboard' => [
         'title' => 'Roles',
         'menu' => 'Roles',
@@ -40,6 +45,7 @@ return [
         'hide' => 'Do not show in profile and statistics',
     ],
     'edit' => [
+        'title' => 'Szerep szerkesztése',
         'heading' => 'Edit role',
         'submit' => 'Save',
     ],

@@ -1,10 +1,10 @@
 @extends('dashboard.layout')
 
-@section('subtitle') @lang('role.edit.title') @endsection
+@section('subtitle') {{$role['name_solo']}} - @lang('role.edit.title') @endsection
 
 @section('subcontent')
     <div class="panel panel-default">
-        <div class="panel-heading">@lang('role.edit.heading')</div>
+        <div class="panel-heading">@lang('role.edit.heading'): {{$role['name_solo']}}</div>
         <div class="panel-body">
             <form method="POST" action="{{route('role.update', [$world, $role])}}" class="form-horizontal">
 

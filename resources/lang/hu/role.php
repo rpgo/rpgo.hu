@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'manage' => [
+        'rank' => 'Mentés',
+        'hide' => 'Elrejtés',
+        'unhide' => 'Felfedés',
+    ],
     'dashboard' => [
         'title' => 'Szerepek',
         'menu' => 'Szerepek',
