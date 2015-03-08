@@ -15,7 +15,7 @@
                     </style>
                     <tr>
                         <th>Rang</th>
-                        <th><button type="submit" class="btn btn-xs btn-default" formaction="{{route('role.rank', [$world])}}">@lang('role.manage.rank')</button></th>
+                        <th class="text-center"><button type="submit" class="btn btn-xs btn-default" formaction="{{route('role.rank', [$world])}}">@lang('role.manage.rank')</button></th>
                         <th>@lang('role.info.name_solo')</th>
                         <th class="hidden-xs">@lang('role.info.name_group')</th>
                         <th class="hidden-xs">@lang('role.info.type')</th>
