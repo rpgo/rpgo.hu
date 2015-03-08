@@ -34,11 +34,11 @@ class RoleController extends Controller {
 
         $role->world()->associate($rpgo->world());
 
-        $permissions = Permission::lists('id');
-
         $role->save();
 
-        $role->permissions()->attach($permissions, ['grant' => false]);
+        $permissions = array_map(function($grant){return ['grant' => $grant];}, $request->get('grants'));
+
+        $role->permissions()->sync($permissions);
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
     }
@@ -107,30 +107,16 @@ class RoleController extends Controller {
     public function update(Request $request, Rpgo $rpgo, Role $role)
     {
         $data = $request->only('name_group', 'name_solo', 'description');
-        $data['secret'] = $request->has('secret');
+        $data['secret_role'] = $request->has('secret_role');
 
         $role->fill($data);
         $role->save();
 
+        $permissions = array_map(function($grant){return ['grant' => $grant];}, $request->get('grants'));
+
+        $role->permissions()->sync($permissions);
+
         return redirect()->route('role.dashboard', [$rpgo->world()]);
-    }
-
-    public function assign(Request $request, Rpgo $rpgo, Role $role)
-    {
-        $member = Member::whereName($request->get('member'))->first();
-
-        $role->members()->attach($member);
-
-        return redirect()->route('role.edit', [$rpgo->world(), $role]);
-    }
-
-    public function discharge(Request $request, Rpgo $rpgo, Role $role)
-    {
-        $members = $request->get('members');
-
-        $role->members()->detach($members);
-
-        return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
     public function permit(Request $request, Rpgo $rpgo, Role $role)
@@ -181,6 +167,24 @@ class RoleController extends Controller {
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
 
+    }
+
+    public function assign(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $member = Member::whereName($request->get('member'))->first();
+
+        $role->members()->attach($member);
+
+        return redirect()->route('role.edit', [$rpgo->world(), $role]);
+    }
+
+    public function discharge(Request $request, Rpgo $rpgo, Role $role)
+    {
+        $members = $request->get('members');
+
+        $role->members()->detach($members);
+
+        return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
 }
