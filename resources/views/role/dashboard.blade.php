@@ -15,7 +15,7 @@
                     </style>
                     <tr>
                         <th>Rang</th>
-                        <th><button type="submit" class="btn btn-default" formaction="">Mentés</button></th>
+                        <th><button type="submit" class="btn btn-default" formaction="{{route('role.rank', [$world])}}">Mentés</button></th>
                         <th>@lang('role.info.name_solo')</th>
                         <th class="hidden-xs">@lang('role.info.name_group')</th>
                         <th class="hidden-xs">@lang('role.info.type')</th>
@@ -26,7 +26,7 @@
                     </tr>
                     @foreach($roles as $role)
                         <tr ondragover="event.preventDefault();"  draggable="true" ondragstart="this.style.opacity = '0.4';dragSource = this;event.dataTransfer.setData('source', this.outerHTML)" ondragenter="this.classList.add('over');" ondragleave="this.classList.remove('over');"  ondrop="event.stopPropagation(); if(dragSource != this){dragSource.parentNode.removeChild(dragSource) ; this.insertAdjacentHTML('afterend', event.dataTransfer.getData('source'));var ranks = this.parentNode.querySelectorAll('input.role-rank'); [].forEach.call(ranks, function(rank, index){rank.value = index + 1;});}var rows = this.parentNode.getElementsByTagName('tr'); [].forEach.call(rows, function(row){row.classList.remove('over'); row.style.opacity='1.0';});">
-                            <td>{{$role['rank']}} <input type="hidden" disabled class="role-rank" name="ranks[{{$role['id']}}]" value="{{$role['rank']}}"/></td>
+                            <td>{{$role['rank']}} <input type="hidden" class="role-rank" name="ranks[{{$role['id']}}]" value="{{$role['rank']}}"/></td>
                             <td style="cursor: move;" class="text-center"><i class="fa fa-arrows"></i></td>
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}}</a></td>
                             <td class="hidden-xs">{{$role['name_group']}}</td>

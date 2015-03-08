@@ -9,6 +9,11 @@ $router->get(trans('routes.role.index'), [
     'as'        => 'role.dashboard',
 ]);
 
+$router->post(trans('routes.role.rank'), [
+    'uses'      => 'RoleController@rank',
+    'as'        => 'role.rank',
+]);
+
 $router->post(trans('routes.role.store'), [
     'uses'      => 'RoleController@store',
     'as'        => 'role.store',

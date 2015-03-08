@@ -53,6 +53,7 @@ return [
     ],
     'role' => [
         'index' => 'roles',
+        'rank' => 'rank',
         'store' => 'roles',
         'create' => 'roles/new',
         'show' => 'roles/{:parameter}',

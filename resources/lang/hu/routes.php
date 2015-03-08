@@ -53,6 +53,7 @@ return [
     ],
     'role' => [
         'index' => 'szerepek',
+        'rank' => 'rangsorolas',
         'store' => 'szerepek',
         'create' => 'szerepek/uj',
         'show' => 'szerepek/{:parameter}',

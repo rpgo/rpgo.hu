@@ -142,4 +142,18 @@ class RoleController extends Controller {
         return redirect()->route('role.edit', [$rpgo->world(), $role]);
     }
 
+    public function rank(Request $request, Rpgo $rpgo)
+    {
+        $ranks = $request->get('ranks');
+
+        $this->validate($request, ['ranks' => 'array']);
+
+        foreach($ranks as $id => $rank)
+        {
+            Role::whereId($id)->update(['rank' => $rank]);
+        }
+
+        return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
 }
