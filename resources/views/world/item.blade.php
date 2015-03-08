@@ -8,13 +8,13 @@
             {{--<p class="text-right">{{trans('world.creator.title') . ': ' . $item->creator->name}}</p>--}}
             <ul class="list-unstyled list-inline list-group">
                 <li class="list-group-item"><span>{{trans('world.item.members') . ': ' . $item->members()->count()}} </span></li>
-                @foreach($item['types'] as $type)
-                    <li class="hidden-xs list-group-item">{{$type['name_group']}}: {{$item->members()->ofType($type)->count()}}</li>
+                @foreach($item['public_types'] as $type)
+                    <li class="hidden-xs list-group-item">{{$type['name']}}: {{$item->members()->ofType($type)->count()}}</li>
                 @endforeach
             </ul>
             <ul class="list-inline list-unstyled">
                 {{--<li><span>{{trans('world.item.locations') . ': ' . $item->rootlocation()->sublocations()->count()}} </span></li><li>|</li>--}}
-                <li>Link: <a href="{{route('world.main', compact('world'))}}">{{$item['slug'] . '.' . env('APP_DOMAIN')}}</a></li>
+                <li>Link: <a href="{{route('world.main', $item)}}">{{$item['slug'] . '.' . env('APP_DOMAIN')}}</a></li>
             </ul>
             <p>{{$item['motto']}} <a href="{{route('world.show', $item)}}">Bővebben...</a></p>
         </div>

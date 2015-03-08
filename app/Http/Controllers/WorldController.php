@@ -15,7 +15,7 @@ class WorldController extends Controller {
 
     public function index()
     {
-        $worlds = World::published()->with('roles', 'types')->get();
+        $worlds = World::published()->get();
 
         return view('world.index')->with(compact('worlds'));
     }

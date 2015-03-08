@@ -9,7 +9,7 @@ class World extends Eloquent {
 
     protected $fillable = ['name', 'brand', 'slug'];
 
-    protected $appends = ['member_count'];
+    protected $appends = ['member_count', 'public_types'];
 
     public function creator()
     {
@@ -43,7 +43,7 @@ class World extends Eloquent {
 
     public function types()
     {
-        return $this->belongsToMany(Type::class, 'roles', 'world_id', 'type_id');
+        return $this->belongsToMany(Type::class, 'roles', 'world_id', 'type_id')->groupBy('type_id');
     }
 
     public function publish()
@@ -56,6 +56,11 @@ class World extends Eloquent {
     public function getMemberCountAttribute()
     {
         return $this->members()->count();
+    }
+
+    public function getPublicTypesAttribute()
+    {
+        return $this->types()->whereIn('pointer', ['player', 'staff', 'master', 'reader', 'support'])->get();
     }
 
 }
