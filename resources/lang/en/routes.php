@@ -53,7 +53,8 @@ return [
     ],
     'role' => [
         'index' => 'roles',
-        'rank' => 'rank',
+        'rank' => 'roles/rank',
+        'hide' => 'roles/hide',
         'store' => 'roles',
         'create' => 'roles/new',
         'show' => 'roles/{:parameter}',

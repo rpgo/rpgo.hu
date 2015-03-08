@@ -15,7 +15,7 @@
                     </style>
                     <tr>
                         <th>Rang</th>
-                        <th><button type="submit" class="btn btn-default" formaction="{{route('role.rank', [$world])}}">Mentés</button></th>
+                        <th><button type="submit" class="btn btn-xs btn-default" formaction="{{route('role.rank', [$world])}}">@lang('role.manage.rank')</button></th>
                         <th>@lang('role.info.name_solo')</th>
                         <th class="hidden-xs">@lang('role.info.name_group')</th>
                         <th class="hidden-xs">@lang('role.info.type')</th>
@@ -40,7 +40,8 @@
                 </table>
                 <div>
                     @lang('role.form.selected'):
-                    <button type="submit" class="btn btn-default" formaction="{{route('role.desert', [$world])}}">Elrejtés</button>
+                    <button type="submit" class="btn btn-default" formaction="{{route('role.hide', [$world])}}">@lang('role.manage.hide')</button>
+                    <button type="submit" class="btn btn-default" formaction="{{route('role.hide', [$world])}}">@lang('role.manage.unhide')</button>
                     <button type="submit" class="btn btn-warning" formaction="{{route('role.desert', [$world])}}">@lang('role.form.empty')</button>
                     <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">@lang('role.form.delete')</button>
                 </div>

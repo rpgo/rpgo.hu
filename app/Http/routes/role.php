@@ -14,6 +14,11 @@ $router->post(trans('routes.role.rank'), [
     'as'        => 'role.rank',
 ]);
 
+$router->post(trans('routes.role.hide'), [
+    'uses'      => 'RoleController@hide',
+    'as'        => 'role.hide',
+]);
+
 $router->post(trans('routes.role.store'), [
     'uses'      => 'RoleController@store',
     'as'        => 'role.store',
