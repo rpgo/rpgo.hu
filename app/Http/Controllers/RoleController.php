@@ -28,6 +28,8 @@ class RoleController extends Controller {
 
         $role['secret_role'] = $request->has('secret_role');
 
+        $role['rank'] = Role::ofWorld($rpgo->world())->max('rank') + 1;
+
         $type = Type::find($request->get('type_id')) ?: Type::point('custom');
 
         $role->type()->associate($type);
