@@ -66,6 +66,7 @@ class RoleController extends Controller {
             $role = new Role();
             $permissions = Permission::all();
             $role['permissions'] = $permissions;
+            $role['membership'] = $type['no_members'] ? -1 : ($type['automates_members'] ? 1 : 0);
         }else
         {
             $type = $template['type'];

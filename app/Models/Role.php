@@ -4,11 +4,11 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
-    protected $fillable = ['name_group', 'name_solo', 'description', 'rank', 'secret_role', 'automates_members'];
+    protected $fillable = ['name_group', 'name_solo', 'description', 'rank', 'secret_role', 'membership'];
 
     protected $appends = ['member_count'];
 
-    protected $casts = ['secret' => 'boolean'];
+    protected $casts = ['secret_role' => 'boolean'];
 
     public function members()
     {

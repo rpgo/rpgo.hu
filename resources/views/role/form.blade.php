@@ -30,21 +30,22 @@
         </select>
     </div>
 </div>
-
+@if(!$role['exists'] || $role['membership'] >= 0)
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.members'): </label>
     <div class="col-xs-6">
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="0" @if((old('members') ?: $role['automates_members']) == 0) checked @endif> @lang('role.form.manual')</label>
+            <label><input type="radio" name="membership" class="radio-inline" value="0" @if((old('membership') ?: $role['membership']) == 0) checked @endif> @lang('role.form.manual')</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="1" @if($role['exists'] && !$role['type']['automates_members']) disabled @endif @if((old('members') ?: $role['automates_members']) == 1) checked @endif> @lang('role.form.automatic')</label>
+            <label><input type="radio" name="membership" class="radio-inline" value="1" @if($role['exists'] && !$role['type']['automates_members']) disabled @endif @if((old('membership') ?: $role['membership']) == 1) checked @endif> @lang('role.form.automatic')</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="members" class="radio-inline" value="-1" @if($role['exists'] && $role['type']['no_member']) disabled @endif @if(old('members') == -1) checked @endif> @lang('role.form.joining')</label>
+            <label><input type="radio" name="membership" class="radio-inline" value="2" @if((old('membership') ?: $role['membership']) == 2) checked @endif> @lang('role.form.joining')</label>
         </div>
     </div>
 </div>
+@endif
 
 <div class="form-group">
     <label class="col-xs-3">@lang('role.form.secret'): </label>

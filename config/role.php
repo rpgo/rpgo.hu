@@ -8,7 +8,7 @@ return [
             'description' => 'role.support.description',
             'rank' => 3,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => 0,
             'type' => 'support',
             'permissions' => [
                 'use.control' => 1,
@@ -20,7 +20,7 @@ return [
             'description' => 'role.admin.description',
             'rank' => 1,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => 0,
             'type' => 'staff',
             'permissions' => [
                 'use.control' => 1,
@@ -32,7 +32,7 @@ return [
             'description' => 'role.mod.description',
             'rank' => 2,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => 0,
             'type' => 'staff',
             'permissions' => [
                 'use.control' => 0,
@@ -44,7 +44,7 @@ return [
             'description' => 'role.member.description',
             'rank' => 7,
             'secret_role' => false,
-            'automates_members' => true,
+            'membership' => 1,
             'type' => 'member',
             'permissions' => [
                 'use.control' => 0,
@@ -56,7 +56,7 @@ return [
             'description' => 'role.player.description',
             'rank' => 5,
             'secret_role' => false,
-            'automates_members' => true,
+            'membership' => 1,
             'type' => 'player',
             'permissions' => [
                 'use.control' => 0,
@@ -68,7 +68,7 @@ return [
             'description' => 'role.master.description',
             'rank' => 4,
             'secret_role' => false,
-            'automates_members' => true,
+            'membership' => 1,
             'type' => 'master',
             'permissions' => [
                 'use.control' => 0,
@@ -80,7 +80,7 @@ return [
             'description' => 'role.reader.description',
             'rank' => 6,
             'secret_role' => false,
-            'automates_members' => true,
+            'membership' => 1,
             'type' => 'reader',
             'permissions' => [
                 'use.control' => 0,
@@ -92,7 +92,7 @@ return [
             'description' => 'role.guest.description',
             'rank' => 8,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => -1,
             'type' => 'guest',
             'permissions' => [
                 'use.control' => -1,
@@ -104,7 +104,7 @@ return [
             'description' => 'role.stranger.description',
             'rank' => 9,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => -1,
             'type' => 'stranger',
             'permissions' => [
                 'use.control' => -1,
@@ -116,7 +116,7 @@ return [
             'description' => 'role.bot.description',
             'rank' => 10,
             'secret_role' => false,
-            'automates_members' => false,
+            'membership' => -1,
             'type' => 'bot',
             'permissions' => [
                 'use.control' => -1,

@@ -159,7 +159,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
                 'description' => $template['description'],
                 'rank' => $template['rank'],
                 'secret_role' => $template['secret_role'],
-                'automates_members' => $template['automates_members'],
+                'membership' => $template['membership'],
             ]);
 
             $role->type()->associate($template['type']);
