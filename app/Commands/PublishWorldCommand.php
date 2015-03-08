@@ -44,7 +44,7 @@ class PublishWorldCommand extends Command implements SelfHandling, ShouldBeQueue
 
         $img = $img->make(storage_path('app/previews/tmp.jpg'));
 
-        $img->resize(200,200);
+        $img->resize(130,130);
 
         $img->save(public_path('images/previews/' . $this->world->slug . '.jpg'));
 	}
