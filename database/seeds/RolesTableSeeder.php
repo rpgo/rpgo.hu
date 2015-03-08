@@ -31,6 +31,7 @@ class RolesTableSeeder extends Seeder {
             'name_group' => trans($role['name_group']),
             'name_solo' => trans($role['name_solo']),
             'description' => trans($role['description']),
+            'rank' => $role['rank'],
             'secret_role' => $role['secret_role'],
             'automates_members' => $role['automates_members'],
         ];

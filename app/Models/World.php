@@ -38,7 +38,7 @@ class World extends Eloquent {
 
     public function roles()
     {
-        return $this->hasMany(Role::class)->orderBy('name_solo');
+        return $this->hasMany(Role::class)->orderBy('rank');
     }
 
     public function types()

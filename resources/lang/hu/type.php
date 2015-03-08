@@ -18,7 +18,7 @@ return [
         'explanation' => 'Ha a csoport tagjai mind mesélők. Lehetővé teszi, hogy minden tag automatikusan csoporttaggá váljon, amikor készít mesélő karaktert.'
     ],
     'support' => [
-        'name' => 'Amatőr',
+        'name' => 'Külsős',
         'explanation' => 'Ha a csoport tagjai mind nem a játék, hanem valami más céljából csatlakoztak a világhoz.'
     ],
     'member' => [

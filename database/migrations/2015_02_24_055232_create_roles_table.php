@@ -23,6 +23,8 @@ class CreateRolesTable extends Migration {
             $table->boolean('secret_role'); //role hidden in profile and statistics
 			$table->boolean('automates_members'); //members are assigned according to the type
 
+			$table->integer('rank');
+
             $table->text('description')->nullable();
 
             $table->string('world_id', 36)->nullable();

@@ -4,7 +4,7 @@ class Role extends Eloquent {
 
 	public $incrementing = false;
 
-    protected $fillable = ['name_group', 'name_solo', 'description', 'secret_role', 'automates_members'];
+    protected $fillable = ['name_group', 'name_solo', 'description', 'rank', 'secret_role', 'automates_members'];
 
     protected $appends = ['member_count'];
 

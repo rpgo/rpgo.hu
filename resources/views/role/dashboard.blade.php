@@ -8,7 +8,14 @@
         <div class="panel-body">
             <form role="form" method="POST">
                 <table class="table table-striped table-bordered">
+                    <style>
+                        .over {
+                            border-bottom: 2px dashed #000;
+                        }
+                    </style>
                     <tr>
+                        <th>Rang</th>
+                        <th><button type="submit" class="btn btn-default" formaction="">Mentés</button></th>
                         <th>@lang('role.info.name_solo')</th>
                         <th class="hidden-xs">@lang('role.info.name_group')</th>
                         <th class="hidden-xs">@lang('role.info.type')</th>
@@ -18,7 +25,9 @@
                         <th><input type="checkbox" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/></th>
                     </tr>
                     @foreach($roles as $role)
-                        <tr>
+                        <tr ondragover="event.preventDefault();"  draggable="true" ondragstart="this.style.opacity = '0.4';dragSource = this;event.dataTransfer.setData('source', this.outerHTML)" ondragenter="this.classList.add('over');" ondragleave="this.classList.remove('over');"  ondrop="event.stopPropagation(); if(dragSource != this){dragSource.parentNode.removeChild(dragSource) ; this.insertAdjacentHTML('afterend', event.dataTransfer.getData('source'));var ranks = this.parentNode.querySelectorAll('input.role-rank'); [].forEach.call(ranks, function(rank, index){rank.value = index + 1;});}var rows = this.parentNode.getElementsByTagName('tr'); [].forEach.call(rows, function(row){row.classList.remove('over'); row.style.opacity='1.0';});">
+                            <td>{{$role['rank']}} <input type="hidden" disabled class="role-rank" name="ranks[{{$role['id']}}]" value="{{$role['rank']}}"/></td>
+                            <td style="cursor: move;" class="text-center"><i class="fa fa-arrows"></i></td>
                             <td><a href="{{route('role.edit', [$world, $role])}}">{{$role['name_solo']}}</a></td>
                             <td class="hidden-xs">{{$role['name_group']}}</td>
                             <td class="hidden-xs">{{$role['type']['name']}}</td>
@@ -31,7 +40,7 @@
                 </table>
                 <div>
                     @lang('role.form.selected'):
-                    <button type="submit" class="btn btn-default" formaction="{{route('role.desert', [$world])}}">@lang('role.manage.hide')</button>
+                    <button type="submit" class="btn btn-default" formaction="{{route('role.desert', [$world])}}">Elrejtés</button>
                     <button type="submit" class="btn btn-warning" formaction="{{route('role.desert', [$world])}}">@lang('role.form.empty')</button>
                     <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">@lang('role.form.delete')</button>
                 </div>
