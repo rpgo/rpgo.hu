@@ -60,7 +60,7 @@ class Rpgo {
             return $role->can($permission);
         }
 
-        if(! $this->member)
+        if(! $this->member || !$this->member['status'])
         {
             $type = Type::point('guest');
             $role = Role::ofWorldAndType($this->world, $type)->first();

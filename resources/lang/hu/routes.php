@@ -64,4 +64,7 @@ return [
         'discharge' => 'szerepek/{:parameter}/elbocsatas',
         'permit' => 'szerepek/{:parameter}/feljogositas',
     ],
+    'status' => [
+        'toggle' => 'allapot/valtas',
+    ],
 ];

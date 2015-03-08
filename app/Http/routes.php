@@ -24,6 +24,11 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
 
     require __DIR__ . '/routes/dashboard.php';
 
+    $router->get(trans('routes.status.toggle'), [
+        'uses' => 'StatusController@toggle',
+        'as' => 'status.toggle'
+    ]);
+
     require __DIR__ . '/routes/member.php';
 
     require __DIR__ . '/routes/character.php';

@@ -64,4 +64,7 @@ return [
         'discharge' => 'roles/{:parameter}/discharge',
         'permit' => 'roles/{:parameter}/permit',
     ],
+    'status' => [
+        'toggle' => 'status/toggle',
+    ],
 ];

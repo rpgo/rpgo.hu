@@ -8,6 +8,8 @@ class Member extends Eloquent {
 
     protected $fillable = ['name'];
 
+    protected $casts = ['status' => 'boolean'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

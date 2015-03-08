@@ -20,6 +20,7 @@ class CreateMembersTable extends Migration {
             $table->string('slug', 30);
             $table->string('world_id', 36);
             $table->string('user_id', 36);
+			$table->boolean('status')->default(true);
 
             $table->foreign('world_id')->references('id')->on('worlds');
             $table->foreign('user_id')->references('id')->on('users');
