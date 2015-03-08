@@ -24,7 +24,7 @@ class RoleController extends Controller {
 
     public function store(AddRole $request, Rpgo $rpgo)
     {
-        $role = new Role($request->only('name_group', 'name_solo', 'description'));
+        $role = new Role($request->only('name_group', 'name_solo', 'description', 'membership'));
 
         $role['secret_role'] = $request->has('secret_role');
 
@@ -109,7 +109,7 @@ class RoleController extends Controller {
 
     public function update(Request $request, Rpgo $rpgo, Role $role)
     {
-        $data = $request->only('name_group', 'name_solo', 'description');
+        $data = $request->only('name_group', 'name_solo', 'description', 'membership');
         $data['secret_role'] = $request->has('secret_role');
 
         $role->fill($data);
