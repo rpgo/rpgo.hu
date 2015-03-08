@@ -19,7 +19,7 @@ return [
         'heading' => 'Új szerep',
         'submit' => 'Mehet',
         'template' => 'Az alábbi sablon felhasználásával',
-        'custom' => 'Egyedi',
+        'custom' => 'Üres',
         'rpgo' => 'Sablonok',
         'world' => 'Szerepek',
     ],
