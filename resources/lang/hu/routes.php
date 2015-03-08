@@ -55,6 +55,7 @@ return [
         'index' => 'szerepek',
         'rank' => 'szerepek/rangsorolas',
         'hide' => 'szerepek/elrejtes',
+        'unhide' => 'szerepek/felfedes',
         'store' => 'szerepek',
         'create' => 'szerepek/uj',
         'show' => 'szerepek/{:parameter}',

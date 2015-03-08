@@ -19,6 +19,11 @@ $router->post(trans('routes.role.hide'), [
     'as'        => 'role.hide',
 ]);
 
+$router->post(trans('routes.role.unhide'), [
+    'uses'      => 'RoleController@unhide',
+    'as'        => 'role.unhide',
+]);
+
 $router->post(trans('routes.role.store'), [
     'uses'      => 'RoleController@store',
     'as'        => 'role.store',

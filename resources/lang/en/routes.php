@@ -55,6 +55,7 @@ return [
         'index' => 'roles',
         'rank' => 'roles/rank',
         'hide' => 'roles/hide',
+        'unhide' => 'roles/unhide',
         'store' => 'roles',
         'create' => 'roles/new',
         'show' => 'roles/{:parameter}',

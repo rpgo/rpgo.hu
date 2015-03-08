@@ -41,7 +41,7 @@
                 <div>
                     @lang('role.form.selected'):
                     <button type="submit" class="btn btn-default" formaction="{{route('role.hide', [$world])}}">@lang('role.manage.hide')</button>
-                    <button type="submit" class="btn btn-default" formaction="{{route('role.hide', [$world])}}">@lang('role.manage.unhide')</button>
+                    <button type="submit" class="btn btn-default" formaction="{{route('role.unhide', [$world])}}">@lang('role.manage.unhide')</button>
                     <button type="submit" class="btn btn-warning" formaction="{{route('role.desert', [$world])}}">@lang('role.form.empty')</button>
                     <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">@lang('role.form.delete')</button>
                 </div>

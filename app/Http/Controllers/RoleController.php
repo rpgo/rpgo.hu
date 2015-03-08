@@ -166,8 +166,21 @@ class RoleController extends Controller {
             $role->update(['secret_role' => true]);
         }
 
+        return redirect()->route('role.dashboard', [$rpgo->world()]);
+    }
+
+    public function unhide(Request $request, Rpgo $rpgo)
+    {
+        $toUnHide = $request->get('selected');
+
+        $roles = Role::find($toUnHide);
+
+        foreach ($roles as $role) {
+            $role->update(['secret_role' => false]);
+        }
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
+
     }
 
 }
