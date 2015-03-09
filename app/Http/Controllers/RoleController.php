@@ -32,6 +32,8 @@ class RoleController extends Controller {
 
         $type = Type::find($request->get('type_id')) ?: Type::point('custom');
 
+        $role['membership'] = $role['membership'] ?: $this->defaultMembership($type);
+
         $role->type()->associate($type);
 
         $role->world()->associate($rpgo->world());
@@ -66,12 +68,13 @@ class RoleController extends Controller {
             $role = new Role();
             $permissions = Permission::all();
             $role['permissions'] = $permissions;
-            $role['membership'] = $type['no_members'] ? -1 : ($type['automates_members'] ? 1 : 0);
+            $role['membership'] = $this->defaultMembership($type);
         }else
         {
             $type = $template['type'];
             $role = new Role($template->toArray());
             $role->permissions = $template['permissions'];
+            $role['membership'] = $template['membership'] ?: $this->defaultMembership($type);
         }
 
         $role->type()->associate($type);
@@ -161,6 +164,21 @@ class RoleController extends Controller {
 
         return redirect()->route('role.dashboard', [$rpgo->world()]);
 
+    }
+
+    /**
+     * @param $type
+     * @return int
+     */
+    private function defaultMembership($type)
+    {
+        if ( $type['no_members'] )
+            return -1;
+
+        if ( $type['automates_members'] )
+            return 1;
+
+        return 0;
     }
 
 }
