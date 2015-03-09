@@ -148,7 +148,8 @@ return [
 
 	]
     , (env('APP_ENV') == 'local') ?
-    [   'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+    [   // Dev-only service providers
+
     ] : []),
 
 	/*
