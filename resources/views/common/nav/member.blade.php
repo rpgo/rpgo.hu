@@ -1,5 +1,5 @@
 <li class="dropdown">
-    <a href="#">Karakteralkotás</a>
+    <a href="{{route('character.create', [$world])}}">Karakteralkotás</a>
 </li>
 <li>
     <a href="{{route('status.toggle', [$world])}}"><i class="fa fa-circle" style="color:@if($member['status']) green @else red @endif;"></i></a>

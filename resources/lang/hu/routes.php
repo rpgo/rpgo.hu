@@ -45,7 +45,7 @@ return [
     ],
     'character' => [
         'index' => 'karakterek',
-        'create' => 'karakterek/uj',
+        'create' => 'karakteralkotas',
         'show' => 'karakterek/:parameter',
     ],
     'dashboard' => [
