@@ -63,4 +63,9 @@ class World extends Eloquent {
         return $this->types()->whereIn('pointer', ['player', 'staff', 'master', 'reader', 'support'])->get();
     }
 
+    public function characters()
+    {
+        return $this->hasManyThrough(Character::class, Member::class, 'world_id', 'creator_id');
+    }
+
 }

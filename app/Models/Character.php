@@ -17,4 +17,14 @@ class Character extends Eloquent {
         return $query->where('type', $type);
     }
 
+    public function creator()
+    {
+        return $this->belongsTo(Member::class, 'creator_id');
+    }
+
+    public function world()
+    {
+        return $this->creator->world();
+    }
+
 }
