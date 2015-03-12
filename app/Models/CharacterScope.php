@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\ScopeInterface;
 
 class CharacterScope implements ScopeInterface {
 
-    const MASTER = 'master';
+    const MASTER = MasterCharacterization::class;
 
-    const PLAYER = 'player';
+    const PLAYER = PlayerCharacterization::class;
 
     private $type;
 
@@ -49,7 +49,7 @@ class CharacterScope implements ScopeInterface {
             // If the where clause is a soft delete date constraint, we will remove it from
             // the query and reset the keys on the wheres. This allows this developer to
             // include deleted model in a relationship result set that is lazy loaded.
-            if ($where['column'] == 'type' && $where['value'] == $this->type)
+            if ($where['column'] == 'characterization_type' && $where['value'] == $this->type)
             {
                 unset($query->wheres[$key]);
             }

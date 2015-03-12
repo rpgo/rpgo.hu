@@ -27,4 +27,9 @@ class Character extends Eloquent {
         return $this->creator->world();
     }
 
+    public function characterization()
+    {
+        return $this->morphTo();
+    }
+
 }

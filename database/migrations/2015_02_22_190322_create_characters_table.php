@@ -20,7 +20,8 @@ class CreateCharactersTable extends Migration {
             $table->string('name', 30);
             $table->string('slug', 30);
 
-			$table->enum('type', ['player', 'master']);
+			$table->string('characterization_id', 36);
+			$table->string('characterization_type');
 
             $table->string('creator_id', 36);
 		});
