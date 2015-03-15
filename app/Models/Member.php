@@ -67,4 +67,19 @@ class Member extends Eloquent {
         })->count();
     }
 
+    public function created_characters()
+    {
+        return $this->hasMany(Character::class, 'creator_id');
+    }
+
+    public function owned_characters()
+    {
+        return $this->morphToMany(Character::class, 'owner', 'character_owners');
+    }
+
+    public function occupied_characters()
+    {
+        return $this->morphToMany(Character::class, 'tenant', 'character_tenants');
+    }
+
 }

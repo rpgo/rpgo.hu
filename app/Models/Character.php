@@ -32,4 +32,24 @@ class Character extends Eloquent {
         return $this->morphTo();
     }
 
+    public function owner_members()
+    {
+        return $this->morphedByMany(Member::class, 'owner', 'character_owners');
+    }
+
+    public function owner_roles()
+    {
+        return $this->morphedByMany(Role::class, 'owner', 'character_owners');
+    }
+
+    public function occupant_members()
+    {
+        return $this->morphedByMany(Member::class, 'tenant', 'character_tenants');
+    }
+
+    public function occupant_roles()
+    {
+        return $this->morphedByMany(Role::class, 'tenant', 'character_tenants');
+    }
+
 }

@@ -68,4 +68,14 @@ class Role extends Eloquent {
         return self::with('type','permissions')->has('world', 0)->orderBy('name_solo', 'asc')->get();
     }
 
+    public function owned_characters()
+    {
+        return $this->morphToMany(Character::class, 'owner', 'character_owners');
+    }
+
+    public function occupied_characters()
+    {
+        return $this->morphToMany(Character::class, 'tenant', 'character_tenants');
+    }
+
 }
