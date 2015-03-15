@@ -14,7 +14,7 @@ class CreatePlayerCharacterizationsTable extends Migration {
 	{
 		Schema::create('player_characterizations', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->string('id', 36)->primary();
 			$table->timestamps();
 		});
 	}
