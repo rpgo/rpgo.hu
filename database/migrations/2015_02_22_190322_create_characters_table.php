@@ -24,6 +24,7 @@ class CreateCharactersTable extends Migration {
 			$table->string('characterization_type');
 
             $table->string('creator_id', 36);
+			$table->foreign('creator_id')->references('id')->on('members');
 		});
 	}
 
