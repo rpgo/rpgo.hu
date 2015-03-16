@@ -1,5 +1,11 @@
 <li class="dropdown">
-    <a href="{{route('character.create', [$world])}}">Karakteralkotás</a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Karaktereid</a>
+    <ul class="dropdown-menu" role="menu">
+        @foreach($member['occupied_characters'] as $character)
+            <li><a href="">{{$character['name']}}</a></li>
+        @endforeach
+        <li><a href="{{route('character.create', [$world])}}">Karakteralkotás</a></li>
+    </ul>
 </li>
 <li>
     <a href="{{route('status.toggle', [$world])}}"><i class="fa fa-circle" style="color:@if($member['status']) green @else red @endif;"></i></a>
