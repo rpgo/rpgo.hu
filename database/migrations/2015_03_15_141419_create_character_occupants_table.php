@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCharacterTenantsTable extends Migration {
+class CreateCharacterOccupantsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -29,7 +29,7 @@ class CreateCharacterTenantsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('character_tenants');
+		Schema::drop('character_occupants');
 	}
 
 }

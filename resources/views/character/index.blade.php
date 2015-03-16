@@ -3,5 +3,13 @@
 @section('title') Character Index @endsection
 
 @section('content')
-    Character Index
+    <div class="container-fluid">
+        <div class="row">
+            <ul>
+                @foreach($characters as $character)
+                    <li>{{$character['name']}}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 @endsection

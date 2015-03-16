@@ -46,6 +46,7 @@ return [
     'character' => [
         'index' => 'characters',
         'create' => 'characters/new',
+        'store' => 'characters/new',
         'show' => 'characters/:parameter',
     ],
     'dashboard' => [

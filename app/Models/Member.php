@@ -79,7 +79,7 @@ class Member extends Eloquent {
 
     public function occupied_characters()
     {
-        return $this->morphToMany(Character::class, 'tenant', 'character_tenants');
+        return $this->morphToMany(Character::class, 'tenant', 'character_occupants');
     }
 
 }

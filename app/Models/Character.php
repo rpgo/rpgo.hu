@@ -4,7 +4,9 @@ class Character extends Eloquent {
 
     protected $table = 'characters';
 
-	public $increments = false;
+	public $incrementing = false;
+
+    protected $fillable = ['name'];
 
     public function setNameAttribute($name)
     {
@@ -44,12 +46,12 @@ class Character extends Eloquent {
 
     public function occupant_members()
     {
-        return $this->morphedByMany(Member::class, 'tenant', 'character_tenants');
+        return $this->morphedByMany(Member::class, 'tenant', 'character_occupants');
     }
 
     public function occupant_roles()
     {
-        return $this->morphedByMany(Role::class, 'tenant', 'character_tenants');
+        return $this->morphedByMany(Role::class, 'tenant', 'character_occupants');
     }
 
 }

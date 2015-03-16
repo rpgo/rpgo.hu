@@ -5,9 +5,44 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-offset-4 col-xs-4">
-                <p><a href="#" type="button" class="btn btn-primary btn-lg">Játékos karakter</a></p>
-                <p><a href="#" type="button" class="btn btn-primary btn-lg">Mesélő karakter</a></p>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{trans('character.create.title')}}</div>
+                    <div class="panel-body">
+                        @include('common.feedback')
+
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('character.store', $world)}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">@lang('character.create.type'): </label>
+                                <div class="col-md-6">
+                                    <div class="radio">
+                                        <label><input type="radio" name="type" class="radio-inline" value="player" checked> @lang('character.create.player')</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="type" class="radio-inline" value="master"> @lang('character.create.master')</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{trans('character.create.name')}}</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{trans('character.create.submit')}}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
