@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider {
         $router->bind('member', 'Rpgo\Http\Parameters\MemberParameter');
         $router->bind('location', 'Rpgo\Http\Parameters\LocationParameter');
 		$router->bind('role', 'Rpgo\Http\Parameters\RoleParameter');
+		$router->bind('character', 'Rpgo\Http\Parameters\CharacterParameter');
 	}
 
 	/**

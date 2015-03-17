@@ -3,6 +3,7 @@
 use Rpgo\Commands\CreateWorldCommand;
 use Rpgo\Commands\PublishWorldCommand;
 use Rpgo\Http\Requests\CreateWorld;
+use Rpgo\Models\Character;
 use Rpgo\Models\World;
 use Rpgo\Rpgo;
 
@@ -34,7 +35,8 @@ class WorldController extends Controller {
 
     public function main()
     {
-        return view('world.main');
+        $onlineCharacters = Character::online()->get();
+        return view('world.main')->with(compact('onlineCharacters'));
     }
 
     public function publish(Rpgo $rpgo)

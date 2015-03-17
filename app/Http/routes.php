@@ -24,9 +24,14 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
 
     require __DIR__ . '/routes/dashboard.php';
 
-    $router->get(trans('routes.status.toggle'), [
-        'uses' => 'StatusController@toggle',
-        'as' => 'status.toggle'
+    $router->get(trans('routes.status.member'), [
+        'uses' => 'StatusController@member',
+        'as' => 'status.member'
+    ]);
+
+    $router->get(trans('routes.status.character', ['parameter' => 'character']), [
+        'uses' => 'StatusController@character',
+        'as' => 'status.character'
     ]);
 
     require __DIR__ . '/routes/member.php';

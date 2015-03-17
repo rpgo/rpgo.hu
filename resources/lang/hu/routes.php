@@ -66,6 +66,7 @@ return [
         'permit' => 'szerepek/{:parameter}/feljogositas',
     ],
     'status' => [
-        'toggle' => 'allapot/valtas',
+        'member' => 'allapot/valtas',
+        'character' => 'allapot/valtas/{:parameter}',
     ],
 ];

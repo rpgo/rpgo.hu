@@ -66,6 +66,7 @@ return [
         'permit' => 'roles/{:parameter}/permit',
     ],
     'status' => [
-        'toggle' => 'status/toggle',
+        'member' => 'status/toggle',
+        'character' => 'status/toggle/{:parameter}',
     ],
 ];

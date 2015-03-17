@@ -54,4 +54,11 @@ class Character extends Eloquent {
         return $this->morphedByMany(Role::class, 'tenant', 'character_occupants');
     }
 
+    public function scopeOnline($query)
+    {
+        return $query->whereHas('occupant_members', function($query){
+            return $query->where('status', true);
+        })->where('status', true);
+    }
+
 }
