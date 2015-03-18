@@ -57,8 +57,8 @@ class Character extends Eloquent {
     public function scopeOnline($query)
     {
         return $query->whereHas('occupant_members', function($query){
-            return $query->where('status', true);
-        })->where('status', true);
+            return $query->where('members.status', true);
+        })->where('characters.status', true);
     }
 
 }

@@ -33,9 +33,10 @@ class WorldController extends Controller {
         return redirect()->route('world.main', $world);
     }
 
-    public function main()
+    public function main(Rpgo $rpgo)
     {
-        $onlineCharacters = Character::online()->get();
+        $world = $rpgo->world();
+        $onlineCharacters = $world->characters()->online()->get();
         return view('world.main')->with(compact('onlineCharacters'));
     }
 
