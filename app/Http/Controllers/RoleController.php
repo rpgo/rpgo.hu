@@ -11,9 +11,9 @@ use Rpgo\Rpgo;
 
 class RoleController extends Controller {
 
-	public function dashboard(Rpgo $rpgo)
+	public function dashboard()
     {
-        $world = $rpgo->world();
+        $world = $this->world();
 
         $roles = $world->roles()->get();
 
@@ -22,13 +22,13 @@ class RoleController extends Controller {
         return view('role.dashboard')->with(compact('roles', 'templates'));
     }
 
-    public function store(AddRole $request, Rpgo $rpgo)
+    public function store(AddRole $request)
     {
         $role = new Role($request->only('name_group', 'name_solo', 'description', 'membership'));
 
         $role['secret_role'] = $request->has('secret_role');
 
-        $role['rank'] = Role::ofWorld($rpgo->world())->max('rank') + 1;
+        $role['rank'] = Role::ofWorld($this->world())->max('rank') + 1;
 
         $type = Type::find($request->get('type_id')) ?: Type::point('custom');
 
@@ -36,7 +36,7 @@ class RoleController extends Controller {
 
         $role->type()->associate($type);
 
-        $role->world()->associate($rpgo->world());
+        $role->world()->associate($this->world());
 
         $role->save();
 
@@ -44,10 +44,10 @@ class RoleController extends Controller {
 
         $role->permissions()->sync($permissions);
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function create(Request $request, Rpgo $rpgo)
+    public function create(Request $request)
     {
         $slug = $request->get(trans('role.template.variable'));
 
@@ -87,7 +87,7 @@ class RoleController extends Controller {
         return view('role.edit')->with(compact('role'));
     }
 
-    public function desert(Request $request, Rpgo $rpgo)
+    public function desert(Request $request)
     {
         $deserts = $request->get('selected');
 
@@ -98,19 +98,19 @@ class RoleController extends Controller {
             $role->members()->detach();
         }
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function delete(Request $request, Rpgo $rpgo)
+    public function delete(Request $request)
     {
         $deserts = $request->get('selected');
 
         Role::destroy($deserts);
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function update(Request $request, Rpgo $rpgo, Role $role)
+    public function update(Request $request, Role $role)
     {
         $data = $request->only('name_group', 'name_solo', 'description', 'membership');
         $data['secret_role'] = $request->has('secret_role');
@@ -122,10 +122,10 @@ class RoleController extends Controller {
 
         $role->permissions()->sync($permissions);
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function rank(Request $request, Rpgo $rpgo)
+    public function rank(Request $request)
     {
         $ranks = $request->get('ranks');
 
@@ -136,10 +136,10 @@ class RoleController extends Controller {
             Role::whereId($id)->update(['rank' => $rank]);
         }
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function hide(Request $request, Rpgo $rpgo)
+    public function hide(Request $request)
     {
         $toHide = $request->get('selected');
 
@@ -149,10 +149,10 @@ class RoleController extends Controller {
             $role->update(['secret_role' => true]);
         }
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
     }
 
-    public function unhide(Request $request, Rpgo $rpgo)
+    public function unhide(Request $request)
     {
         $toUnHide = $request->get('selected');
 
@@ -162,7 +162,7 @@ class RoleController extends Controller {
             $role->update(['secret_role' => false]);
         }
 
-        return redirect()->route('role.dashboard', [$rpgo->world()]);
+        return redirect()->route('role.dashboard', [$this->world()]);
 
     }
 

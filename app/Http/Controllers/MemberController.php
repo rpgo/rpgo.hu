@@ -9,9 +9,9 @@ use Rpgo\Rpgo;
 
 class MemberController extends Controller {
 
-	public function index(Rpgo $rpgo)
+	public function index()
 	{
-        $world = $rpgo->world();
+        $world = $this->world();
 
         $members = Member::ofWorld($world)->get();
 
@@ -23,11 +23,11 @@ class MemberController extends Controller {
 		return view('member.create');
 	}
 
-	public function store(JoinWorld $request, Rpgo $rpgo)
+	public function store(JoinWorld $request)
 	{
-        $user = $rpgo->user();
+        $user = $this->user();
 
-        $world = $rpgo->world();
+        $world = $this->world();
 
         $member = new Member($request->only('name', 'slug'));
 

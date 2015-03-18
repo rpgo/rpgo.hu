@@ -33,16 +33,16 @@ class WorldController extends Controller {
         return redirect()->route('world.main', $world);
     }
 
-    public function main(Rpgo $rpgo)
+    public function main()
     {
-        $world = $rpgo->world();
+        $world = $this->world();
         $onlineCharacters = $world->characters()->online()->get();
         return view('world.main')->with(compact('onlineCharacters'));
     }
 
-    public function publish(Rpgo $rpgo)
+    public function publish()
     {
-        $world = $rpgo->world();
+        $world = $this->world();
 
         $this->dispatchFromArray(PublishWorldCommand::class,compact('world'));
 

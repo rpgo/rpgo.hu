@@ -6,9 +6,9 @@ use Rpgo\Rpgo;
 
 class StatusController extends Controller {
 
-	public function member(Rpgo $rpgo)
+	public function member()
     {
-        $member = $rpgo->member();
+        $member = $this->member();
 
         $member['status'] = ! $member['status'];
 

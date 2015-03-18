@@ -24,7 +24,7 @@ class CharacterController extends Controller {
         return view('character.show');
     }
 
-    public function store(CreateCharacter $request, Rpgo $rpgo)
+    public function store(CreateCharacter $request)
     {
         if($request->get('type') == 'player')
         {
@@ -38,17 +38,17 @@ class CharacterController extends Controller {
 
         $character = new Character($request->only('name'));
 
-        $character->creator()->associate($rpgo->member());
+        $character->creator()->associate($this->member());
 
         $character->characterization()->associate($characterization);
 
         $character->save();
 
-        $character->owner_members()->attach($rpgo->member());
+        $character->owner_members()->attach($this->member());
 
-        $character->occupant_members()->attach($rpgo->member());
+        $character->occupant_members()->attach($this->member());
 
-        return redirect()->route('character.index', [$rpgo->world()]);
+        return redirect()->route('character.index', [$this->world()]);
     }
 
 }
