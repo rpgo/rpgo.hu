@@ -8,24 +8,34 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 
+	private $rpgo;
+
+	public function rpgo()
+	{
+		if( ! $this->rpgo)
+			return $this->rpgo = app('Rpgo\Rpgo');
+
+		return $this->rpgo;
+	}
+
 	public function world()
 	{
-		return app('Rpgo\Rpgo')->world();
+		return $this->rpgo()->world();
 	}
 
 	public function user()
 	{
-		return app('Rpgo\Rpgo')->user();
+		return $this->rpgo()->user();
 	}
 
 	public function member()
 	{
-		return app('Rpgo\Rpgo')->member();
+		return $this->rpgo()->member();
 	}
 
 	public function can($permission)
 	{
-		return app('Rpgo\Rpgo')->can($permission);
+		return $this->rpgo()->can($permission);
 	}
 
 }

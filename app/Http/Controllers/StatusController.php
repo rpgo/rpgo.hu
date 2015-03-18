@@ -8,7 +8,7 @@ class StatusController extends Controller {
 
 	public function member()
     {
-        $member = $this->member();
+        $member = $this->rpgo()->member();
 
         $member['status'] = ! $member['status'];
 
@@ -19,9 +19,14 @@ class StatusController extends Controller {
 
     public function character(Character $character)
     {
-        $character['status'] = ! $character['status'];
+        $member = $this->rpgo()->member();
 
-        $character->save();
+        if($character->occupant_members->contains($member))
+        {
+            $character['status'] = ! $character['status'];
+
+            $character->save();
+        }
 
         return redirect()->back();
     }

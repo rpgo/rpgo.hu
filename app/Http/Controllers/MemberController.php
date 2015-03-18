@@ -37,7 +37,7 @@ class MemberController extends Controller {
 
         $member->save();
 
-        $type = Type::where('label', 'reader')->first();
+        $type = Type::point('reader')->first();
 
         $role = Role::ofWorld($world)->ofType($type)->first();
 
