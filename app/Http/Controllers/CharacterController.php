@@ -19,9 +19,9 @@ class CharacterController extends Controller {
         return view('character.create');
     }
 
-    public function show($character)
+    public function show(Character $character)
     {
-        return view('character.show');
+        return view('character.show')->with(compact('character'));
     }
 
     public function store(CreateCharacter $request)
