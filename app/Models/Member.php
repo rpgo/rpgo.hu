@@ -82,4 +82,9 @@ class Member extends Eloquent {
         return $this->morphToMany(Character::class, 'tenant', 'character_occupants');
     }
 
+    public function scopeOnline($query)
+    {
+        return $query->where('status', true);
+    }
+
 }

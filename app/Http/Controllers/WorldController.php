@@ -37,7 +37,8 @@ class WorldController extends Controller {
     {
         $world = $this->world();
         $onlineCharacters = $world->characters()->online()->get();
-        return view('world.main')->with(compact('onlineCharacters'));
+        $onlineMembers = $world->members()->online()->get();
+        return view('world.main')->with(compact('onlineCharacters', 'onlineMembers'));
     }
 
     public function publish()
