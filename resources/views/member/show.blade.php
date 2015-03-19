@@ -4,7 +4,8 @@
 
 @section('content')
     <div class="container-fluid">
-        <h2>{{$member['name']}}</h2>
+        <h2>{{$member['name']}}
+            <br/><small>{{implode(', ', $member['roles']->lists('name_solo'))}}</small></h2>
         <h3>@lang('member.show.operated_characters')</h3>
         <hr/>
         <div class="row">

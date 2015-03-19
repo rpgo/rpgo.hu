@@ -1,5 +1,5 @@
 <div class="well">
-    <h4 class="media-heading"><a href="{{route('world.show', $item)}}">{{$item['name']}} <span class="hidden-xs">({{$item['brand']}})</span></a><br /><sub><a href="{{route('world.main', $item)}}"><i class="fa fa-link"></i> {{$item['link']}}</a></sub></h4>
+    <h4 class="media-heading"><a href="{{route('world.show', $item)}}">{{$item['name']}} <span class="hidden-xs">({{$item['brand']}})</span></a><br /><small><a href="{{route('world.main', $item)}}"><i class="fa fa-link"></i> {{$item['link']}}</a></small></h4>
     <div class="media">
         <a class="pull-left hidden-xs" href="{{route('world.main', $item)}}">
             <img class="media-object" src="{{asset('images/previews/' . $item['slug'] . '.jpg')}}">
