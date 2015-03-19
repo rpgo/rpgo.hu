@@ -8,6 +8,8 @@ class Character extends Eloquent {
 
     protected $fillable = ['name'];
 
+    public $appends = ['type'];
+
     public function setNameAttribute($name)
     {
         $this->attributes['name'] = $name;
@@ -59,6 +61,14 @@ class Character extends Eloquent {
         return $query->whereHas('occupant_members', function($query){
             return $query->where('members.status', true);
         })->where('characters.status', true);
+    }
+
+    public function getTypeAttribute()
+    {
+        if($this['characterization_type'] == CharacterScope::MASTER)
+            return 'master';
+
+        return 'player';
     }
 
 }

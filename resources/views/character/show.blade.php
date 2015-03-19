@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="well">
-            <h2>{{$character['name']}}
+            <h2>{{$character['name']}} (@lang('character.show.' . $character['type']))
                 <a href="{{route('status.character', [$world, $character])}}"><i class="fa fa-circle" style="color:@if($member['status'] ? $character['status'] : $member['status']) green @else red @endif;"></i></a></h2>
             <div class="row">
                 <div class="col-xs-2">
@@ -13,15 +13,19 @@
                 </div>
                 <div class="col-xs-10">
                     <ul class="list-inline">
-                        <li>@lang('character.show.operators'):</li>
-                        @foreach($character['occupant_members'] as $occupant)
-                            <li><a href="{{route('member.show', [$world, $occupant])}}">{{$occupant['name']}}</a></li>
+                        <li>@lang('character.show.creator'):</li>
+                        <li><a href="{{route('member.show', [$world, $character['creator']])}}">{{$character['creator']['name']}}</a></li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>@choice('character.show.owners', $character['owner_members']->count()):</li>
+                        @foreach($character['owner_members'] as $owner)
+                            <li><a href="{{route('member.show', [$world, $owner])}}">{{$owner['name']}}</a></li>
                         @endforeach
                     </ul>
                     <ul class="list-inline">
-                        <li>@lang('character.show.owners'):</li>
-                        @foreach($character['owner_members'] as $occupant)
-                            <li><a href="{{route('member.show', [$world, $occupant])}}">{{$occupant['name']}}</a></li>
+                        <li>@choice('character.show.operators', $character['occupant_members']->count()):</li>
+                        @foreach($character['occupant_members'] as $operator)
+                            <li><a href="{{route('member.show', [$world, $operator])}}">{{$operator['name']}}</a></li>
                         @endforeach
                     </ul>
                 </div>
