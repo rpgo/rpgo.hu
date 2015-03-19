@@ -12,7 +12,9 @@ return [
     ],
     'item' => [
         'members' => 'Members',
-        'locations' => 'Locations',
+        'online_members' => 'Online',
+        'characters' => 'Characters',
+        'online_characters' => 'Online',
     ],
     'show' => [
         'title' => 'Details',

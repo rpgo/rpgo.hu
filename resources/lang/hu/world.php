@@ -12,7 +12,9 @@ return [
     ],
     'item' => [
         'members' => 'Tagok',
-        'locations' => 'Helyszínek',
+        'online_members' => 'Online',
+        'characters' => 'Karakterek',
+        'online_characters' => 'Online',
     ],
     'show' => [
         'title' => 'Részletek',

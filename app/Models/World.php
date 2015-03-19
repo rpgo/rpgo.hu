@@ -9,7 +9,7 @@ class World extends Eloquent {
 
     protected $fillable = ['name', 'brand', 'slug'];
 
-    protected $appends = ['member_count', 'public_types'];
+    protected $appends = ['member_count', 'public_types', 'online_member_count', 'character_count', 'online_character_count', 'link'];
 
     public function creator()
     {
@@ -58,14 +58,46 @@ class World extends Eloquent {
         return $this->members()->count();
     }
 
+    public function getOnlineMemberCountAttribute()
+    {
+        return $this->members()->online()->count();
+    }
+
+    public function getCharacterCountAttribute()
+    {
+        return $this->characters()->count();
+    }
+
+    public function getOnlineCharacterCountAttribute()
+    {
+        return $this->characters()->online()->count();
+    }
+
     public function getPublicTypesAttribute()
     {
-        return $this->types()->whereIn('pointer', ['player', 'staff', 'master', 'reader', 'support'])->get();
+        $publics = $this->types()->whereIn('pointer', ['player', 'staff', 'master', 'reader', 'support'])->get();
+
+        $types = [];
+
+        foreach($publics as $public)
+        {
+            $types[$public['pointer']] = [
+                'name' => $public['name'],
+                'count' => $this->members()->ofType($public)->count(),
+            ];
+        }
+
+        return $types;
     }
 
     public function characters()
     {
         return $this->hasManyThrough(Character::class, Member::class, 'world_id', 'creator_id');
+    }
+
+    public function getLinkAttribute()
+    {
+        return $this['slug'] . '.' . getenv('APP_DOMAIN');
     }
 
 }
