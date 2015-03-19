@@ -21,6 +21,8 @@ return [
     ],
     'main' => [
         'title' => 'Home',
+        'online_characters' => 'Online characters',
+        'online_members' => 'Online members',
     ],
     'name' => [
         'title' => 'Name',

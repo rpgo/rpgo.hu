@@ -13,7 +13,9 @@ return [
     ],
     'show' => [
         'title' => 'Profil',
-        'menu'  => 'Profil'
+        'menu'  => 'Profil',
+        'operated_characters' => 'Kezelt karakterek',
+        'owned_characters' => 'Birtokolt karakterek',
     ],
     'admin' => [
         'title' => 'Saját OOC neved'

@@ -21,6 +21,8 @@ return [
     ],
     'main' => [
         'title' => 'Főoldal',
+        'online_characters' => 'Online karakterek',
+        'online_members' => 'Online tagok',
     ],
     'name' => [
         'title' => 'Teljes megnevezés',

@@ -14,4 +14,8 @@ return [
         'operators' => 'Kezelő|Kezelők',
         'owners' => 'Tulajdonos|Tulajdonosok',
     ],
+    'item' => [
+        'master' => 'MK',
+        'player' => 'JK',
+    ],
 ];

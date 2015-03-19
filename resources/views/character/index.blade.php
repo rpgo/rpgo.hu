@@ -5,11 +5,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <ul>
-                @foreach($characters as $character)
-                    <li>{{$character['name']}}</li>
-                @endforeach
-            </ul>
+            @foreach($world['characters'] as $character)
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    @include('character.item', ['item' => $character])
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

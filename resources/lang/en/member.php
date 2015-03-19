@@ -14,6 +14,8 @@ return [
     'show' => [
         'title' => 'Profile',
         'menu' => 'Profile',
+        'operated_characters' => 'Operated Characters',
+        'owned_characters' => 'Owned Characters',
     ],
     'info' => [
         'count' => 'Members',
