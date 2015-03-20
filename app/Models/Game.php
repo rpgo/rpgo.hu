@@ -6,7 +6,6 @@ class Game extends Eloquent {
 
     const OPEN = 'open';
     const REQUEST = 'request';
-    const INVITATION = 'invitation';
     const MANUAL = 'manual';
 
     public static $attendances = [
