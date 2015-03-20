@@ -20,7 +20,7 @@ class CreateParticipationsTable extends Migration {
 
 			$table->string('game_id', 36);
 			$table->string('character_id', 36);
-			$table->string('location_id', 36);
+			$table->string('location_id', 36)->nullable();
 			$table->enum('status', Participation::$statuses);
 
 			$table->foreign('game_id')->references('id')->on('games');
