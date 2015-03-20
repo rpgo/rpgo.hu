@@ -100,4 +100,9 @@ class World extends Eloquent {
         return $this['slug'] . '.' . getenv('APP_DOMAIN');
     }
 
+    public function settings()
+    {
+        return $this->hasOne(Settings::class);
+    }
+
 }
