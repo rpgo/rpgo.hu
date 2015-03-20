@@ -26,7 +26,7 @@ class LocationController extends Controller {
         return view('location.create')->with(compact('location'));
     }
 
-    public function store(Rpgo $this, Location $parent, AddLocation $request)
+    public function store(Location $parent, AddLocation $request)
     {
         $member = $this->member();
 
@@ -48,7 +48,7 @@ class LocationController extends Controller {
         return redirect()->route('location.show', [$world, $location]);
     }
 
-    public function renameAction(Rpgo $this, Location $location, Request $request)
+    public function renameAction(Location $location, Request $request)
     {
         $world = $this->world();
 
