@@ -2,6 +2,8 @@
 
 class Character extends Eloquent {
 
+    use RecordsActivity;
+
     protected $table = 'characters';
 
 	public $incrementing = false;
