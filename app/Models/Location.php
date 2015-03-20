@@ -74,4 +74,20 @@ class Location extends Eloquent {
         return $this->belongsTo(Member::class, 'creator_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function characters()
+    {
+        return $this->visitors()->wherePivot('status', Participation::ACTIVE);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function visitors()
+    {
+        return $this->belongsToMany(Character::class, 'participations')->withPivot('status');
+    }
+
 }

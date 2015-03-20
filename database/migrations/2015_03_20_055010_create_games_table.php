@@ -16,6 +16,11 @@ class CreateGamesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+			$table->string('title', 40);
+			$table->string('slug', 40);
+
+			$table->enum('attendance', \Rpgo\Models\Game::$attendances);
 		});
 	}
 
