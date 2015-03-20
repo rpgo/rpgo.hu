@@ -14,7 +14,7 @@ class CreateParticipationsTable extends Migration {
 	{
 		Schema::create('participations', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->string('id', 36)->primary();
 			$table->timestamps();
 		});
 	}
