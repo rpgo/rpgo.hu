@@ -1,8 +1,10 @@
 <?php namespace Rpgo\Models;
 
-class Character extends Eloquent {
+class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
 
-    use RecordsActivity;
+    use RecordsActivity, ReportsActivities;
+
+    protected static $records = ['created'];
 
     protected $table = 'characters';
 

@@ -4,25 +4,32 @@ use ReflectionClass;
 
 trait RecordsActivity {
 
-    protected static function boot()
-    {
-        parent::boot();
+    protected static $records = ['created', 'updated', 'deleted'];
 
-        foreach(static::getModelEvents() as $event)
+    protected static function bootRecordsActivity()
+    {
+        foreach(static::getModelEventsToRecord() as $event)
         {
-            static::$event(function($subject) use ($event) {
-                $subject->addActivity($event);
+            static::$event(function(static $subject) use ($event) {
+                $subject->recordActivity($event);
             });
         }
     }
 
-    protected function addActivity($event)
+    protected static function getModelEventsToRecord()
     {
-        $actor = $this->getActor();
+        return static::$records;
+    }
+
+    public function recordActivity($action, Eloquent $actor = null)
+    {
+        if( ! $actor )
+            $actor = $this->getActor();
+
         Activity::create([
             'subject_id' => $this['id'],
             'subject_type' => get_class($this),
-            'type' => $this->getActivityType($event),
+            'type' => $this->getActivityType($action),
             'actor_id' => $actor['id'],
             'actor_type' => get_class($actor),
         ]);
@@ -30,21 +37,13 @@ trait RecordsActivity {
 
     protected function getActivityType($action)
     {
-        $name = strtolower((new ReflectionClass($this))->getShortName());
+        $model = strtolower((new ReflectionClass($this))->getShortName());
 
-        return $action . "_" . $name;
+        return $action . "_" . $model;
     }
 
     protected function getActor()
     {
         return $this['member'];
-    }
-
-    protected static getModelEvents()
-    {
-        if(isset(static::$record))
-            return static::$record;
-
-        return ['created', 'updated', 'deleted'];
     }
 }
