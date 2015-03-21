@@ -1,9 +1,7 @@
 <?php namespace Rpgo\Models;
 
-use Illuminate\Database\Eloquent\Model;
+class Choice extends Eloquent {
 
-class Choice extends Model {
-
-	//
+	public $incrementing = false;
 
 }
