@@ -17,8 +17,10 @@ class CreateBoardsTable extends Migration {
 			$table->string('id', 36)->primary();
 			$table->timestamps();
 
-			$table->string('rankable_id', 36);
-			$table->string('rankable_type');
+			$table->string('world_id', 36)->nullable();
+			$table->foreign('world_id')->references('id')->on('worlds');
+
+			$table->string('name', 40);
 		});
 	}
 
