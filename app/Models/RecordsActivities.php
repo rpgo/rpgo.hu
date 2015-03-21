@@ -10,7 +10,7 @@ trait RecordsActivities {
     {
         foreach(static::getModelEventsToRecord() as $event)
         {
-            static::$event(function(static $subject) use ($event) {
+            static::$event(function(ActivityRecorder $subject) use ($event) {
                 $subject->recordActivity($event);
             });
         }
