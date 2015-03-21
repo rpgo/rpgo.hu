@@ -14,11 +14,11 @@ class CreateRanksTable extends Migration {
 	{
 		Schema::create('ranks', function(Blueprint $table)
 		{
-			$table->string('id', 36)->primary();
+			$table->string('id')->primary();
 			$table->timestamps();
 
-			$table->string('community_id', 36)->nullable();
-			$table->foreign('community_id')->references('id')->on('communities');
+			$table->string('board_id', 36);
+			$table->foreign('board_id')->references('id')->on('boards');
 		});
 	}
 

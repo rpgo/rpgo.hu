@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rank extends Model {
+class Board extends Model {
 
 	//
 
