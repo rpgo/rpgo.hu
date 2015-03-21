@@ -19,6 +19,8 @@ class CreateCommunitiesTable extends Migration {
 
 			$table->string('partition_id', 36)->nullable();
 			$table->foreign('partition_id')->references('id')->on('partitions');
+
+			$table->string('name');
 		});
 	}
 
