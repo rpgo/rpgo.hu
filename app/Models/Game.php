@@ -2,6 +2,8 @@
 
 class Game extends Eloquent {
 
+    use RecordsActivities;
+
     public $incrementing = false;
 
     const OPEN = 'open';

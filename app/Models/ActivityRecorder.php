@@ -2,6 +2,6 @@
 
 interface ActivityRecorder {
 
-    public function recordActivity($action, Eloquent $actor = null);
+    public function recordActivity($action, ActivityRecorder $actor = null);
 
 }

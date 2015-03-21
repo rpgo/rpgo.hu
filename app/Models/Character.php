@@ -2,9 +2,7 @@
 
 class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
 
-    use RecordsActivity, ReportsActivities;
-
-    protected static $records = ['created'];
+    use RecordsActivities, ReportsActivities;
 
     protected $table = 'characters';
 
@@ -74,5 +72,4 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
 
         return 'player';
     }
-
 }

@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Builder as Query;
 
 class Member extends Eloquent {
 
+    use ReportsActivities;
+
     public $incrementing = false;
 
     protected $fillable = ['name'];

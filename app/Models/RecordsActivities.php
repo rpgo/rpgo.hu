@@ -2,9 +2,9 @@
 
 use ReflectionClass;
 
-trait RecordsActivity {
+trait RecordsActivities {
 
-    protected static $records = ['created', 'updated', 'deleted'];
+    protected static $records = [];
 
     protected static function bootRecordsActivity()
     {
@@ -21,7 +21,7 @@ trait RecordsActivity {
         return static::$records;
     }
 
-    public function recordActivity($action, Eloquent $actor = null)
+    public function recordActivity($action, ActivityRecorder $actor = null)
     {
         if( ! $actor )
             $actor = $this->getActor();
@@ -44,6 +44,6 @@ trait RecordsActivity {
 
     protected function getActor()
     {
-        return $this['member'];
+        return $this['creator'];
     }
 }

@@ -4,6 +4,8 @@ use Illuminate\Database\Query\Builder;
 
 class Location extends Eloquent {
 
+    use RecordsActivities;
+
 	public $incrementing = false;
 
     protected $appends = ['children'];
