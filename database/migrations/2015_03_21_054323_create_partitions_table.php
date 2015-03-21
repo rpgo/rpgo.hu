@@ -22,7 +22,7 @@ class CreatePartitionsTable extends Migration {
 
 			$table->string('name');
 			$table->integer('limit')->unsigned();
-			$table->string('rank')->unsigned();
+			$table->integer('rank')->unsigned();
 		});
 	}
 

@@ -7,6 +7,7 @@ use Rpgo\Models\Location;
 use Rpgo\Models\Member;
 use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
+use Rpgo\Models\Settings;
 use Rpgo\Models\Type;
 use Rpgo\Models\User;
 use Rpgo\Models\World;
@@ -55,6 +56,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $user = $guard->user();
 
         $world = $this->createWorld($user);
+
+        $this->createSettings($world);
 
         $this->createRoles($world);
 
@@ -190,6 +193,15 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $role = Role::ofWorld($world)->ofType($type)->latest()->first();
 
         $member->roles()->attach($role);
+    }
+
+    private function createSettings($world)
+    {
+        $settings = new Settings();
+
+        $settings->world()->associate($world);
+
+        $settings->save();
     }
 
 }
