@@ -19,6 +19,10 @@ class CreatePartitionsTable extends Migration {
 
 			$table->string('world_id', 36)->nullable();
 			$table->foreign('world_id')->references('id')->on('worlds');
+
+			$table->string('name');
+			$table->integer('limit')->unsigned();
+			$table->string('rank')->unsigned();
 		});
 	}
 
