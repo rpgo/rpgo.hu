@@ -108,7 +108,7 @@ return [
 	|
 	*/
 
-	'providers' => array_merge([
+	'providers' => [
 
 		/*
 		 * Laravel Framework Service Providers...
@@ -146,11 +146,7 @@ return [
 		'Rpgo\Providers\EventServiceProvider',
 		'Rpgo\Providers\RouteServiceProvider',
 
-	]
-    , (env('APP_ENV') == 'local') ?
-    [   // Dev-only service providers
-
-    ] : []),
+	],
 
 	/*
 	|--------------------------------------------------------------------------
