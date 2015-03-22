@@ -1,5 +1,5 @@
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Karaktereid</a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Karaktereid <span class="caret"></a>
     <ul class="dropdown-menu" role="menu">
         @foreach($member['occupied_characters'] as $character)
         <li  style="display: inline-flex;">
