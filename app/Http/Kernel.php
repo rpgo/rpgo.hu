@@ -33,6 +33,7 @@ class Kernel extends HttpKernel {
         'stranger' => 'Rpgo\Http\Middleware\RedirectIfMember',
         'warden' => 'Rpgo\Http\Middleware\Recognize',
 		'permission' => 'Rpgo\Http\Middleware\RedirectIfNotAllowed',
+		'lang' => 'Rpgo\Http\Middleware\SetLanguage',
 	];
 
 }

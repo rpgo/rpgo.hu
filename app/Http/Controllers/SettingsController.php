@@ -46,7 +46,7 @@ class SettingsController extends Controller {
 
 		$settings->save();
 
-		return view('settings.edit')->with(compact('settings'));
+		return redirect()->route('settings.edit', [$this->world()]);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class SettingsController extends Controller {
 	 * @param Settings $settings
 	 * @return mixed
      */
-	
+
 	private function updateLanguage(EditSettings $request, $settings)
 	{
 		if ($request->has('language'))
