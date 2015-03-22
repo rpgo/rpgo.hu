@@ -16,4 +16,6 @@ $router->group(['prefix' => trans('routes.dashboard.prefix'), 'permission' => 'u
     ]);
 
     require __DIR__ . '/role.php';
+
+    require __DIR__ . '/settings.php';
 });

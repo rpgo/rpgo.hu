@@ -69,4 +69,8 @@ return [
         'member' => 'allapot/valtas',
         'character' => 'allapot/valtas/{:parameter}',
     ],
+    'settings' => [
+        'edit'      => 'beallitasok',
+        'update'    => 'beallitasok',
+    ],
 ];

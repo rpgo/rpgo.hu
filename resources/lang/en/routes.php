@@ -69,4 +69,8 @@ return [
         'member' => 'status/toggle',
         'character' => 'status/toggle/{:parameter}',
     ],
+    'settings' => [
+        'edit'      => 'settings',
+        'update'    => 'settings',
+    ],
 ];
