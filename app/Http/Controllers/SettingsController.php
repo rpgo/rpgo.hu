@@ -11,7 +11,7 @@ class SettingsController extends Controller {
 	 */
 	public function edit()
 	{
-		//
+		return view('settings.edit');
 	}
 
 	/**
