@@ -23,7 +23,9 @@
 </head>
 <body>
     @include('common.nav')
-    
+
+	@include('header')
+
 	@yield('content')
 
 	<!-- Scripts -->
