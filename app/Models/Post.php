@@ -2,6 +2,8 @@
 
 class Post extends Eloquent {
 
+    public $incrementing = false;
+
 	public function location()
     {
         return $this->belongsTo(Location::class);
