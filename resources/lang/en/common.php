@@ -7,4 +7,8 @@ return [
     ],
     'yes' => 'Yes',
     'no' => 'No',
+    'languages' => [
+        'hu' => 'Hungarian',
+        'en' => 'English',
+    ],
 ];
