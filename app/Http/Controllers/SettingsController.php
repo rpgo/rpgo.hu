@@ -7,10 +7,9 @@ class SettingsController extends Controller {
 	/**
 	 * Show the form for editing the world settings.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
 		//
 	}
@@ -18,10 +17,9 @@ class SettingsController extends Controller {
 	/**
 	 * Update the settings in storage.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		//
 	}
