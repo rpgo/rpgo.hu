@@ -34,6 +34,8 @@ $router->group(['domain' => '{world}.' . env('APP_DOMAIN'), 'middleware' => ['gu
         'as' => 'status.character'
     ]);
 
+    require __DIR__ . '/routes/game.php';
+
     require __DIR__ . '/routes/member.php';
 
     require __DIR__ . '/routes/character.php';
