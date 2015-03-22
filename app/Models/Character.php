@@ -72,4 +72,9 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
 
         return 'player';
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

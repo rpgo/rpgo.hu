@@ -92,4 +92,9 @@ class Location extends Eloquent {
         return $this->belongsToMany(Character::class, 'participations')->withPivot('status');
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
 }
