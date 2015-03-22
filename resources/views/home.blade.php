@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 	<div class="well">
-        Rpgo.hu
+        Bejelentkeztél!
 	</div>
 </div>
 @endsection
