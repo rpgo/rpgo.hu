@@ -13,8 +13,9 @@
                     <label class="col-xs-3" for="language">@lang('settings.form.language'): </label>
                     <div class="col-xs-6">
                         <select name="language" id="language" class="form-control">
-                            <option value="hu">@lang('common.languages.hu')</option>
-                            <option value="en">@lang('common.languages.en')</option>
+                            @foreach(['hu', 'en'] as $language)
+                                <option value="{{$language}}" @if($settings['language'] == $language) selected @endif>@lang('common.languages.' . $language)</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

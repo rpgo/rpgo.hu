@@ -11,7 +11,10 @@ class SettingsController extends Controller {
 	 */
 	public function edit()
 	{
-		return view('settings.edit');
+		$world = $this->world();
+		$settings = $world['settings'];
+
+		return view('settings.edit')->with(compact('settings'));
 	}
 
 	/**
