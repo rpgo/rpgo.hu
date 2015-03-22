@@ -8,9 +8,9 @@ class GameController extends Controller {
 
         $world->load('choices.games');
 
-        $games = $world['choices']->fetch('games');
+        $choices = $world['choices'];
 
-        return view('game.index')->with(compact('games'));
+        return view('game.index')->with(compact('choices'));
     }
 
 }
