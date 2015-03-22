@@ -2,6 +2,7 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Játéktér <span class="caret"></a>
     <ul class="dropdown-menu" role="menu">
         <li><a href="{{route('location.show', [$world, $world->rootlocation()])}}">{{$world->rootlocation()->name}}</a></li>
+        <li><a href="{{route('game.index', [$world])}}">@lang('game.index.menu')</a></li>
         <li><a href="{{route('character.index', $world)}}">@lang('character.index.menu')</a></li>
     </ul>
 </li>

@@ -16,6 +16,12 @@ class CreateChoicesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+			$table->string('title');
+			$table->integer('limit')->unsigned();
+
+			$table->string('world_id', 36);
+			$table->foreign('world_id')->references('id')->on('worlds');
 		});
 	}
 

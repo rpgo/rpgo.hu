@@ -47,4 +47,9 @@ class Game extends Eloquent {
         return $this->hasMany(Post::class);
     }
 
+    public function choice()
+    {
+        return $this->belongsTo(Choice::class);
+    }
+
 }

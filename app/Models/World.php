@@ -105,4 +105,9 @@ class World extends Eloquent {
         return $this->hasOne(Settings::class);
     }
 
+    public function choices()
+    {
+        return $this->hasMany(Choice::class);
+    }
+
 }
