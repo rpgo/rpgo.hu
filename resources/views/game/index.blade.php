@@ -3,27 +3,47 @@
 @section('content')
     <div class="container-fluid">
         @if(can('see.planned.games') && $planned_games)
-            <h2>Készülő játékok</h2>
-            <hr/>
-            @include('game.categories', ['categories' => $planned_games])
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tervezett játékok
+                </div>
+                <div class="panel-body">
+                    @include('game.categories', ['categories' => $planned_games])
+                </div>
+            </div>
         @endif
 
         @if(can('see.announced.games') && $announced_games)
-            <h2>Meghirdetett játékok</h2>
-            <hr/>
-            @include('game.categories', ['categories' => $announced_games])
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Meghirdetett játékok
+                </div>
+                <div class="panel-body">
+                    @include('game.categories', ['categories' => $announced_games])
+                </div>
+            </div>
         @endif
 
         @if(can('see.started.games') && $started_games)
-            <h2>Futó játékok</h2>
-            <hr/>
-            @include('game.categories', ['categories' => $started_games])
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Elkezdett játékok
+                </div>
+                <div class="panel-body">
+                    @include('game.categories', ['categories' => $started_games])
+                </div>
+            </div>
         @endif
 
         @if(can('see.finished.games') && $finished_games)
-            <h2>Befejezett játékok</h2>
-            <hr/>
-            @include('game.categories', ['categories' => $finished_games])
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Befejezett játékok
+                </div>
+                <div class="panel-body">
+                    @include('game.categories', ['categories' => $finished_games])
+                </div>
+            </div>
         @endif
     </div>
 @endsection

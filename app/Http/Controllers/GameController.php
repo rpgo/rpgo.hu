@@ -33,7 +33,7 @@ class GameController extends Controller {
 
         $chapters = $chapters->filter(function(Chapter $chapter){
             return $chapter['games']->count();
-        });
+        })->toArray();
 
         return view('game.index')->with([
             'planned_games' => $choices->get('planned', []),
