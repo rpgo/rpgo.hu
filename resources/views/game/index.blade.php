@@ -2,36 +2,28 @@
 
 @section('content')
     <div class="container-fluid">
-        <h2>Készülőben levő játékok</h2>
-        <hr/>
-        
-        <h2>Hamarosan induló játékok</h2>
-        <hr/>
-        <ul>
-            @foreach($choices as $choice)
-                <li><p>{{$choice['title']}}</p>
-                    <ul>
-                        @foreach($choice['games'] as $game)
-                            <li>{{$game['title']}}</li>
-                        @endforeach
-                    </ul>
-                </li>
-            @endforeach
-        </ul>
-        <h2>Már futó játékok</h2>
-        <hr/>
-        <h2>Archívum</h2>
-        <hr/>
-        <ul>
-            @foreach($chapters as $chapter)
-                <li><p>{{$chapter['title']}}</p>
-                    <ul>
-                        @foreach($chapter['games'] as $game)
-                            <li>{{$game['title']}}</li>
-                        @endforeach
-                    </ul>
-                </li>
-            @endforeach
-        </ul>
+        @if(can('see.planned.games') && $planned_games)
+            <h2>Készülő játékok</h2>
+            <hr/>
+            @include('game.categories', ['categories' => $planned_games])
+        @endif
+
+        @if(can('see.announced.games') && $announced_games)
+            <h2>Meghirdetett játékok</h2>
+            <hr/>
+            @include('game.categories', ['categories' => $announced_games])
+        @endif
+
+        @if(can('see.started.games') && $started_games)
+            <h2>Futó játékok</h2>
+            <hr/>
+            @include('game.categories', ['categories' => $started_games])
+        @endif
+
+        @if(can('see.finished.games') && $finished_games)
+            <h2>Befejezett játékok</h2>
+            <hr/>
+            @include('game.categories', ['categories' => $finished_games])
+        @endif
     </div>
 @endsection

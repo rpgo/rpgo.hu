@@ -18,6 +18,8 @@ class Game extends Eloquent {
         self::MANUAL,
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'finished_at'];
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;

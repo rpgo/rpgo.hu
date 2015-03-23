@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
@@ -216,7 +217,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $choice = new Choice([
             'title' => 'Szabadjátékok',
             'request_limit' => 0,
-            'participation_limit' => 1
+            'participation_limit' => 1,
         ]);
 
         $choice->save();
@@ -233,7 +234,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $game = new Game([
             'title' => 'Szabadjáték',
-            'attendance' => Game::OPEN
+            'attendance' => Game::OPEN,
         ]);
 
         $game->choice()->associate($choice);
@@ -241,6 +242,10 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $game->save();
 
         $game->chapters()->attach($chapter);
+
+        $choice->announce();
+
+        $choice->start();
     }
 
     private function createMainChapter(World $world)

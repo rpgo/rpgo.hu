@@ -16,6 +16,7 @@ class CreateGamesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+			$table->timestamp('finished_at')->nullable();
 
 			$table->string('title', 40);
 			$table->string('slug', 40);

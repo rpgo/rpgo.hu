@@ -16,9 +16,12 @@ class CreateChoicesTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+			$table->timestamp('announced_at')->nullable();
+			$table->timestamp('started_at')->nullable();
 
 			$table->string('title');
 			$table->string('slug');
+
 			$table->integer('request_limit')->unsigned();
 			$table->integer('participation_limit')->unsigned();
 		});
