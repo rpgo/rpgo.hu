@@ -17,4 +17,9 @@ class Chapter extends Eloquent {
         return $this->belongsTo(World::class);
     }
 
+    public function games()
+    {
+        return $this->belongsToMany(Game::class, 'chapter_games');
+    }
+
 }

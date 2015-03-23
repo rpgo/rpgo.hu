@@ -110,4 +110,9 @@ class World extends Eloquent {
         return $this->belongsToMany(Choice::class, 'world_choices');
     }
 
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
+
 }

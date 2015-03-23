@@ -6,11 +6,13 @@ class GameController extends Controller {
     {
         $world = $this->world();
 
-        $world->load('choices.games');
+        $world->load(['choices.games', 'chapters.games']);
 
         $choices = $world['choices'];
 
-        return view('game.index')->with(compact('choices'));
+        $chapters = $world['chapters'];
+
+        return view('game.index')->with(compact('choices', 'chapters'));
     }
 
 }
