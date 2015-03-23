@@ -60,4 +60,9 @@ class Game extends Eloquent {
         return $this->belongsTo(Choice::class);
     }
 
+    public function chapters()
+    {
+        return $this->belongsToMany(Chapter::class, 'chapter_games');
+    }
+
 }

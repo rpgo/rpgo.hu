@@ -19,10 +19,8 @@ class CreateChoicesTable extends Migration {
 
 			$table->string('title');
 			$table->string('slug');
-			$table->integer('limit')->unsigned();
-
-			$table->string('world_id', 36);
-			$table->foreign('world_id')->references('id')->on('worlds');
+			$table->integer('request_limit')->unsigned();
+			$table->integer('participation_limit')->unsigned();
 		});
 	}
 

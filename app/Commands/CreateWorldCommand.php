@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
+use Rpgo\Models\Chapter;
 use Rpgo\Models\Choice;
 use Rpgo\Models\Game;
 use Rpgo\Models\Location;
@@ -69,6 +70,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $this->createFreeGame($world);
 
+        $this->createMainChapter($world);
+
         $support = User::support();
 
         if(! $support->equals($user))
@@ -128,7 +131,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $location->sublocations()->attach($location, ['depth' => 0]);
     }
 
-    private function createSupport($world, $support)
+    private function createSupport(World $world, User $support)
     {
         $member = $this->createMember($support, $world, $support->name);
 
@@ -139,7 +142,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
         return $member;
     }
 
-    private function createMember($user, $world, $name)
+    private function createMember(User $user, World $world, $name)
     {
         $member = new Member(['name' => $name]);
 
@@ -190,7 +193,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
      * @param $world
      * @param $member
      */
-    private function addRole($world, $member, $type)
+    private function addRole(World $world, Member $member, $type)
     {
         $type = Type::point($type);
 
@@ -199,7 +202,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $member->roles()->attach($role);
     }
 
-    private function createSettings($world)
+    private function createSettings(World $world)
     {
         $settings = new Settings();
 
@@ -208,19 +211,41 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $settings->save();
     }
 
-    private function createFreeGame($world)
+    private function createFreeGame(World $world)
     {
-        $choice = new Choice(['title' => 'Szabadjátékok', 'limit' => 1]);
-
-        $choice->world()->associate($world);
+        $choice = new Choice([
+            'title' => 'Szabadjátékok',
+            'request_limit' => 0,
+            'participation_limit' => 1
+        ]);
 
         $choice->save();
 
-        $game = new Game(['title' => 'Szabadjáték', 'attendance' => Game::OPEN]);
+        $choice->worlds()->attach($world);
+
+        $chapter = new Chapter([
+            'title' => 'Játékok',
+        ]);
+
+        $chapter->world()->associate($world);
+
+        $chapter->save();
+
+        $game = new Game([
+            'title' => 'Szabadjáték',
+            'attendance' => Game::OPEN
+        ]);
 
         $game->choice()->associate($choice);
 
         $game->save();
+
+        $game->chapters()->attach($chapter);
+    }
+
+    private function createMainChapter(World $world)
+    {
+
     }
 
 }

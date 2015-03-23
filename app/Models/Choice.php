@@ -4,7 +4,7 @@ class Choice extends Eloquent {
 
 	public $incrementing = false;
 
-	protected $fillable = ['title', 'limit'];
+	protected $fillable = ['title', 'request_limit', 'participation_limit'];
 
 	public function setTitleAttribute($value)
 	{
@@ -12,9 +12,9 @@ class Choice extends Eloquent {
 		$this->attributes['slug'] = str_slug($value);
 	}
 
-	public function world()
+	public function worlds()
 	{
-		return $this->belongsTo(World::class);
+		return $this->belongsToMany(World::class, 'world_choices');
 	}
 
 	public function games()

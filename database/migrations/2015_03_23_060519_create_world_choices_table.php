@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChaptersTable extends Migration {
+class CreateWorldChoicesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,15 @@ class CreateChaptersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('chapters', function(Blueprint $table)
+		Schema::create('world_choices', function(Blueprint $table)
 		{
-			$table->string('id', 36)->primary();
-			$table->timestamps();
-
-			$table->string('title');
-			$table->string('slug');
-
 			$table->string('world_id', 36);
+			$table->string('choice_id', 36);
+
+			$table->primary(['world_id', 'choice_id']);
+
 			$table->foreign('world_id')->references('id')->on('worlds');
+			$table->foreign('choice_id')->references('id')->on('choices');
 		});
 	}
 
@@ -32,7 +31,7 @@ class CreateChaptersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('chapters');
+		Schema::drop('world_choices');
 	}
 
 }

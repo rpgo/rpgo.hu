@@ -23,9 +23,6 @@ class CreateGamesTable extends Migration {
 			$table->string('choice_id', 36)->nullable();
 			$table->foreign('choice_id')->references('id')->on('choices');
 
-			$table->string('chapter_id', 36)->nullable();
-			$table->foreign('chapter_id')->references('id')->on('chapters');
-
 			$table->enum('attendance', \Rpgo\Models\Game::$attendances);
 		});
 	}
