@@ -3,6 +3,8 @@
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
+use Rpgo\Models\Choice;
+use Rpgo\Models\Game;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
 use Rpgo\Models\Permission;
@@ -64,6 +66,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $admin = $this->createAdmin($user, $world);
 
         $this->createRootLocation($admin, $world);
+
+        $this->createFreeGame($world);
 
         $support = User::support();
 
@@ -202,6 +206,21 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $settings->world()->associate($world);
 
         $settings->save();
+    }
+
+    private function createFreeGame($world)
+    {
+        $choice = new Choice(['title' => 'Szabadjátékok', 'limit' => 1]);
+
+        $choice->world()->associate($world);
+
+        $choice->save();
+
+        $game = new Game(['title' => 'Szabadjáték', 'attendance' => Game::OPEN]);
+
+        $game->choice()->associate($choice);
+
+        $game->save();
     }
 
 }

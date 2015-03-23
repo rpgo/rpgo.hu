@@ -6,6 +6,8 @@ class Game extends Eloquent {
 
     public $incrementing = false;
 
+    protected $fillable = ['title', 'attendance'];
+
     const OPEN = 'open';
     const REQUEST = 'request';
     const MANUAL = 'manual';
@@ -15,6 +17,12 @@ class Game extends Eloquent {
         self::REQUEST,
         self::MANUAL,
     ];
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+    }
 
     /**
      * All the participations in this game
