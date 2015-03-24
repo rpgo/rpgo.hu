@@ -5,26 +5,18 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('character.create.title')}}</div>
+                    <div class="panel-heading">{{trans('character.create.create')}}</div>
                     <div class="panel-body">
                         @include('common.feedback')
 
                         <form class="form-horizontal" role="form" method="POST" action="{{route('character.store', $world)}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('character.create.type'): </label>
-                                <div class="col-md-6">
-                                    <div class="radio">
-                                        <label><input type="radio" name="type" class="radio-inline" value="player" checked> @lang('character.create.player')</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="type" class="radio-inline" value="master"> @lang('character.create.master')</label>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('character.create.' . session('character.create.step'))
+
+                            {{--
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">{{trans('character.create.name')}}</label>
@@ -53,8 +45,16 @@
                                         {{trans('character.create.submit')}}
                                     </button>
                                 </div>
-                            </div>
+                            </div>--}}
                         </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{trans('character.create.create')}}</div>
+                    <div class="panel-body">
+                        @include('character.item', ['item' => new \Rpgo\Models\Character()])
                     </div>
                 </div>
             </div>

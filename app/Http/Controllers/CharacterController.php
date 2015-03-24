@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Rpgo\Http\Requests\CreateCharacter;
 use Rpgo\Models\Character;
 use Rpgo\Models\MasterCharacterization;
@@ -17,6 +18,8 @@ class CharacterController extends Controller {
 
     public function create()
     {
+        session(['character.create.step' => 'start']);
+
         $world = $this->world();
 
         $world->load('partitions.communities');
@@ -31,9 +34,14 @@ class CharacterController extends Controller {
         return view('character.show')->with(compact('character'));
     }
 
-    public function store(CreateCharacter $request)
+    public function store(Request $request)
     {
-        if($request->get('type') == 'player')
+        switch(session('character.create.step')){
+            case "start":
+                return $this->startStore($request);
+        }
+
+        /*if($request->get('type') == 'player')
         {
             $characterization = new PlayerCharacterization();
         }else
@@ -70,7 +78,18 @@ class CharacterController extends Controller {
             }
         }
 
-        return redirect()->route('character.index', [$world]);
+        return redirect()->route('character.index', [$world]);*/
+    }
+
+    private function startStore($request)
+    {
+        session([
+            'character.create.type' => $request->get('type'),
+            'character.create.step' => 'name',
+        ]);
+
+        return view('character.create');
+
     }
 
 }
