@@ -33,6 +33,20 @@
                                 </div>
                             </div>
 
+                            @foreach($partitions as $partition)
+                                <div class="form-group">
+                                    <label for="{{$partition['slug']}}" class="col-md-4 control-label">{{$partition['name']}}:</label>
+                                    <div class="col-md-6">
+                                        <select id="{{$partition['slug']}}" name="{{$partition['slug']}}[]" class="form-control"
+                                            @if($partition['limit'] != 1) multiple @endif>
+                                            @foreach($partition['communities'] as $community)
+                                                <option value="{{$community['id']}}">{{$community['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endforeach
+
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

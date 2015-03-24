@@ -3,6 +3,7 @@
 use Rpgo\Http\Requests\CreateCharacter;
 use Rpgo\Models\Character;
 use Rpgo\Models\MasterCharacterization;
+use Rpgo\Models\Partition;
 use Rpgo\Models\PlayerCharacterization;
 use Rpgo\Rpgo;
 
@@ -16,7 +17,13 @@ class CharacterController extends Controller {
 
     public function create()
     {
-        return view('character.create');
+        $world = $this->world();
+
+        $world->load('partitions.communities');
+
+        $partitions = $world['partitions'];
+
+        return view('character.create')->with(compact('partitions'));
     }
 
     public function show(Character $character)
@@ -48,7 +55,22 @@ class CharacterController extends Controller {
 
         $character->occupant_members()->attach($this->member());
 
-        return redirect()->route('character.index', [$this->world()]);
+        $world = $this->world()->load('partitions.communities');
+
+        $partitions = $world['partitions'];
+
+        foreach($partitions as $partition)
+        {
+            $chosen_communities = $request->get($partition['slug'], []);
+
+            foreach($chosen_communities as $chosen)
+            {
+                $community = $partition['communities']->keyBy('id')[$chosen];
+                $character->communities()->attach($community);
+            }
+        }
+
+        return redirect()->route('character.index', [$world]);
     }
 
 }

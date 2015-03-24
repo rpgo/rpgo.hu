@@ -77,4 +77,9 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
     {
         return $this->hasMany(Post::class);
     }
+
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class, 'character_communities');
+    }
 }

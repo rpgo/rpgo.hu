@@ -21,6 +21,10 @@ class CreateCommunitiesTable extends Migration {
 			$table->foreign('partition_id')->references('id')->on('partitions');
 
 			$table->string('name');
+			$table->string('slug');
+
+			$table->string('starting_game_id', 36);
+			$table->foreign('starting_game_id')->references('id')->on('games');
 		});
 	}
 

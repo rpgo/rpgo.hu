@@ -115,4 +115,9 @@ class World extends Eloquent {
         return $this->hasMany(Chapter::class);
     }
 
+    public function partitions()
+    {
+        return $this->hasMany(Partition::class);
+    }
+
 }

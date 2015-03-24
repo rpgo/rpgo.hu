@@ -6,9 +6,11 @@ use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
 use Rpgo\Models\Chapter;
 use Rpgo\Models\Choice;
+use Rpgo\Models\Community;
 use Rpgo\Models\Game;
 use Rpgo\Models\Location;
 use Rpgo\Models\Member;
+use Rpgo\Models\Partition;
 use Rpgo\Models\Permission;
 use Rpgo\Models\Role;
 use Rpgo\Models\Settings;
@@ -69,9 +71,9 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
         $this->createRootLocation($admin, $world);
 
-        $this->createFreeGame($world);
+        $game = $this->createFreeGame($world);
 
-        $this->createMainChapter($world);
+        $this->createCommunities($world, $game);
 
         $support = User::support();
 
@@ -246,11 +248,31 @@ class CreateWorldCommand extends Command implements SelfHandling {
         $choice->announce();
 
         $choice->start();
+
+        return $game;
     }
 
-    private function createMainChapter(World $world)
+    private function createCommunities(World $world, Game $game)
     {
+        $partition = new Partition([
+            'name' => 'Faj',
+            'limit' => 1,
+            'rank' => 0,
+        ]);
 
+        $partition->world()->associate($world);
+
+        $partition->save();
+
+        $community = new Community([
+            'name' => 'Ember',
+        ]);
+
+        $community->partition()->associate($partition);
+
+        $community->starting_game()->associate($game);
+
+        $community->save();
     }
 
 }
