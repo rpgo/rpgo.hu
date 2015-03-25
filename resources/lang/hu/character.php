@@ -5,7 +5,15 @@ return [
         'menu' => 'Karakterek',
     ],
     'create' => [
-        'menu' => 'Új Karakter',
+        'menu' => 'Karakteralkotás',
+        'title' => 'Karakteralkotás',
+        'header' => 'Karakteralkotás',
+        'type' => [
+            'title' => 'Válassz típust',
+            'info' => 'Mielőtt bármibe belekezdenénk, el kell árulnod, milyen típusú karaktert is fogunk alkotni.',
+            'player' => 'Játékos Karakter',
+            'master' => 'Mesélő Karakter',
+        ],
     ],
     'show' => [
         'master' => 'MK',

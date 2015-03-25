@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('character.create.create')}}</div>
+                    <div class="panel-heading">@lang('character.create.' . session('character.create.step') . '.title') - @lang('character.create.header')</div>
                     <div class="panel-body">
                         @include('common.feedback')
 
@@ -48,11 +48,14 @@
                             </div>--}}
                         </form>
                     </div>
+                    <div class="panel-footer">
+                        <a href="">@lang('common.back')</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('character.create.create')}}</div>
+                    <div class="panel-heading">{{trans('character.create.preview')}}</div>
                     <div class="panel-body">
                         @include('character.item', ['item' => new \Rpgo\Models\Character()])
                     </div>

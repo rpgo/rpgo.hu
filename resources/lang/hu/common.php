@@ -11,4 +11,5 @@ return [
         'hu' => 'Magyar',
         'en' => 'Angol',
     ],
+    'back' => 'Vissza',
 ];

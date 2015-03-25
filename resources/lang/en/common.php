@@ -11,4 +11,5 @@ return [
         'hu' => 'Hungarian',
         'en' => 'English',
     ],
+    'back' => 'Back',
 ];

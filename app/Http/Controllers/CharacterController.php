@@ -18,7 +18,7 @@ class CharacterController extends Controller {
 
     public function create()
     {
-        session(['character.create.step' => 'start']);
+        session(['character.create.step' => 'type']);
 
         $world = $this->world();
 
@@ -37,8 +37,8 @@ class CharacterController extends Controller {
     public function store(Request $request)
     {
         switch(session('character.create.step')){
-            case "start":
-                return $this->startStore($request);
+            case "type":
+                return $this->type($request);
         }
 
         /*if($request->get('type') == 'player')
@@ -81,7 +81,7 @@ class CharacterController extends Controller {
         return redirect()->route('character.index', [$world]);*/
     }
 
-    private function startStore($request)
+    private function type($request)
     {
         session([
             'character.create.type' => $request->get('type'),
