@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'type' => [
+        'player' => 'PC',
+        'master' => 'MC',
+        'unknown' => '?',
+    ],
     'index' => [
         'menu' => 'Characters',
     ],
@@ -8,6 +13,10 @@ return [
         'menu' => 'Create new',
         'title' => 'Character Creation',
         'header' => 'Character Creation',
+        'preview' => [
+            'title' => 'Preview',
+            'johndoe' => 'John Doe',
+        ],
         'type' => [
             'title' => 'Choose type',
             'info' => 'Before anything else, you have to tell me which type of character are we creating.',

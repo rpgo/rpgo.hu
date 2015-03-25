@@ -55,9 +55,9 @@
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('character.create.preview')}}</div>
+                    <div class="panel-heading">{{trans('character.create.preview.title')}}</div>
                     <div class="panel-body">
-                        @include('character.item', ['item' => new \Rpgo\Models\Character()])
+                        @include('character.create.preview', ['character' => session('character.create.data')])
                     </div>
                 </div>
             </div>

@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'type' => [
+        'player' => 'JK',
+        'master' => 'MK',
+        'unknown' => '?',
+    ],
     'index' => [
         'menu' => 'Karakterek',
     ],
@@ -8,6 +13,10 @@ return [
         'menu' => 'Karakteralkotás',
         'title' => 'Karakteralkotás',
         'header' => 'Karakteralkotás',
+        'preview' => [
+            'title' => 'Előnézet',
+            'johndoe' => 'Anonymous',
+        ],
         'type' => [
             'title' => 'Válassz típust',
             'info' => 'Mielőtt bármibe belekezdenénk, el kell árulnod, milyen típusú karaktert is fogunk alkotni.',

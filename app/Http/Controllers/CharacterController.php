@@ -18,7 +18,13 @@ class CharacterController extends Controller {
 
     public function create()
     {
-        session(['character.create.step' => 'type']);
+        session([
+            'character.create.step' => 'type',
+            'character.create.data' => [
+                'name' => trans('character.create.preview.johndoe'),
+                'type' => 'unknown',
+            ],
+        ]);
 
         $world = $this->world();
 
@@ -84,8 +90,8 @@ class CharacterController extends Controller {
     private function type($request)
     {
         session([
-            'character.create.type' => $request->get('type'),
             'character.create.step' => 'name',
+            'character.create.data.type' => $request->get('type'),
         ]);
 
         return view('character.create');
