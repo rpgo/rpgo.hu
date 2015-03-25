@@ -6,6 +6,9 @@ return [
         'master' => 'MC',
         'unknown' => '?',
     ],
+    'form' => [
+        'name' => 'Name',
+    ],
     'index' => [
         'menu' => 'Characters',
     ],
@@ -22,6 +25,11 @@ return [
             'info' => 'Before anything else, you have to tell me which type of character are we creating.',
             'player' => 'Player Character',
             'master' => 'Master Character',
+        ],
+        'name' => [
+            'title' => 'Choose name',
+            'info' => 'Name your character now.',
+            'submit' => 'Next',
         ],
     ],
     'show' => [

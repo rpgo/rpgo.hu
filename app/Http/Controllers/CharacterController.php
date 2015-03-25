@@ -42,10 +42,7 @@ class CharacterController extends Controller {
 
     public function store(Request $request)
     {
-        switch(session('character.create.step')){
-            case "type":
-                return $this->type($request);
-        }
+        return $this->{session('character.create.step')}($request);
 
         /*if($request->get('type') == 'player')
         {
@@ -96,6 +93,20 @@ class CharacterController extends Controller {
 
         return view('character.create');
 
+    }
+
+    private function name($request)
+    {
+        if(session('character.create.data.type') == 'player')
+            session(['character.create.step' => 'communities']);
+        else
+            session(['character.create.step' => 'actor']);
+
+        session([
+            'character.create.data.name' => $request->get('name'),
+        ]);
+
+        return view('character.create');
     }
 
 }

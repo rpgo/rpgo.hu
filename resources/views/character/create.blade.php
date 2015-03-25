@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title') Character Creation @endsection
+@section('title') @lang('character.create.' . session('character.create.step') . '.title') - @lang('character.create.title') @endsection
 
 @section('content')
     <div class="container-fluid">
@@ -10,6 +10,10 @@
                     <div class="panel-heading">@lang('character.create.' . session('character.create.step') . '.title') - @lang('character.create.header')</div>
                     <div class="panel-body">
                         @include('common.feedback')
+
+                        <div class="alert alert-info" role="alert">
+                            <p>@lang('character.create.' . session('character.create.step') . '.info')</p>
+                        </div>
 
                         <form class="form-horizontal" role="form" method="POST" action="{{route('character.store', $world)}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -25,19 +29,7 @@
                                 </div>
                             </div>
 
-                            @foreach($partitions as $partition)
-                                <div class="form-group">
-                                    <label for="{{$partition['slug']}}" class="col-md-4 control-label">{{$partition['name']}}:</label>
-                                    <div class="col-md-6">
-                                        <select id="{{$partition['slug']}}" name="{{$partition['slug']}}[]" class="form-control"
-                                            @if($partition['limit'] != 1) multiple @endif>
-                                            @foreach($partition['communities'] as $community)
-                                                <option value="{{$community['id']}}">{{$community['name']}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            @endforeach
+
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

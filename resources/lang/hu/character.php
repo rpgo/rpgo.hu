@@ -6,6 +6,9 @@ return [
         'master' => 'MK',
         'unknown' => '?',
     ],
+    'form' => [
+        'name' => 'Név',
+    ],
     'index' => [
         'menu' => 'Karakterek',
     ],
@@ -22,6 +25,11 @@ return [
             'info' => 'Mielőtt bármibe belekezdenénk, el kell árulnod, milyen típusú karaktert is fogunk alkotni.',
             'player' => 'Játékos Karakter',
             'master' => 'Mesélő Karakter',
+        ],
+        'name' => [
+            'title' => 'Adj nevet',
+            'info' => 'Most elnevezheted a karaktered.',
+            'submit' => 'Tovább',
         ],
     ],
     'show' => [
