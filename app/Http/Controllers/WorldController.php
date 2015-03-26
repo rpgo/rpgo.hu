@@ -47,7 +47,7 @@ class WorldController extends Controller {
 
         $this->dispatchFromArray(PublishWorldCommand::class,compact('world'));
 
-        return redirect()->route('dashboard.main', $world);
+        return redirect()->route('world.show', [$world]);
     }
 
 }
