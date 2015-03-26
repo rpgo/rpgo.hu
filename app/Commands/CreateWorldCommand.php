@@ -254,25 +254,51 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
     private function createCommunities(World $world, Game $game)
     {
-        $partition = new Partition([
+        $this->createPartition([
             'name' => 'Faj',
             'limit' => 1,
             'rank' => 0,
-        ]);
+        ], [
+            ['name' => 'Ember']
+        ], $world, $game);
+
+        $this->createPartition([
+            'name' => 'Kaszt',
+            'limit' => 0,
+            'rank' => 1,
+        ], [
+            ['name' => 'Tudós'],
+            ['name' => 'Katona'],
+        ], $world, $game);
+
+        $this->createPartition([
+            'name' => 'Nem',
+            'limit' => 1,
+            'rank' => 2,
+        ], [
+            ['name' => 'Férfi'],
+            ['name' => 'Nő']
+        ], $world, $game);
+    }
+
+    private function createPartition(array $partition, array $communities, World $world, Game $game)
+    {
+        $partition = new Partition($partition);
 
         $partition->world()->associate($world);
 
         $partition->save();
 
-        $community = new Community([
-            'name' => 'Ember',
-        ]);
+        foreach($communities as $community)
+        {
+            $community = new Community($community);
 
-        $community->partition()->associate($partition);
+            $community->partition()->associate($partition);
 
-        $community->starting_game()->associate($game);
+            $community->starting_game()->associate($game);
 
-        $community->save();
+            $community->save();
+        }
     }
 
 }

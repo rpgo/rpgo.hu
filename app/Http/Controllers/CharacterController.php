@@ -1,12 +1,9 @@
 <?php namespace Rpgo\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Rpgo\Http\Requests\CreateCharacter;
 use Rpgo\Models\Character;
 use Rpgo\Models\MasterCharacterization;
-use Rpgo\Models\Partition;
 use Rpgo\Models\PlayerCharacterization;
-use Rpgo\Rpgo;
 
 class CharacterController extends Controller {
 
@@ -19,10 +16,14 @@ class CharacterController extends Controller {
     public function create()
     {
         session([
-            'character.create.step' => 'type',
-            'character.create.data' => [
-                'name' => trans('character.create.preview.johndoe'),
-                'type' => 'unknown',
+            'character.create' => [
+                'step' => 'type',
+                'data' => [
+                    'name' => trans('character.create.preview.johndoe'),
+                    'type' => 'unknown',
+                    'partitions' => [],
+                ],
+                'next' => '',
             ],
         ]);
 
@@ -44,7 +45,58 @@ class CharacterController extends Controller {
     {
         return $this->{session('character.create.step')}($request);
 
-        /*if($request->get('type') == 'player')
+        /**/
+    }
+
+    public function type(Request $request)
+    {
+        session(['character.create.data.type' => $request->get('type')]);
+
+        $this->step('communities', 'name');
+
+        return view('character.create');
+    }
+
+    public function communities(Request $request)
+    {
+        $world = $this->world()->load('partitions.communities');
+
+        $partitions = $world->partitions;
+
+        $partition = $partitions->where('slug', $request->get('partition'))->first();
+
+        $communities = $request->get($request->get('partition'));
+
+        $partition->load(['communities' => function($query) use($communities) {
+            return $query->whereIn('id', $communities);
+        }]);
+
+        session(['character.create.data.partitions.' . $partition['slug'] => $partition->toArray()]);
+
+        $next = $this->getNextPartition($partitions);
+
+        if($next)
+            $this->step('communities');
+        else
+            $this->step('name');
+
+        return view('character.create');
+    }
+
+    public function name(Request $request)
+    {
+        $this->step('confirm');
+
+        session(['character.create.data.name' => $request->get('name')]);
+
+        return view('character.create');
+    }
+
+    public function confirm(Request $request)
+    {
+        $data = session('character.create.data');
+
+        if($data['type'] == 'player')
         {
             $characterization = new PlayerCharacterization();
         }else
@@ -54,7 +106,7 @@ class CharacterController extends Controller {
 
         $characterization->save();
 
-        $character = new Character($request->only('name'));
+        $character = new Character(['name' => $data['name']]);
 
         $character->creator()->associate($this->member());
 
@@ -66,47 +118,52 @@ class CharacterController extends Controller {
 
         $character->occupant_members()->attach($this->member());
 
-        $world = $this->world()->load('partitions.communities');
-
-        $partitions = $world['partitions'];
-
-        foreach($partitions as $partition)
+        foreach($data['partitions'] as $partition)
         {
-            $chosen_communities = $request->get($partition['slug'], []);
-
-            foreach($chosen_communities as $chosen)
+            foreach($partition['communities'] as $community)
             {
-                $community = $partition['communities']->keyBy('id')[$chosen];
-                $character->communities()->attach($community);
+                $character->communities()->attach($community['id']);
             }
         }
 
-        return redirect()->route('character.index', [$world]);*/
+        return redirect()->route('character.index', [$this->world()]);
     }
 
-    private function type($request)
+    private function step($player, $master = null)
     {
-        session([
-            'character.create.step' => 'name',
-            'character.create.data.type' => $request->get('type'),
-        ]);
+        if(! $master)
+            $master = $player;
 
-        return view('character.create');
-
-    }
-
-    private function name($request)
-    {
         if(session('character.create.data.type') == 'player')
-            session(['character.create.step' => 'communities']);
+            session(['character.create.step' => $player]);
         else
-            session(['character.create.step' => 'actor']);
+            session(['character.create.step' => $master]);
 
-        session([
-            'character.create.data.name' => $request->get('name'),
-        ]);
+        $this->next();
+    }
 
-        return view('character.create');
+    private function getNextPartition(\ArrayAccess $partitions)
+    {
+        foreach ($partitions as $partition) {
+            if( ! session()->has('character.create.data.partitions.' . $partition->slug))
+                return $partition;
+        }
+
+        return null;
+    }
+
+    private function next()
+    {
+        if(session('character.create.step') == 'communities')
+        {
+            $world = $this->world()->load('partitions.communities');
+
+            $partitions = $world->partitions;
+
+            $partition = $this->getNextPartition($partitions);
+
+            session(['character.create.next' => $partition['slug']]);
+        }
     }
 
 }

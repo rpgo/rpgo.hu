@@ -117,7 +117,7 @@ class World extends Eloquent {
 
     public function partitions()
     {
-        return $this->hasMany(Partition::class);
+        return $this->hasMany(Partition::class)->orderBy('rank');
     }
 
 }
