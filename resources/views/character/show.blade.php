@@ -28,16 +28,18 @@
                             <li><a href="{{route('member.show', [$world, $operator])}}">{{$operator['name']}}</a></li>
                         @endforeach
                     </ul>
-                    @foreach($world['partitions'] as $partition)
-                        <ul class="list-inline">
-                            <li>{{$partition['name']}}:</li>
-                            @foreach($partition['communities'] as $community)
-                                @if($character['communities']->contains($community))
-                                    <li>{{$community['name']}}</li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    @endforeach
+                    @if($character['type'] == 'player')
+                        @foreach($world['partitions'] as $partition)
+                            <ul class="list-inline">
+                                <li>{{$partition['name']}}:</li>
+                                @foreach($partition['communities'] as $community)
+                                    @if($character['communities']->contains($community))
+                                        <li>{{$community['name']}}</li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
