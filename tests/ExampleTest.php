@@ -3,15 +3,14 @@
 class ExampleTest extends TestCase {
 
 	/**
-	 * A basic functional test example.
+	 * We have a home page.
 	 *
-	 * @return void
+	 * @test
 	 */
-	public function testBasicExample()
+	public function the_home_page_works()
 	{
-		$response = $this->call('GET', '/');
-
-		$this->assertEquals(200, $response->getStatusCode());
+		$this->visit('/')
+			->see('RPGO');
 	}
 
 }
