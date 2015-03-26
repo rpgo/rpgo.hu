@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Rpgo\Models\Chapter;
 use Rpgo\Models\Choice;
 use Rpgo\Models\Community;
@@ -59,28 +60,31 @@ class CreateWorldCommand extends Command implements SelfHandling {
      */
 	public function handle(Guard $guard)
 	{
-        $user = $guard->user();
+        return DB::transaction(function() use ($guard) {
+            $user = $guard->user();
 
-        $world = $this->createWorld($user);
+            $world = $this->createWorld($user);
 
-        $this->createSettings($world);
+            $this->createSettings($world);
 
-        $this->createRoles($world);
+            $this->createRoles($world);
 
-        $admin = $this->createAdmin($user, $world);
+            $admin = $this->createAdmin($user, $world);
 
-        $this->createRootLocation($admin, $world);
+            $this->createRootLocation($admin, $world);
 
-        $game = $this->createFreeGame($world);
+            $game = $this->createFreeGame($world);
 
-        $this->createCommunities($world, $game);
+            $this->createCommunities($world, $game);
 
-        $support = User::support();
+            $support = User::support();
 
-        if(! $support->equals($user))
-            $this->createSupport($world, $support);
+            if(! $support->equals($user))
+                $this->createSupport($world, $support);
 
-        return $world;
+            return $world;
+        });
+
 	}
 
     /**
