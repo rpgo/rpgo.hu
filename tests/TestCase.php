@@ -1,8 +1,11 @@
 <?php
 
 use Laracasts\Integrated\Extensions\Laravel as IntegrationTest;
+use Laracasts\Integrated\Services\Laravel\DatabaseTransactions;
 
 class TestCase extends IntegrationTest {
+
+	use DatabaseTransactions;
 
 	public function baseUrl()
 	{
