@@ -75,6 +75,8 @@ $router->group(['domain' => env('APP_DOMAIN')], function(Router $router){
         'uses' => 'HomeController@index'
     ]);
 
+    require __DIR__ . '/routes/session.php';
+
     require __DIR__ . '/routes/user.php';
 
 });

@@ -10,12 +10,6 @@ $router->get(trans('routes.session.create'), [
     'middleware' => 'guest',
 ]);
 
-$router->get(trans('routes.session.delete'), [
-    'as' => 'session.delete',
-    'uses' => 'Auth\AuthController@getLogout',
-    'middleware' => 'auth',
-]);
-
 $router->post(trans('routes.session.store'), [
     'as' => 'session.store',
     'uses' => 'Auth\AuthController@postLogin',

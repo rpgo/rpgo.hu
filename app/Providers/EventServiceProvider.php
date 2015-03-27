@@ -26,7 +26,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+		$events->subscribe('Rpgo\Events\Subscribers\UserSubscriber');
 	}
 
 }
