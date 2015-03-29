@@ -61,7 +61,7 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
     public function scopeOnline($query)
     {
         return $query->whereHas('occupant_members', function($query){
-            return $query->where('members.status', true);
+            return $query->online();
         })->where('characters.status', true);
     }
 

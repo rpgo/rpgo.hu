@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Events\Handlers;
 
+use Rpgo\Events\UserLoggedIn;
 use Rpgo\Events\UserLoggedOut;
 
 class StatusListener {
@@ -8,12 +9,18 @@ class StatusListener {
     {
         $user = $event->user;
 
-        $user->load('memberships.occupied_characters');
+        $user['status'] = false;
 
-        foreach ($user->memberships as $membership) {
-            $membership['status'] = false;
-            $membership->save();
-        }
+        $user->save();
+    }
+
+    public function whenUserLoggedIn(UserLoggedIn $event)
+    {
+        $user = $event->user;
+
+        $user['status'] = true;
+
+        $user->save();
     }
 
 }

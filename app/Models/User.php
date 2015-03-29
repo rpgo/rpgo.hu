@@ -50,4 +50,9 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
         return $this->hasMany(Member::class);
     }
 
+    public function scopeOnline($query)
+    {
+        return $query->where('users.status', true);
+    }
+
 }

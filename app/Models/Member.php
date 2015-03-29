@@ -86,7 +86,10 @@ class Member extends Eloquent {
 
     public function scopeOnline($query)
     {
-        return $query->where('status', true);
+        return $query->where('status', true)
+            ->whereHas('user', function($query){
+                return $query->online();
+            });
     }
 
 }

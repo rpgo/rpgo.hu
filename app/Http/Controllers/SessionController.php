@@ -2,7 +2,9 @@
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Events\Dispatcher;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Rpgo\Events\UserLoggedIn;
 use Rpgo\Events\UserLoggedOut;
 
 class SessionController extends Controller {
@@ -22,17 +24,6 @@ class SessionController extends Controller {
 		$this->guard = $guard;
 	}
 
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -40,7 +31,7 @@ class SessionController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('auth.login');
 	}
 
 	/**
@@ -48,42 +39,25 @@ class SessionController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request, Dispatcher $event)
 	{
-		//
-	}
+		$this->validate($request, [
+			'email' => 'required|email', 'password' => 'required',
+		]);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		$credentials = $request->only('email', 'password');
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		if ($this->guard->attempt($credentials, $request->has('remember')))
+		{
+			$event->fire(new UserLoggedIn($this->guard->user()));
+			return redirect()->intended($this->redirectPath());
+		}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+		return redirect($this->loginPath())
+			->withInput($request->only('email', 'remember'))
+			->withErrors([
+				'email' => $this->getFailedLoginMessage(),
+			]);
 	}
 
 	/**
@@ -98,6 +72,26 @@ class SessionController extends Controller {
 		$event->fire(new UserLoggedOut($this->user()));
 
 		return redirect('/');
+	}
+
+	/**
+	 * Get the failed login message.
+	 *
+	 * @return string
+	 */
+	protected function getFailedLoginMessage()
+	{
+		return 'These credentials do not match our records.';
+	}
+
+	public function redirectPath()
+	{
+		return route('rpgo.home');
+	}
+
+	public function loginPath()
+	{
+		return route('session.create');
 	}
 
 }

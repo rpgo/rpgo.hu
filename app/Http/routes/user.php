@@ -6,13 +6,13 @@ use Illuminate\Routing\Router;
 
 $router->get(trans('routes.session.create'), [
     'as' => 'session.create',
-    'uses' => 'Auth\AuthController@getLogin',
+    'uses' => 'SessionController@create',
     'middleware' => 'guest',
 ]);
 
 $router->post(trans('routes.session.store'), [
     'as' => 'session.store',
-    'uses' => 'Auth\AuthController@postLogin',
+    'uses' => 'SessionController@store',
     'middleware' => 'guest',
 ]);
 
