@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Rpgo\Models\World;
 
 abstract class Controller extends BaseController {
 
@@ -18,6 +19,9 @@ abstract class Controller extends BaseController {
 		return $this->rpgo;
 	}
 
+	/**
+	 * @return World
+	 */
 	public function world()
 	{
 		return $this->rpgo()->world();

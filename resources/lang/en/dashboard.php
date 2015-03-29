@@ -7,4 +7,10 @@ return [
         'sidebar' => 'Overview',
         'title' => 'Overview',
     ],
+    'sidebar' => [
+        'overview'      => 'Overview',
+        'settings'      => 'Settings',
+        'roles'         => 'Roles',
+        'communities'   => 'Communities',
+    ],
 ];

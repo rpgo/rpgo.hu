@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => trans('routes.dashboard.prefix'), 'permission' => 'use.control',], function($router){
+$router->group(['prefix' => trans('routes.dashboard.prefix'), 'permission' => 'use.control',], function(Router $router){
     $router->get('/', [
         'uses'          => 'DashboardController@main',
         'as'            => 'dashboard.main',
@@ -18,4 +18,6 @@ $router->group(['prefix' => trans('routes.dashboard.prefix'), 'permission' => 'u
     require __DIR__ . '/role.php';
 
     require __DIR__ . '/settings.php';
+
+    require __DIR__ . '/community.php';
 });
