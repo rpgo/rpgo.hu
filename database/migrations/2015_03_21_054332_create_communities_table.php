@@ -23,7 +23,7 @@ class CreateCommunitiesTable extends Migration {
 			$table->string('name');
 			$table->string('slug');
 
-			$table->string('starting_game_id', 36);
+			$table->string('starting_game_id', 36)->nullable();
 			$table->foreign('starting_game_id')->references('id')->on('games');
 		});
 	}

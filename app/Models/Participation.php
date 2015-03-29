@@ -4,6 +4,8 @@ class Participation extends Eloquent {
 
 	public $incrementing = false;
 
+    protected $fillable = ['status'];
+
     const REQUESTED = 'requested';
     const ACCEPTED = 'accepted';
     const INVITED = 'invited';

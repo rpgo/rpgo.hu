@@ -82,4 +82,14 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
     {
         return $this->belongsToMany(Community::class, 'character_communities');
     }
+
+    public function participations()
+    {
+        return $this->hasMany(Participation::class);
+    }
+
+    public function active_games()
+    {
+        return $this->belongsToMany(Game::class, 'participations')->wherePivot('status', Participation::ACTIVE);
+    }
 }

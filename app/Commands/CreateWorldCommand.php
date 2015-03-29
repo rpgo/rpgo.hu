@@ -273,7 +273,7 @@ class CreateWorldCommand extends Command implements SelfHandling {
         ], [
             ['name' => 'Tudós'],
             ['name' => 'Katona'],
-        ], $world, $game);
+        ], $world, null);
 
         $this->createPartition([
             'name' => 'Nem',
@@ -282,10 +282,10 @@ class CreateWorldCommand extends Command implements SelfHandling {
         ], [
             ['name' => 'Férfi'],
             ['name' => 'Nő']
-        ], $world, $game);
+        ], $world, null);
     }
 
-    private function createPartition(array $partition, array $communities, World $world, Game $game)
+    private function createPartition(array $partition, array $communities, World $world, Game $game = null)
     {
         $partition = new Partition($partition);
 
@@ -299,7 +299,8 @@ class CreateWorldCommand extends Command implements SelfHandling {
 
             $community->partition()->associate($partition);
 
-            $community->starting_game()->associate($game);
+            if($game)
+                $community->starting_game()->associate($game);
 
             $community->save();
         }

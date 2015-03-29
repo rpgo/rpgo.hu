@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Rpgo\Models\Character;
+use Rpgo\Models\Game;
 use Rpgo\Models\MasterCharacterization;
+use Rpgo\Models\Participation;
 use Rpgo\Models\PlayerCharacterization;
 
 class CharacterController extends Controller {
@@ -124,6 +126,22 @@ class CharacterController extends Controller {
             {
                 $character->communities()->attach($community['id']);
             }
+        }
+
+        $character->load('communities.starting_game');
+        $starting_games = $character->communities->fetch('starting_game.id')->toBase()->unique();
+
+        foreach($starting_games as $starting_game)
+        {
+            $game = Game::find($starting_game);
+
+            $participation = new Participation([
+                'status' => Participation::INVITED,
+            ]);
+
+            $participation->character()->associate($character);
+            $participation->game()->associate($game);
+            $participation->save();
         }
 
         return redirect()->route('character.index', [$this->world()]);
