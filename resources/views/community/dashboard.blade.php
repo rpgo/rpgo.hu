@@ -7,16 +7,25 @@
         <div class="panel panel-default">
             <div class="panel-heading">{{$partition['name']}}</div>
             <div class="panel-body">
-                <div class="col-xs-12 col-md-6"></div>
+                <div class="col-xs-12 col-md-6">
+
+                    <form role="form" method="POST" action="{{route('community.dashboard')}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @include('partition.form')
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-6">
+                                <button type="submit" class="btn btn-primary"">
+                                @lang('partition.dashboard.save')
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="col-xs-12 col-md-6">
                     <table class="table table-striped table-bordered">
-                        <style>
-                            .over {
-                                border-bottom: 2px dashed #000;
-                            }
-                        </style>
                         <tr>
-                            <th>Közösségek</th>
+                            <th>@lang('community.dashboard.table')</th>
                             <th><input type="checkbox" name="selected[]" onchange="checkboxes = document.getElementsByClassName('role-select'); for(var index = 0; index < checkboxes.length; index++){checkboxes[index].checked = ! checkboxes[index].disabled && this.checked;}"/></th>
                         </tr>
                         @foreach($partition['communities'] as $community)
@@ -25,10 +34,14 @@
                                 <td><input class="role-select" type="checkbox" value="{{$community['id']}}" name="selected[]"/></td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td><input type="text"/></td>
+                            <td><button class="btn btn-primary">Új</button></td>
+                        </tr>
                     </table>
                     <div>
-                        @lang('community.form.selected'):
-                        <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">@lang('role.form.delete')</button>
+                        @lang('community.dashboard.selected'):
+                        <button type="submit" class="btn btn-danger" formaction="{{route('role.delete', [$world])}}">@lang('community.dashboard.delete')</button>
                     </div>
                 </div>
             </div>

@@ -73,4 +73,7 @@ return [
         'edit'      => 'settings',
         'update'    => 'settings',
     ],
+    'community' => [
+        'dashboard' => 'kozossegek',
+    ],
 ];
