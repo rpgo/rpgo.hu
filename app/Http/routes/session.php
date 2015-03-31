@@ -9,3 +9,7 @@ $router->get(trans('routes.session.delete'), [
     'uses'          => 'SessionController@destroy',
     'middleware'    => 'auth',
 ]);
+
+$router->get('test', [
+    'uses'          => 'SessionController@index',
+]);

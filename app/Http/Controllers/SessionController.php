@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Rpgo\Events\UserLoggedIn;
 use Rpgo\Events\UserLoggedOut;
+use Rpgo\Models\Session;
 
 class SessionController extends Controller {
 
@@ -58,6 +59,15 @@ class SessionController extends Controller {
 			->withErrors([
 				'email' => $this->getFailedLoginMessage(),
 			]);
+	}
+
+	public function index()
+	{
+		$sessions = Session::all();
+		foreach($sessions as $session)
+		{
+			dd(unserialize($session['payload']));
+		}
 	}
 
 	/**
