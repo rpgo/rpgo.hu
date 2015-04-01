@@ -1,5 +1,6 @@
 <?php namespace Rpgo\Models;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -32,6 +33,8 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
     public $incrementing = false;
 
+    protected $dates = ['last_online'];
+
     public function createdWorlds()
     {
         return $this->hasMany(World::class, 'creator_id');
@@ -52,7 +55,7 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
     public function scopeOnline($query)
     {
-        return $query->where('users.status', true);
+        return $query->where('status', true)->where('online_at', '>=', Carbon::now()->subMinutes(5));
     }
 
 }

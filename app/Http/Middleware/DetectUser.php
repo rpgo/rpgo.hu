@@ -1,8 +1,8 @@
 <?php namespace Rpgo\Http\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Rpgo\Models\Session;
 use Rpgo\Rpgo;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -44,13 +44,9 @@ class DetectUser {
 
         if($user)
         {
-            $session = Session::find($this->session->getId());
+            $user->online_at = Carbon::now();
 
-            if(! $session->user_id)
-
-            $session->user_id = $user->id;
-
-            $session->save();
+            $user->save();
         }
 
 		return $next($request);
