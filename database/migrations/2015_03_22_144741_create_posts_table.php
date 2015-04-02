@@ -26,7 +26,11 @@ class CreatePostsTable extends Migration {
 			$table->string('character_id', 36);
 			$table->foreign('character_id')->references('id')->on('characters');
 
-			$table->string('post_id', 36)->nullable();
+			$table->string('member_id', 36);
+			$table->foreign('member_id')->references('id')->on('members');
+
+			$table->string('avatar_id')->nullable();
+			$table->foreign('avatar_id')->references('id')->on('avatars');
 		});
 	}
 
