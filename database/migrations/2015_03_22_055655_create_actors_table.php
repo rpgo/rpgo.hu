@@ -16,6 +16,9 @@ class CreateActorsTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+			$table->string('name');
+			$table->string('slug');
 		});
 	}
 

@@ -16,6 +16,18 @@ class CreateAvatarsTable extends Migration {
 		{
 			$table->string('id', 36)->primary();
 			$table->timestamps();
+			$table->timestamp('accepted_on');
+
+			$table->string('actor_id', 36)->nullable();
+			$table->foreign('actor_id')->references('id')->on('actors');
+
+			$table->string('world_id', 36);
+			$table->foreign('world_id')->references('id')->on('worlds');
+
+			$table->string('creator_id', 36);
+			$table->foreign('creator_id')->references('id')->on('members');
+
+			$table->string('description');
 		});
 	}
 
