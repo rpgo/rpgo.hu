@@ -21,6 +21,8 @@ class CreateSettingsTable extends Migration {
 			$table->foreign('world_id')->references('id')->on('worlds');
 
 			$table->enum('language', ['en', 'hu'])->default('hu');
+
+			$table->enum('avatar', ['latest', 'relevant'])->default('latest');
 		});
 	}
 
