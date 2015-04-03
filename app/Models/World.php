@@ -120,4 +120,9 @@ class World extends Eloquent {
         return $this->hasMany(Partition::class)->orderBy('rank');
     }
 
+    public function avatars()
+    {
+        return $this->hasManyThrough(Avatar::class, Member::class);
+    }
+
 }

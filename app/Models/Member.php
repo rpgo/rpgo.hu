@@ -92,4 +92,14 @@ class Member extends Eloquent {
             });
     }
 
+    public function uploaded_avatars()
+    {
+        return $this->hasMany(Avatar::class, 'uploader_id');
+    }
+
+    public function created_avatars()
+    {
+        return $this->hasMany(Avatar::class, 'creator_id');
+    }
+
 }
