@@ -1,13 +1,28 @@
 <?php namespace Rpgo\Http\Controllers;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Rpgo\Models\Avatar;
 use Rpgo\Models\Character;
+use Rpgo\Models\Face;
 use Rpgo\Models\Game;
 use Rpgo\Models\MasterCharacterization;
 use Rpgo\Models\Participation;
 use Rpgo\Models\PlayerCharacterization;
 
 class CharacterController extends Controller {
+    /**
+     * @var Filesystem
+     */
+    private $file;
+
+    /**
+     * @param Filesystem $file
+     */
+    public function __construct(Filesystem $file)
+    {
+        $this->file = $file;
+    }
 
 	public function index()
     {
@@ -24,6 +39,7 @@ class CharacterController extends Controller {
                     'name' => trans('character.create.preview.johndoe'),
                     'type' => 'unknown',
                     'partitions' => [],
+                    'avatar' => 'http://placehold.it/200x300',
                 ],
                 'next' => '',
             ],
@@ -40,7 +56,9 @@ class CharacterController extends Controller {
 
     public function show(Character $character)
     {
-        return view('character.show')->with(compact('character'));
+        $avatar = $character->avatars()->latest()->first();
+
+        return view('character.show')->with(compact('character', 'avatar'));
     }
 
     public function store(Request $request)
@@ -87,9 +105,29 @@ class CharacterController extends Controller {
 
     public function name(Request $request)
     {
-        $this->step('confirm');
+        $this->step('avatar');
 
         session(['character.create.data.name' => $request->get('name')]);
+
+        return view('character.create');
+    }
+
+    public function avatar(Request $request)
+    {
+
+        if($request->hasFile('avatar'))
+            $file = $request->file('avatar');
+        else
+            return view('character.create');
+
+        if($file->isValid())
+        {
+            $this->step('confirm');
+            $avatar = new Avatar();
+            $filename = $avatar->id . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/character/create/avatar'), $filename);
+            session(['character.create.data.avatar' => 'images/character/create/avatar/' . $filename]);
+        }
 
         return view('character.create');
     }
@@ -97,6 +135,22 @@ class CharacterController extends Controller {
     public function confirm(Request $request)
     {
         $data = session('character.create.data');
+
+        $avatar = new Avatar();
+
+        $from = public_path($data['avatar']);
+
+        $extension = $this->file->extension($from);
+
+        $to = public_path('images/avatars/' . $avatar->id . '.' . $extension);
+
+        $this->file->move($from, $to);
+
+        $avatar->uploader()->associate($this->member());
+
+        $avatar->creator()->associate($this->member());
+
+        $avatar->save();
 
         if($data['type'] == 'player')
         {
@@ -115,6 +169,14 @@ class CharacterController extends Controller {
         $character->characterization()->associate($characterization);
 
         $character->save();
+
+        $face = new Face();
+
+        $face->avatar()->associate($avatar);
+
+        $face->character()->associate($character);
+
+        $face->save();
 
         $character->owner_members()->attach($this->member());
 

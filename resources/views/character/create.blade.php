@@ -15,7 +15,7 @@
                             <p>@lang('character.create.' . session('character.create.step') . '.info')</p>
                         </div>
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{route('character.store', $world)}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('character.store', $world)}}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @include('character.create.' . session('character.create.step'))
