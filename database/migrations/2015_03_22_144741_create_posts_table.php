@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration {
 			$table->string('id', 36)->primary();
 			$table->timestamps();
 
+			$table->string('root_id', 36)->nullable();
+
 			$table->string('location_id', 36);
 			$table->foreign('location_id')->references('id')->on('locations');
 
