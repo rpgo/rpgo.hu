@@ -27,6 +27,8 @@ class CreateAvatarsTable extends Migration {
 			$table->string('creator_id', 36)->nullable();
 			$table->foreign('creator_id')->references('id')->on('members');
 
+			$table->enum('extension', ['png', 'jpg']);
+
 			$table->string('url')->nullable();
 
 			$table->string('description')->default('');

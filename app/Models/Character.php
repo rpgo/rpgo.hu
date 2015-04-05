@@ -10,7 +10,7 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
 
     protected $fillable = ['name'];
 
-    public $appends = ['type'];
+    public $appends = ['type', 'avatar'];
 
     public function setNameAttribute($name)
     {
@@ -101,5 +101,10 @@ class Character extends Eloquent implements ActivityRecorder, ActivityReporter {
     public function avatars()
     {
         return $this->belongsToMany(Avatar::class, 'faces');
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatars()->latest()->first();
     }
 }

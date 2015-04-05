@@ -123,8 +123,9 @@ class CharacterController extends Controller {
         if($file->isValid())
         {
             $this->step('confirm');
-            $avatar = new Avatar();
-            $filename = $avatar->id . '.' . $file->getClientOriginalExtension();
+            $extension = $file->getClientOriginalExtension();
+            $avatar = new Avatar(compact('extension'));
+            $filename = $avatar->id . '.' . $extension;
             $file->move(public_path('images/character/create/avatar'), $filename);
             session(['character.create.data.avatar' => 'images/character/create/avatar/' . $filename]);
         }

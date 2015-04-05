@@ -6,6 +6,8 @@ class Avatar extends Eloquent {
 
     protected $dates = ['accepted_on'];
 
+    protected $fillable = ['extension'];
+
     public function world()
     {
         return $this->uploader->world();

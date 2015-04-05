@@ -9,7 +9,7 @@
                 <a href="{{route('status.character', [$world, $character])}}"><i class="fa fa-circle" style="color:@if($member['status'] ? $character['status'] : $member['status']) green @else red @endif;"></i></a></h2>
             <div class="row">
                 <div class="col-xs-2">
-                    <img src="{{asset('images/avatars/' . $avatar->id . '.jpg')}}" alt=""/>
+                    <img src="{{asset('images/avatars/' . $avatar->id . '.' . $avatar->extension)}}" alt=""/>
                 </div>
                 <div class="col-xs-10">
                     <ul class="list-inline">
