@@ -14,8 +14,14 @@ class CreateRelationshipsTable extends Migration {
 	{
 		Schema::create('relationships', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->string('id', 36)->primary();
 			$table->timestamps();
+
+			$table->string('name');
+			$table->boolean('initial');
+
+			$table->string('world_id', 36);
+			$table->foreign('world_id')->references('id')->on('worlds');
 		});
 	}
 
