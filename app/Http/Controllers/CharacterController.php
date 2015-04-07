@@ -64,8 +64,6 @@ class CharacterController extends Controller {
     public function store(Request $request)
     {
         return $this->{session('character.create.step')}($request);
-
-        /**/
     }
 
     public function type(Request $request)
