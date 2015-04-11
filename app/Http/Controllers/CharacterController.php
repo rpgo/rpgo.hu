@@ -205,7 +205,7 @@ class CharacterController extends Controller {
             $participation->save();
         }
 
-        return redirect()->route('character.index', [$this->world()]);
+        return redirect()->route('character.show', [$this->world(), $character]);
     }
 
     private function step($player, $master = null)
